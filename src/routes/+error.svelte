@@ -5,16 +5,16 @@
 
 <svelte:head>
 	<title>Error</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="Why are you here?" />
 </svelte:head>
 
 <main class="my-40 flex flex-col items-center justify-center px-8 text-center">
-	<audio src="/audio/tilin.ogg" bind:this={tilin}></audio>
+	<audio src="/assets/audios/tilin.ogg" bind:this={tilin}></audio>
 	<button
 		class="mb-4 transition duration-200 ease-out hover:brightness-75"
 		on:click={async () => await tilin.play()}
 	>
-		<img src="/img/tilin.webp" alt="tilin" class="md:w-30 w-24" />
+		<img src="/assets/images/tilin.webp" alt="tilin" class="md:w-30 w-24" />
 	</button>
 	<h1 class="font-heading text-3xl font-bold md:text-5xl">This page not found</h1>
 	<p class="md:text-xl">

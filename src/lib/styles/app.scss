@@ -1,0 +1,15 @@
+// Fonts
+@use './fonts/poppins.scss'; // Poppins
+@use './fonts/onest.scss'; // Onest
+
+// Components
+@use './components/cards.scss'; // Cards
+
+// Main
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply bg-background-950 text-ysn-black;
+}

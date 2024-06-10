@@ -2,9 +2,14 @@
 	import Trakteer from '$lib/images/trakteer.svelte';
 </script>
 
+<svelte:head>
+	<title>Donate - Futami</title>
+	<meta name="description" content="Donate for support me" />
+</svelte:head>
+
 <main class="totality-container">
 	<section class="cards-category">
-		<h3 class="name-category">In Indonesia (IDR)</h3>
+		<h2 class="name-category">In Indonesia (IDR)</h2>
 		<div class="cards">
 			<!-- Trakteer -->
 			<a
@@ -32,7 +37,7 @@
 				title="Saweria"
 			>
 				<div class="card-icon">
-					<img src="/img/saweria.png" alt="Futamini" />
+					<img src="/assets/images/saweria.png" alt="Futamini" />
 				</div>
 				<div class="card-content">
 					<h3 class="card-content__title">Saweria</h3>
@@ -43,7 +48,7 @@
 	</section>
 
 	<section class="cards-category">
-		<h3 class="name-category">Overseas (Dollar)</h3>
+		<h2 class="name-category">Overseas (Dollar)</h2>
 		<div class="cards">
 			<!-- YouTube Shorts -->
 			<a
@@ -54,7 +59,7 @@
 				title="YouTube Shorts"
 			>
 				<div class="card-icon">
-					<img src="/img/kofi.png" alt="Futamini" />
+					<img src="/assets/images/kofi.png" alt="Futamini" />
 				</div>
 				<div class="card-content">
 					<h3 class="card-content__title">Ko-fi</h3>
@@ -64,53 +69,3 @@
 		</div>
 	</section>
 </main>
-
-<style lang="scss">
-	.totality-container {
-		@apply container mx-auto px-4 py-1 lg:max-w-[1024px];
-	}
-
-	.name-category {
-		@apply font-heading text-3xl font-bold;
-	}
-
-	.cards-category {
-		@apply bg-background-800 mb-4 flex flex-col gap-y-3 rounded-md p-5;
-	}
-
-	.cards {
-		@apply flex flex-wrap justify-center gap-2 truncate;
-
-		.card {
-			@apply bg-primary-500 flex w-full items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-center text-futa-white transition duration-200 ease-out hover:brightness-[.8];
-
-			@media (min-width: 768px) {
-				flex: 0 0 calc(50% - 10px);
-			}
-
-			&-icon {
-				@apply flex aspect-square items-center justify-center text-[1.8rem];
-
-				:global(svg) {
-					@apply h-[1.25em] w-[1.25em] fill-current object-contain;
-				}
-
-				img {
-					@apply h-[1.25em] min-w-[1.25em] rounded-md object-contain;
-				}
-			}
-
-			&-content {
-				@apply flex w-full flex-col truncate;
-
-				&__title {
-					@apply w-full truncate font-heading font-bold;
-				}
-
-				&__author {
-					@apply w-full truncate text-sm leading-none;
-				}
-			}
-		}
-	}
-</style>

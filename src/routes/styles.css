@@ -1,9 +1,0 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:700|Onest:400');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-	@apply bg-background-950 text-ysn-black;
-}

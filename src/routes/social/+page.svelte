@@ -6,12 +6,16 @@
 	import FaFacebook from '$lib/images/font-awesome/facebook.svelte';
 
 	import FaCoins from '$lib/images/font-awesome/coins-solid.svelte';
-	import FaBlog from '$lib/images/font-awesome/blog-solid.svelte';
 </script>
+
+<svelte:head>
+	<title>Social - Futami</title>
+	<meta name="description" content="More link about me" />
+</svelte:head>
 
 <main class="totality-container">
 	<section class="cards-category">
-		<h3 class="name-category">Youtube</h3>
+		<h2 class="name-category">Youtube</h2>
 		<div class="cards">
 			<!-- YouTube -->
 			<a
@@ -76,7 +80,7 @@
 	</section>
 
 	<section class="cards-category">
-		<h3 class="name-category">More Shorts</h3>
+		<h2 class="name-category">More Shorts</h2>
 		<div class="cards">
 			<!-- YouTube Shorts -->
 			<a
@@ -132,7 +136,7 @@
 	</section>
 
 	<section class="cards-category">
-		<h3 class="name-category">Comunities</h3>
+		<h2 class="name-category">Comunities</h2>
 		<div class="cards">
 			<!-- Twitter -->
 			<a
@@ -164,7 +168,7 @@
 				</div>
 				<div class="card-content">
 					<h3 class="card-content__title">Facebook</h3>
-					<span class="card-content__author">Why I make this?</span>
+					<span class="card-content__author">More shitpost here!</span>
 				</div>
 			</a>
 
@@ -198,53 +202,3 @@
 		</div>
 	</section>
 </main>
-
-<style lang="scss">
-	.totality-container {
-		@apply container mx-auto px-4 py-1 lg:max-w-[1024px];
-	}
-
-	.name-category {
-		@apply font-heading text-3xl font-bold;
-	}
-
-	.cards-category {
-		@apply bg-background-800 mb-4 flex flex-col gap-y-3 rounded-md p-5;
-	}
-
-	.cards {
-		@apply flex flex-wrap justify-center gap-2 truncate;
-
-		.card {
-			@apply bg-primary-500 flex w-full items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-center text-futa-white transition duration-200 ease-out hover:brightness-[.8];
-
-			@media (min-width: 768px) {
-				flex: 0 0 calc(50% - 10px);
-			}
-
-			&-icon {
-				@apply flex aspect-square items-center justify-center text-[1.8rem];
-
-				:global(svg) {
-					@apply h-[1.25em] w-[1.25em] fill-current object-contain;
-				}
-
-				img {
-					@apply h-[1.25em] min-w-[1.25em] rounded-md object-contain;
-				}
-			}
-
-			&-content {
-				@apply flex w-full flex-col truncate;
-
-				&__title {
-					@apply w-full truncate font-heading font-bold;
-				}
-
-				&__author {
-					@apply w-full truncate text-sm leading-none;
-				}
-			}
-		}
-	}
-</style>

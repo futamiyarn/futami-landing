@@ -14,7 +14,8 @@ const config = {
 		adapter: adapter({
 			fallback: '404.html',
 			pages: 'public',
-			assets: 'public'
+			assets: 'public',
+			precompress: true
 		})
 	}
 };

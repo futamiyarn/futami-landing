@@ -24,7 +24,7 @@
 
 	<!-- Latest Video -->
 	<section class="cards-category">
-		<h3 class="name-category">Latest Videos</h3>
+		<h2 class="name-category">Latest Videos</h2>
 		<div class="cards thumb-cards">
 			{#await data}
 				Loading!
@@ -55,7 +55,7 @@ rgba(0, 0, 0, 0.6)), url(https://i.ytimg.com/vi/{item.id}/hqdefault.jpg);"
 
 	<!-- Short Bio Link -->
 	<section class="cards-category">
-		<h3 class="name-category">Socials</h3>
+		<h2 class="name-category">Socials</h2>
 		<div class="cards">
 			<!-- YouTube -->
 			<a
@@ -115,80 +115,3 @@ rgba(0, 0, 0, 0.6)), url(https://i.ytimg.com/vi/{item.id}/hqdefault.jpg);"
 		</div>
 	</section>
 </main>
-
-<style lang="scss">
-	.totality-container {
-		@apply container mx-auto px-4 py-1 lg:max-w-[1024px];
-	}
-
-	.trivia {
-		@apply mb-8 mt-2 text-center font-heading text-5xl font-bold;
-	}
-
-	.name-category {
-		@apply font-heading text-3xl font-bold;
-	}
-
-	.cards-category {
-		@apply mb-4 flex flex-col gap-y-3 rounded-md bg-background-800 p-5;
-	}
-
-	.cards {
-		@apply flex flex-wrap justify-center gap-2 truncate;
-
-		.card {
-			@apply flex w-full items-center justify-center gap-x-1.5 truncate rounded-md bg-primary-500 px-3 py-2 text-center text-futa-white transition duration-200 ease-out hover:brightness-[.8];
-
-			@media (min-width: 768px) {
-				flex: 0 0 calc(50% - 10px);
-			}
-
-			&-icon {
-				@apply flex aspect-square items-center justify-center text-[1.8rem];
-
-				:global(svg) {
-					@apply h-[1.25em] w-[1.25em] fill-current object-contain;
-				}
-
-				// img {
-				// 	@apply aspect-square w-[1.25em] object-contain;
-				// }
-			}
-
-			&-content {
-				@apply flex w-full flex-col truncate;
-
-				&__title {
-					@apply w-full truncate font-heading font-bold;
-				}
-
-				&__author {
-					@apply w-full truncate text-sm leading-none;
-				}
-			}
-		}
-	}
-
-	.thumb-cards {
-		.card {
-			@apply aspect-[16/5] items-end justify-start bg-cover bg-center text-left text-white;
-			&:first-child {
-				@apply aspect-video;
-			}
-
-			@media (min-width: 768px) {
-				&:nth-child(-n + 2) {
-					@apply aspect-video;
-				}
-			}
-		}
-	}
-
-	.read-more {
-		@apply flex justify-end;
-
-		&__link {
-			@apply clear-both inline-block rounded-full bg-primary-500 px-4 py-1 font-bold text-futa-white transition-colors duration-200 ease-out hover:bg-primary-400;
-		}
-	}
-</style>
