@@ -56,7 +56,7 @@
 	<slot />
 
 	<footer>
-		<a href="http://x.com/futamiyarn" target="_blank" class="footer-link" rel="noopener noreferrer"
+		<a href="https://x.com/futamiyarn" target="_blank" class="footer-link" rel="noopener noreferrer"
 			>@FutamiYarn</a
 		>
 		&#169; {new Date().getFullYear()}
