@@ -152,9 +152,3 @@ rgba(0, 0, 0, 0.6)), url(https://i.ytimg.com/vi/{item.id}/hqdefault.jpg);"
 		</div>
 	</section>
 </main>
-
-<style lang="scss">
-	.trivia {
-		@apply mb-8 mt-2 text-center font-heading text-base font-bold md:text-3xl xl:text-5xl;
-	}
-</style>

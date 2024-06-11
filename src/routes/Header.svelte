@@ -37,29 +37,3 @@
 		</ul>
 	</nav>
 </header>
-
-<style lang="scss">
-	.navbar {
-		@apply container mx-auto my-2 flex flex-col items-center gap-3 px-4 py-4 md:flex-row md:justify-between md:py-2;
-
-		&-logo {
-			@apply flex h-8 gap-[10px] text-futa-red transition duration-150 ease-out hover:text-primary-600;
-		}
-
-		&-menu {
-			@apply flex items-center gap-[12px];
-
-			&__item {
-				@apply flex aspect-square h-full items-center justify-center rounded-md bg-primary-900 p-1 text-primary-500 transition duration-150 ease-out hover:bg-primary-600/75 hover:text-primary-900;
-
-				:global(svg) {
-					@apply h-[1em] w-[1.25em] fill-current;
-				}
-			}
-		}
-	}
-
-	[aria-current='page'] .navbar-menu__item {
-		@apply bg-primary-500 text-primary-900 hover:bg-primary-500 hover:text-primary-900;
-	}
-</style>
