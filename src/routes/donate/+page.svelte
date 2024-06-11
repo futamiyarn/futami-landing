@@ -37,7 +37,7 @@
 				title="Saweria"
 			>
 				<div class="card-icon">
-					<img src="/assets/images/saweria.png" alt="Futamini" />
+					<img src="/assets/images/saweria.png" alt="Saweria" />
 				</div>
 				<div class="card-content">
 					<h3 class="card-content__title">Saweria</h3>
@@ -56,10 +56,10 @@
 				href="https://ko-fi.com/futami"
 				target="_blank"
 				rel="noopener noreferrer"
-				title="YouTube Shorts"
+				title="Ko-fi"
 			>
 				<div class="card-icon">
-					<img src="/assets/images/kofi.png" alt="Futamini" />
+					<img src="/assets/images/kofi.png" alt="Ko-fi" />
 				</div>
 				<div class="card-content">
 					<h3 class="card-content__title">Ko-fi</h3>

@@ -4,16 +4,22 @@
 </script>
 
 <svelte:head>
-	<title>Youtube - Futami</title>
+	<title>Youtube ({data.name}) - Futami</title>
 	<meta name="description" content="Look my latest video" />
 </svelte:head>
 
 <main class="totality-container">
 	<section class="cards-category">
-		<h2 class="name-category">Channels</h2>
+		<h2 class="name-category">{data.name}</h2>
 		<div class="cards">
-			<!-- Futami -->
-			<a class="card" href="/youtube/futami" title="Futami Ch.">
+			<!-- Futami ch. -->
+			<a
+				class="card"
+				href="https://youtube.com/@futamiyarn?sub_confirmation=1"
+				target="_blank"
+				rel="noopener noreferrer"
+				title="Futami Ch."
+			>
 				<div class="card-icon">
 					<img
 						src="https://yt3.googleusercontent.com/S5IfQ0LxW6Pp4JxilCMZMrrEm59QBVCXQSqL7IZ1d4M6BIwuHsWSfpnPzibCpVxCBjZDp1CVpA=s800-c-k-c0x00ffffff-no-rj"
@@ -26,39 +32,6 @@
 				</div>
 			</a>
 
-			<!-- Futamini -->
-			<a class="card" href="/youtube/futamini" title="FutaMini">
-				<div class="card-icon">
-					<img
-						src="https://yt3.googleusercontent.com/6xeVvy7pG4ekmwzZTuhDhOPDqF4OQKRNoLR6ijjxs0Bu33b4QZZIwLiALxKbGx2gQlZMFPXHsg=s800-c-k-c0x00ffffff-no-rj"
-						alt="Futamini"
-					/>
-				</div>
-				<div class="card-content">
-					<h3 class="card-content__title">FutaMini</h3>
-					<span class="card-content__author">Random Content</span>
-				</div>
-			</a>
-
-			<!-- Futami Cover -->
-			<a class="card" href="/youtube/futamicover" title="Futami Cover">
-				<div class="card-icon">
-					<img
-						src="https://yt3.googleusercontent.com/_EbhGCfH415MGzhp7SBR7DVt8TMBGvA57gD6pfZ5ug3D1qH5OkuRbpKwwFtEZrmbb_mTGxTv=s800-c-k-c0x00ffffff-no-rj"
-						alt="Futami Cover"
-					/>
-				</div>
-				<div class="card-content">
-					<h3 class="card-content__title">Futami Cover</h3>
-					<span class="card-content__author">AI Covers</span>
-				</div>
-			</a>
-		</div>
-	</section>
-
-	<section class="cards-category">
-		<h2 class="name-category">Latest Playlist</h2>
-		<div class="cards">
 			<!-- FutaLatest -->
 			<a
 				class="card"
@@ -95,7 +68,8 @@
 		</div>
 	</section>
 
-	<!-- Latest Video -->
+	<!-- {chn.name} -->
+
 	<section class="cards-category">
 		<h2 class="name-category">Latest Videos</h2>
 		<div class="cards thumb-cards">
@@ -122,6 +96,14 @@ rgba(0, 0, 0, 0.6)), url(https://i.ytimg.com/vi/{item.id}/hqdefault.jpg);"
 					</a>
 				{/each}
 			{/await}
+		</div>
+		<div class="read-more">
+			<a
+				href={data.url + '?sub_confirmation=1'}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="read-more__link">Subscribe</a
+			>
 		</div>
 	</section>
 </main>

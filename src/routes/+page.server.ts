@@ -1,5 +1,3 @@
-export const prerender = true;
-
 import Parser from 'rss-parser';
 
 interface YT {

@@ -1,4 +1,5 @@
 export const prerender = true;
+export const trailingSlash = 'always';
 
 let baseStyles = ['color: #000', 'background-color:  #FEE440'].join(';');
 

@@ -17,7 +17,7 @@
 	<section class="cards-category">
 		<h2 class="name-category">Youtube</h2>
 		<div class="cards">
-			<!-- YouTube -->
+			<!-- Futami -->
 			<a
 				class="card"
 				href="https://youtube.com/@futamiyarn?sub_confirmation=1"
@@ -63,7 +63,7 @@
 				href="https://youtube.com/@futamicover?sub_confirmation=1"
 				target="_blank"
 				rel="noopener noreferrer"
-				title="YouTube Shorts"
+				title="Futami Cover"
 			>
 				<div class="card-icon">
 					<img

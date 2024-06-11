@@ -2,10 +2,6 @@
 	@apply container mx-auto px-4 py-1 lg:max-w-[1024px];
 }
 
-.trivia {
-	@apply mb-8 mt-2 text-center font-heading text-5xl font-bold;
-}
-
 .name-category {
 	@apply font-heading text-3xl font-bold;
 }
