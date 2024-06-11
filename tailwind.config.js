@@ -13,6 +13,15 @@ export default {
 				primary: '#9b222d',
 				secondary: '#d4979c',
 				accent: '#d26f77',
+
+				dark: {
+					text: '#f8f7f7',
+					background: '#030202',
+					primary: '#dd646e',
+					secondary: '#682c31',
+					accent: '#8f2d35'
+				},
+
 				futa: {
 					twins: '#FEE440',
 					white: '#d5dce7',

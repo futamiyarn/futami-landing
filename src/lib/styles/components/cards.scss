@@ -12,6 +12,8 @@
 	@apply mb-4 flex flex-col gap-y-2 rounded-md px-5 py-4;
 	// Light Color
 	@apply bg-secondary/40;
+	// Dark color
+	@apply dark:bg-dark-secondary/30;
 }
 
 .cards {
@@ -91,7 +93,7 @@
 		// Button coloring (light)
 		@apply bg-primary/90 text-white;
 		// Button hover coloring (light)
-		@apply hover:bg-secondary hover:text-ysn-black;
+		@apply hover:bg-primary/50;
 		// Transition
 		@apply transition-colors duration-200 ease-out;
 	}

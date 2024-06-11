@@ -17,7 +17,7 @@ body {
 	// Light Mode
 	@apply bg-background text-ysn-black;
 	// Dark Mode
-	// @apply dark:bg-ysn-black dark:text-background;
+	@apply dark:text-background dark:bg-ysn-black;
 }
 
 // Trivia in home page
@@ -39,8 +39,10 @@ footer {
 }
 
 .footer-link {
-	// Coloring link
+	// Coloring link (light)
 	@apply text-futa-red hover:text-futa-red/80;
+	// Coloring link (dark)
+	@apply dark:text-dark-primary dark:hover:text-dark-primary/80;
 	// Transition
 	@apply transition-colors duration-150 ease-out;
 }
