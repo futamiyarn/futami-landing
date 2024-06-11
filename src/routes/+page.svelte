@@ -4,13 +4,13 @@
 	import FaCoins from '$lib/images/font-awesome/coins-solid.svelte';
 	import FaUsers from '$lib/images/font-awesome/users-solid.svelte';
 
+	import grettings from '$lib/data/grettings.json';
 	import { onMount } from 'svelte';
+	let gretting: string = '';
+
+	onMount(() => (gretting = grettings[Math.floor(Math.random() * grettings.length)].fact));
 
 	export let data;
-
-	onMount(() => {
-		console.log('reset');
-	});
 </script>
 
 <svelte:head>
@@ -20,11 +20,13 @@
 
 <main class="totality-container">
 	<!-- Random trivia -->
-	<h1 class="trivia">Hay</h1>
+	<h1 class="trivia">
+		{gretting}
+	</h1>
 
-	<!-- Latest Video -->
+	<!-- YouTube -->
 	<section class="cards-category">
-		<h2 class="name-category">Latest Videos</h2>
+		<h2 class="name-category">YouTube</h2>
 		<div class="cards thumb-cards">
 			{#await data}
 				Loading!
@@ -49,6 +51,41 @@ rgba(0, 0, 0, 0.6)), url(https://i.ytimg.com/vi/{item.id}/hqdefault.jpg);"
 					</a>
 				{/each}
 			{/await}
+		</div>
+		<div class="cards">
+			<!-- FutaLatest -->
+			<a
+				class="card"
+				href="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
+				target="_blank"
+				rel="noopener noreferrer"
+				title="FutaLatest"
+			>
+				<div class="card-icon">
+					<FaYouTube />
+				</div>
+				<div class="card-content">
+					<h3 class="card-content__title">FutaLatest</h3>
+					<span class="card-content__author">News and Popcuture</span>
+				</div>
+			</a>
+
+			<!-- Tutorial -->
+			<a
+				class="card"
+				href="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
+				target="_blank"
+				rel="noopener noreferrer"
+				title="FutaLatest"
+			>
+				<div class="card-icon">
+					<FaYouTube />
+				</div>
+				<div class="card-content">
+					<h3 class="card-content__title">Tutorial</h3>
+					<span class="card-content__author">How To series</span>
+				</div>
+			</a>
 		</div>
 		<div class="read-more"><a href="/youtube" class="read-more__link">Look more</a></div>
 	</section>

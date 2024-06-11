@@ -1,0 +1,29 @@
+.container-error {
+	@apply my-40 px-8 text-center;
+
+	&__heading {
+		@apply font-heading text-3xl font-bold md:text-5xl;
+	}
+
+	&__paragraph {
+		@apply md:text-xl;
+
+		a {
+			// Underline
+			@apply underline;
+			// Link Color (light)
+			@apply text-slate-600 hover:text-slate-800;
+		}
+
+		b {
+			@apply font-bold;
+		}
+	}
+
+	&__button {
+		// Button Hover
+		@apply mb-4 hover:brightness-75;
+		// Transition
+		@apply transition duration-200 ease-out;
+	}
+}

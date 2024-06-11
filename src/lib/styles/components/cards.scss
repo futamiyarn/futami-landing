@@ -1,9 +1,6 @@
 .totality-container {
+	// Container
 	@apply container mx-auto px-4 py-1 lg:max-w-[1024px];
-}
-
-.trivia {
-	@apply mb-8 mt-2 text-center font-heading text-5xl font-bold;
 }
 
 .name-category {
@@ -11,21 +8,37 @@
 }
 
 .cards-category {
-	@apply mb-4 flex flex-col gap-y-3 rounded-md bg-background-800 px-5 py-4;
+	// Category box Styling
+	@apply mb-4 flex flex-col gap-y-2 rounded-md px-5 py-4;
+	// Light Color
+	@apply bg-secondary/40;
+	// Dark color
+	@apply dark:bg-dark-secondary/30;
 }
 
 .cards {
 	@apply flex flex-wrap justify-center gap-2 truncate;
 
 	.card {
-		@apply flex w-full items-center justify-center gap-x-1.5 truncate rounded-md bg-primary-400 px-3 py-2 text-center text-white transition duration-200 ease-out hover:brightness-[1.1];
+		// Card styling
+		@apply w-full gap-x-1.5 truncate rounded-md px-3 py-2;
+		// Centering Card
+		@apply flex items-center justify-center text-center;
+		// Card color (light)
+		@apply bg-primary text-white;
+		// Card hover and transition
+		@apply transition duration-200 ease-out hover:brightness-[1.25];
 
+		// Make card 2 rows in medium+
 		@media (min-width: 768px) {
 			flex: 0 0 calc(50% - 10px);
 		}
 
 		&-icon {
-			@apply flex aspect-square items-center justify-center text-[1.8rem];
+			// Styling image/icon
+			@apply aspect-square text-[1.8rem];
+			// Centering image/icon
+			@apply flex items-center justify-center;
 
 			svg {
 				@apply h-[1.25em] w-[1.25em] fill-current object-contain;
@@ -52,11 +65,17 @@
 
 .thumb-cards {
 	.card {
-		@apply aspect-[16/5] items-end justify-start bg-cover bg-center text-left;
+		// Centering background image
+		@apply bg-cover bg-center;
+		// Make Card slighly bigger and text in down-left align
+		@apply aspect-[16/5] items-end justify-start text-left;
+
+		// Make card in video aspect on mobile
 		&:first-child {
 			@apply aspect-video;
 		}
 
+		// Make card in video aspect on tablet and PC
 		@media (min-width: 768px) {
 			&:nth-child(-n + 2) {
 				@apply aspect-video;
@@ -69,6 +88,13 @@
 	@apply flex justify-end;
 
 	&__link {
-		@apply clear-both inline-block rounded-full bg-primary-400 px-4 py-1 font-bold text-white transition-colors duration-200 ease-out hover:bg-primary-600;
+		// Button styling
+		@apply inline-block rounded-full px-4 py-1 font-bold;
+		// Button coloring (light)
+		@apply bg-primary/90 text-white;
+		// Button hover coloring (light)
+		@apply hover:bg-primary/50;
+		// Transition
+		@apply transition-colors duration-200 ease-out;
 	}
 }

@@ -4,12 +4,45 @@
 
 // Components
 @use './components/cards.scss'; // Cards
+@use './components/header.scss'; // Header
+@use './components/error.scss'; // Error
 
-// Main
+// Tailwind utilities
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+// Main body color
 body {
-	@apply bg-background-950 text-ysn-black;
+	// Light Mode
+	@apply bg-background text-ysn-black;
+	// Dark Mode
+	@apply dark:text-background dark:bg-ysn-black;
+}
+
+// Trivia in home page
+.trivia {
+	// Spacing
+	@apply mb-8 mt-2;
+	// Text style
+	@apply text-center font-heading font-bold;
+	// Text sizing
+	@apply md:text-3xl xl:text-5xl;
+}
+
+// Footer
+footer {
+	// Spacing
+	@apply pb-6 pt-2;
+	// Text styling
+	@apply text-center font-heading text-sm font-bold;
+}
+
+.footer-link {
+	// Coloring link (light)
+	@apply text-futa-red hover:text-futa-red/80;
+	// Coloring link (dark)
+	@apply dark:text-dark-primary dark:hover:text-dark-primary/80;
+	// Transition
+	@apply transition-colors duration-150 ease-out;
 }
