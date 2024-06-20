@@ -1,0 +1,112 @@
+---
+import CardGroup from '../../components/CardGroup.astro';
+import CardItem from '../../components/CardItem.astro';
+import Layout from '../../layouts/Layout.astro';
+
+import FaYouTube from '../../lib/images/font-awesome/youtube.svg?raw';
+import FaTiktok from '../../lib/images/font-awesome/tiktok.svg?raw';
+import FaInstagram from '../../lib/images/font-awesome/instagram.svg?raw';
+import FaXTwitter from '../../lib/images/font-awesome/x-twitter.svg?raw';
+import FaFacebook from '../../lib/images/font-awesome/facebook.svg?raw';
+import FaCoins from '../../lib/images/font-awesome/coins-solid.svg?raw';
+---
+
+<Layout title="Social - Futami" className="totality-container">
+	<!-- Youtube -->
+	<CardGroup nameGroup="YouTube">
+		<!-- Futami Ch. -->
+		<CardItem
+			name="Futami Ch."
+			url="https://youtube.com/@futamiyarn?sub_confirmation=1"
+			newTab={true}
+			description="Games, Tutorial, and More"
+			img="https://yt3.googleusercontent.com/S5IfQ0LxW6Pp4JxilCMZMrrEm59QBVCXQSqL7IZ1d4M6BIwuHsWSfpnPzibCpVxCBjZDp1CVpA=s250-c-k-c0x00ffffff-no-rj"
+		/>
+
+		<!-- FutaMINI -->
+		<CardItem
+			name="FutaMINI"
+			url="https://youtube.com/@futamini?sub_confirmation=1"
+			newTab={true}
+			description="Random content"
+			img="https://yt3.googleusercontent.com/6xeVvy7pG4ekmwzZTuhDhOPDqF4OQKRNoLR6ijjxs0Bu33b4QZZIwLiALxKbGx2gQlZMFPXHsg=s250-c-k-c0x00ffffff-no-rj"
+		/>
+
+		<!-- Futami Cover -->
+		<CardItem
+			name="Futami Cover"
+			url="https://youtube.com/@futamicover?sub_confirmation=1"
+			newTab={true}
+			description="AI Covers"
+			img="https://yt3.googleusercontent.com/_EbhGCfH415MGzhp7SBR7DVt8TMBGvA57gD6pfZ5ug3D1qH5OkuRbpKwwFtEZrmbb_mTGxTv=s250-c-k-c0x00ffffff-no-rj"
+		/>
+	</CardGroup>
+
+	<!-- More Shorts -->
+	<CardGroup nameGroup="More Shorts">
+		<!-- YouTube Shorts -->
+		<CardItem
+			name="YouTube Shorts"
+			url="https://youtube.com/@futamiyarn/shorts?sub_confirmation=1"
+			newTab={true}
+			description="Futami Ch. (Shorts Edition)"
+			svg={FaYouTube}
+		/>
+
+		<!-- TikTok -->
+		<CardItem
+			name="TikTok"
+			url="https://tiktok.com/@futamiyarn"
+			newTab={true}
+			description="Why I make this?"
+			svg={FaTiktok}
+		/>
+
+		<!-- Instagram -->
+		<CardItem
+			name="Instagram"
+			url="https://instagram.com/futamiyarn"
+			newTab={true}
+			description="Also, why I make this?"
+			svg={FaInstagram}
+		/>
+	</CardGroup>
+
+	<!-- Comunities -->
+	<CardGroup nameGroup="Comunities">
+		<!-- X (Twitter) -->
+		<CardItem
+			name="X (Twitter)"
+			url="https://x.com/futamiyarn"
+			newTab={true}
+			description="Stalking Vtuber"
+			svg={FaXTwitter}
+		/>
+
+		<!-- Facebook -->
+		<CardItem
+			name="Facebook"
+			url="https://facebook.com/futamiyarn"
+			newTab={true}
+			description="More shitpost here!"
+			svg={FaFacebook}
+		/>
+
+		<!-- Instagram -->
+		<CardItem
+			name="Instagram"
+			url="https://instagram.com/futamiyarn"
+			newTab={true}
+			description="Random Content"
+			svg={FaInstagram}
+		/>
+
+		<!-- Donate -->
+		<CardItem
+			name="Donate"
+			url="/donate"
+			description="Support this creator"
+			svg={FaCoins}
+		/>
+	</CardGroup>
+</Layout>

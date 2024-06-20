@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CardGroup from '../components/CardGroup.astro';
+import CardItem from '../components/CardItem.astro';
+import ButtonCard from '../components/ButtonCard.astro';
+
+import FaYouTube from '../lib/images/font-awesome/youtube.svg?raw';
+import FaTiktok from '../lib/images/font-awesome/tiktok.svg?raw';
+import FaCoins from '../lib/images/font-awesome/coins-solid.svg?raw';
+import FaUsers from '../lib/images/font-awesome/users-solid.svg?raw';
+
+import { multi } from '../modules/yt-grabber';
+
+const youtube_data = await multi(
+	[
+		'https://www.youtube.com/feeds/videos.xml?channel_id=UCY_76_kibnLb0hgOdZXI-aQ',
+		'https://www.youtube.com/feeds/videos.xml?channel_id=UClUhaSDL2kdewsgi9b7J9aQ',
+		'https://www.youtube.com/feeds/videos.xml?channel_id=UCvS8dMWixR99hkRmEhT16wA'
+	],
+	4
+);
+---
+
+<Layout title="Futami Website" className="totality-container">
+	<!-- YouTube -->
+	<CardGroup nameGroup="Youtube">
+		{
+			youtube_data.items.map((data) => {
+				return (
+					<CardItem
+						name={data.title}
+						url={data.url}
+						newTab={true}
+						description={data.author}
+						bgImage={`https://i.ytimg.com/vi/${data.id}/hqdefault.jpg`}
+						svg={FaYouTube}
+					/>
+				);
+			})
+		}
+
+		<!-- FutaLatest -->
+		<CardItem
+			name="FutaLatest"
+			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
+			newTab={true}
+			description="News and Popcuture"
+			svg={FaYouTube}
+		/>
+
+		<!-- Tutorial -->
+		<CardItem
+			name="Tutorial"
+			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
+			newTab={true}
+			description="How To series"
+			svg={FaYouTube}
+		/>
+
+		<ButtonCard title="Look more" href="/youtube" />
+	</CardGroup>
+
+	<!-- Short Bio Link -->
+	<CardGroup nameGroup="Social">
+		<!-- YouTube -->
+		<CardItem
+			name="Main Channel"
+			url="https://youtube.com/@futamiyarn?sub_confirmation=1"
+			newTab={true}
+			description="Games, Tutorial, and More"
+			svg={FaYouTube}
+		/>
+
+		<!-- Tiktok -->
+		<CardItem
+			name="TikTok"
+			url="https://tiktok.com/@futamiyarn"
+			newTab={true}
+			description="More Short content"
+			svg={FaTiktok}
+		/>
+
+		<!-- Social -->
+		<CardItem
+			name="Social"
+			url="/social"
+			description="Look another social"
+			svg={FaUsers}
+		/>
+
+		<!-- Donate -->
+		<CardItem
+			name="Donate"
+			url="/donate"
+			description="Support this creator"
+			svg={FaCoins}
+		/>
+	</CardGroup>
+</Layout>

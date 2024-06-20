@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Futami Website" className="container-error">
+	<audio src="/assets/audios/tilin.ogg" id="tilin"></audio>
+	<button
+		class="container-error__button"
+		onclick="document.getElementById('tilin').play()"
+	>
+		<img src="/assets/images/tilin.webp" alt="tilin" class="md:w-30 w-24" />
+	</button>
+	<h1 class="container-error__heading">My Server brokk</h1>
+	<p class="container-error__paragraph">
+		<a
+			href="https://www.youtube.com/watch?v=HiRaQaxORFw"
+			target="_blank"
+			rel="noopener noreferrer">Serika</a
+		>
+		trying to fix the server
+	</p>
+</Layout>

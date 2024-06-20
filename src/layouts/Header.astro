@@ -1,0 +1,83 @@
+---
+// Logo
+import LogoIcon from '../lib/images/logo-icon.svg?raw';
+import LogoText from '../lib/images/logo-text.svg?raw';
+// Icons
+import FaBlog from '../lib/images/font-awesome/blog-solid.svg?raw';
+import FaUsers from '../lib/images/font-awesome/users-solid.svg?raw';
+import FaCoins from '../lib/images/font-awesome/coins-solid.svg?raw';
+// Brand Icons
+import FaYouTube from '../lib/images/font-awesome/youtube.svg?raw';
+---
+
+<header class="navbar">
+	<a href="/" class="navbar-logo" aria-label="Logo Futami">
+		<!-- <LogoIcon /><LogoText /> -->
+		<Fragment set:html={LogoIcon} />
+		<Fragment set:html={LogoText} />
+	</a>
+	<nav>
+		<ul class="navbar-menu">
+			<li
+				aria-current={Astro.url.pathname.startsWith('/blog')
+					? 'page'
+					: undefined}
+			>
+				<a
+					href="/blog"
+					class="navbar-menu__item"
+					aria-label="Blog Page"
+					title="Blog Page"
+				>
+					<!-- <FaBlog /> -->
+					<Fragment set:html={FaBlog} />
+				</a>
+			</li>
+			<li
+				aria-current={Astro.url.pathname.startsWith('/youtube')
+					? 'page'
+					: undefined}
+			>
+				<a
+					href="/youtube"
+					class="navbar-menu__item"
+					aria-label="Youtube Page"
+					title="Youtube Page"
+				>
+					<!-- <FaYouTube /> -->
+					<Fragment set:html={FaYouTube} />
+				</a>
+			</li>
+			<li
+				aria-current={Astro.url.pathname.startsWith('/social')
+					? 'page'
+					: undefined}
+			>
+				<a
+					href="/social"
+					class="navbar-menu__item"
+					aria-label="Sosial Link Page"
+					title="Sosial Page"
+				>
+					<!-- <FaUsers /> -->
+					<Fragment set:html={FaUsers} />
+				</a>
+			</li>
+			<li
+				aria-current={Astro.url.pathname.startsWith('/donate')
+					? 'page'
+					: undefined}
+			>
+				<a
+					href="/donate"
+					class="navbar-menu__item"
+					aria-label="Donate Link Page"
+					title="Donate Page"
+				>
+					<!-- <FaCoins /> -->
+					<Fragment set:html={FaCoins} />
+				</a>
+			</li>
+		</ul>
+	</nav>
+</header>

@@ -11,10 +11,12 @@
 		@apply flex h-8 gap-[10px];
 		// Color logo (light)
 		@apply text-futa-red hover:brightness-[1.15];
-		// Color logo (dark)
-		// @apply dark:text-primary-950 dark:hover:text-primary-800;
 		// Transition
 		@apply transition duration-150 ease-out;
+
+		svg {
+			@apply drop-shadow-md;
+		}
 	}
 
 	&-menu {
@@ -22,7 +24,7 @@
 
 		&__item {
 			// Centering icons
-			@apply flex items-center justify-center;
+			@apply flex items-center justify-center text-xl shadow-md;
 			// Add Box for icon navbar
 			@apply aspect-square h-full rounded-md;
 			// Color Box and Item (Light)
@@ -30,7 +32,8 @@
 			// Color hovering Item (Light)
 			@apply hover:bg-futa-red/80 hover:text-white;
 			// Color Box and Item (Dark)
-			@apply bg-white/10;
+			@apply dark:bg-white/10;
+
 			// Transition
 			@apply transition duration-150 ease-out;
 
