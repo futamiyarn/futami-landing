@@ -11,9 +11,9 @@
 	// Category box Styling
 	@apply mb-4 flex flex-col gap-y-2 rounded-md px-5 py-4;
 	// Light Color
-	@apply bg-secondary/40;
+	@apply bg-red-secondary/40;
 	// Dark color
-	@apply dark:bg-dark-secondary/30;
+	@apply dark:bg-red-dark-secondary/30;
 }
 
 .cards {
@@ -21,11 +21,11 @@
 
 	.card {
 		// Card styling
-		@apply w-full gap-x-1.5 truncate rounded-md px-3 py-2;
+		@apply w-full gap-x-1.5 truncate rounded-md px-3 py-2 shadow-md;
 		// Centering Card
 		@apply flex items-center justify-center text-center;
 		// Card color (light)
-		@apply bg-primary text-white;
+		@apply bg-red-primary text-white;
 		// Card hover and transition
 		@apply transition duration-200 ease-out hover:brightness-[1.25];
 
@@ -60,40 +60,38 @@
 				@apply w-full truncate text-sm leading-none;
 			}
 		}
-	}
-}
 
-.thumb-cards {
-	.card {
-		// Centering background image
-		@apply bg-cover bg-center;
-		// Make Card slighly bigger and text in down-left align
-		@apply aspect-[16/5] items-end justify-start text-left;
+		&.thumb-card {
+			// Centering background image
+			@apply bg-cover bg-center;
+			// Make Card slighly bigger and text in down-left align
+			@apply aspect-[16/5] items-end justify-start text-left;
 
-		// Make card in video aspect on mobile
-		&:first-child {
-			@apply aspect-video;
-		}
-
-		// Make card in video aspect on tablet and PC
-		@media (min-width: 768px) {
-			&:nth-child(-n + 2) {
+			// Make card in video aspect on mobile
+			&:first-child {
 				@apply aspect-video;
+			}
+
+			// Make card in video aspect on tablet and PC
+			@media (min-width: 768px) {
+				&:nth-child(-n + 2) {
+					@apply aspect-video;
+				}
 			}
 		}
 	}
 }
 
 .read-more {
-	@apply flex justify-end;
+	@apply flex w-full justify-end;
 
 	&__link {
 		// Button styling
 		@apply inline-block rounded-full px-4 py-1 font-bold;
 		// Button coloring (light)
-		@apply bg-primary/90 text-white;
+		@apply bg-red-primary/90 text-white;
 		// Button hover coloring (light)
-		@apply hover:bg-primary/50;
+		@apply hover:bg-red-primary/50;
 		// Transition
 		@apply transition-colors duration-200 ease-out;
 	}

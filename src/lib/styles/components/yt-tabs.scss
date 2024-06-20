@@ -1,0 +1,17 @@
+.YTtabs {
+	// Mobile menu
+	@apply mx-auto mb-3 inline-flex gap-1.5 rounded-full p-1.5 font-heading font-bold;
+
+	// Light Color
+	@apply bg-red-secondary/40;
+	// Dark color
+	@apply dark:bg-red-dark-secondary/30;
+
+	&-item {
+		@apply inline-block w-full rounded-full bg-red-primary px-2 py-0.5 text-white shadow-md;
+	}
+
+	[aria-current='page'] &-item {
+		@apply bg-white shadow-none dark:bg-ysn-black;
+	}
+}

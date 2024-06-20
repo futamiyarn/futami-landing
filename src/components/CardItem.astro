@@ -1,0 +1,44 @@
+---
+interface Props {
+	name: string;
+	description: string;
+	url: string;
+	newTab?: boolean;
+	svg?: string;
+	img?: string;
+	bgImage?: string;
+}
+
+const {
+	name,
+	description,
+	url,
+	newTab = false,
+	svg,
+	img,
+	bgImage
+} = Astro.props;
+---
+
+<a
+	class={bgImage ? 'card thumb-card' : 'card'}
+	href={url}
+	target={newTab ? '_blank' : undefined}
+	rel={newTab ? 'noopener noreferrer' : undefined}
+	title={name}
+	style={bgImage
+		? `
+	background-image:linear-gradient(rgba(0, 0, 0, 0.6),
+rgba(0, 0, 0, 0.6)), url(${bgImage});
+`
+		: ''}
+>
+	<div class="card-icon">
+		<Fragment set:html={svg ?? ''} />
+		<Fragment set:html={img ? `<img src="${img}" alt="${name}" />` : ''} />
+	</div>
+	<div class="card-content">
+		<h3 class="card-content__title">{name}</h3>
+		<span class="card-content__author">{description}</span>
+	</div>
+</a>

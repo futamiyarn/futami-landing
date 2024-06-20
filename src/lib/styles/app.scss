@@ -6,6 +6,7 @@
 @use './components/cards.scss'; // Cards
 @use './components/header.scss'; // Header
 @use './components/error.scss'; // Error
+@use './components/yt-tabs.scss'; // YouTube Tabs
 
 // Tailwind utilities
 @tailwind base;
@@ -15,9 +16,9 @@
 // Main body color
 body {
 	// Light Mode
-	@apply bg-background text-ysn-black;
+	@apply bg-red-background text-ysn-black;
 	// Dark Mode
-	@apply dark:text-background dark:bg-ysn-black;
+	@apply dark:bg-ysn-black dark:text-red-background;
 }
 
 // Trivia in home page
@@ -42,7 +43,7 @@ footer {
 	// Coloring link (light)
 	@apply text-futa-red hover:text-futa-red/80;
 	// Coloring link (dark)
-	@apply dark:text-dark-primary dark:hover:text-dark-primary/80;
+	@apply dark:text-red-dark-primary dark:hover:text-red-dark-primary/80;
 	// Transition
 	@apply transition-colors duration-150 ease-out;
 }

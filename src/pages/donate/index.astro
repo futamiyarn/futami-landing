@@ -1,0 +1,42 @@
+---
+import CardGroup from '../../components/CardGroup.astro';
+import CardItem from '../../components/CardItem.astro';
+import Layout from '../../layouts/Layout.astro';
+
+import Trakteer from '../../lib/images/trakteer.svg?raw';
+---
+
+<Layout title="Donate - Futami" className="totality-container">
+	<!-- In Indonesia (IDR) -->
+	<CardGroup nameGroup="In Indonesia (IDR)">
+		<!-- Trakteer -->
+		<CardItem
+			name="Trakteer"
+			url="https://trakteer.id/futami"
+			newTab={true}
+			description="Rp. 5.000 each"
+			svg={Trakteer}
+		/>
+
+		<!-- Saweria -->
+		<CardItem
+			name="Saweria"
+			url="https://saweria.co/futami"
+			newTab={true}
+			description="Min Rp. 5.000"
+			img="/assets/images/saweria.png"
+		/>
+	</CardGroup>
+
+	<!-- Overseas (US Dollar) -->
+	<CardGroup nameGroup="Overseas (US Dollar)">
+		<!-- Ko-fi -->
+		<CardItem
+			name="Ko-fi"
+			url='https://ko-fi.com/futami"'
+			newTab={true}
+			description="$3 each"
+			img="/assets/images/kofi.png"
+		/>
+	</CardGroup>
+</Layout>
