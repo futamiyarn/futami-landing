@@ -8,10 +8,10 @@
 	@apply dark:bg-red-dark-secondary/30;
 
 	&-item {
-		@apply inline-block w-full rounded-full bg-red-primary px-2 py-0.5 shadow-md dark:text-white;
+		@apply inline-block w-full rounded-full bg-red-primary px-2 py-0.5 text-white shadow-md;
 	}
 
 	[aria-current='page'] &-item {
-		@apply bg-white shadow-none dark:bg-ysn-black;
+		@apply bg-white text-ysn-black shadow-none dark:bg-ysn-black dark:text-white;
 	}
 }
