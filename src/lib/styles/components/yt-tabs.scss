@@ -8,7 +8,7 @@
 	@apply dark:bg-red-dark-secondary/30;
 
 	&-item {
-		@apply inline-block w-full rounded-full bg-red-primary px-2 py-0.5 text-white shadow-md;
+		@apply inline-block w-full rounded-full bg-red-primary px-2 py-0.5 shadow-md dark:text-white;
 	}
 
 	[aria-current='page'] &-item {
