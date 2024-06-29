@@ -1,12 +1,12 @@
 ---
-import CardGroup from '../../components/CardGroup.astro';
-import CardItem from '../../components/CardItem.astro';
-import YouTubeTab from '../../components/YouTubeTab.astro';
-import Layout from '../../layouts/Layout.astro';
+import CardGroup from '@components/CardGroup.astro';
+import CardItem from '@components/CardItem.astro';
+import YouTubeTab from '@components/YouTubeTab.astro';
+import Layout from '@layouts/Layout.astro';
 
-import FaYouTube from '../../lib/images/font-awesome/youtube.svg?raw';
+import FaYouTube from '@lib/images/font-awesome/youtube.svg?raw';
 
-import { single } from '../../modules/yt-grabber';
+import { single } from '@modules/yt-grabber';
 
 const youtube_data = await single(
 	'https://www.youtube.com/feeds/videos.xml?channel_id=UCY_76_kibnLb0hgOdZXI-aQ'
@@ -22,7 +22,6 @@ const youtube_data = await single(
 		<CardItem
 			name="Futami Ch."
 			url="https://youtube.com/@futamiyarn?sub_confirmation=1"
-			newTab={true}
 			description="Games, Tutorial, and More"
 			img="https://yt3.googleusercontent.com/S5IfQ0LxW6Pp4JxilCMZMrrEm59QBVCXQSqL7IZ1d4M6BIwuHsWSfpnPzibCpVxCBjZDp1CVpA=s250-c-k-c0x00ffffff-no-rj"
 		/>
@@ -31,7 +30,6 @@ const youtube_data = await single(
 		<CardItem
 			name="FutaLatest"
 			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
-			newTab={true}
 			description="News and Popcuture"
 			svg={FaYouTube}
 		/>
@@ -40,7 +38,6 @@ const youtube_data = await single(
 		<CardItem
 			name="Tutorial"
 			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
-			newTab={true}
 			description="How To series"
 			svg={FaYouTube}
 		/>
@@ -53,7 +50,6 @@ const youtube_data = await single(
 					<CardItem
 						name={data.title}
 						url={data.url}
-						newTab={true}
 						description={data.author}
 						bgImage={`https://i.ytimg.com/vi/${data.id}/hqdefault.jpg`}
 						svg={FaYouTube}

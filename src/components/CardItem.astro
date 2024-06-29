@@ -9,21 +9,22 @@ interface Props {
 	bgImage?: string;
 }
 
-const {
-	name,
-	description,
-	url,
-	newTab = false,
-	svg,
-	img,
-	bgImage
-} = Astro.props;
+const { name, description, url, newTab, svg, img, bgImage } = Astro.props;
+
+function hasHostname(link: string) {
+	const regex = /^(https?:\/\/)?([a-zA-Z0-9.-]+)(\/[a-zA-Z0-9.-]*)*\/?$/;
+	const match = link.match(regex);
+	// Check if the second capturing group (hostname) exists in the match
+	return match && match[2] !== undefined;
+}
+
+const redirect = newTab ?? hasHostname(url);
 ---
 
 <a
 	class={bgImage ? 'card thumb-card' : 'card'}
 	href={url}
-	target={newTab ? '_blank' : undefined}
+	target={redirect ? '_blank' : undefined}
 	rel={newTab ? 'noopener noreferrer' : undefined}
 	title={name}
 	style={bgImage

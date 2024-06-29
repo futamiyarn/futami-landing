@@ -1,12 +1,12 @@
 ---
-import CardGroup from '../../components/CardGroup.astro';
-import CardItem from '../../components/CardItem.astro';
-import YouTubeTab from '../../components/YouTubeTab.astro';
-import Layout from '../../layouts/Layout.astro';
+import CardGroup from '@components/CardGroup.astro';
+import CardItem from '@components/CardItem.astro';
+import YouTubeTab from '@components/YouTubeTab.astro';
+import Layout from '@layouts/Layout.astro';
 
-import FaYouTube from '../../lib/images/font-awesome/youtube.svg?raw';
+import FaYouTube from '@lib/images/font-awesome/youtube.svg?raw';
 
-import { single } from '../../modules/yt-grabber';
+import { single } from '@modules/yt-grabber';
 
 const youtube_data = await single(
 	'https://www.youtube.com/feeds/videos.xml?channel_id=UCvS8dMWixR99hkRmEhT16wA'
@@ -22,7 +22,6 @@ const youtube_data = await single(
 		<CardItem
 			name="Futami Cover"
 			url="https://youtube.com/@futamicover?sub_confirmation=1"
-			newTab={true}
 			description="AI Covers"
 			img="https://yt3.googleusercontent.com/_EbhGCfH415MGzhp7SBR7DVt8TMBGvA57gD6pfZ5ug3D1qH5OkuRbpKwwFtEZrmbb_mTGxTv=s250-c-k-c0x00ffffff-no-rj"
 		/>
@@ -35,7 +34,6 @@ const youtube_data = await single(
 					<CardItem
 						name={data.title}
 						url={data.url}
-						newTab={true}
 						description={data.author}
 						bgImage={`https://i.ytimg.com/vi/${data.id}/hqdefault.jpg`}
 						svg={FaYouTube}

@@ -1,0 +1,39 @@
+<script lang="ts">
+	export let name, description, url: string;
+	export let newTab: boolean = false;
+	export let svg: any = null;
+	export let img: string = '';
+	export let bgImage: string = '';
+
+	function hasHostname(link: string) {
+		const regex = /^(https?:\/\/)?([a-zA-Z0-9.-]+)(\/[a-zA-Z0-9.-]*)*\/?$/;
+		const match = link.match(regex);
+		// Check if the second capturing group (hostname) exists in the match
+		return match && match[2] !== undefined;
+	}
+
+	const redirect = newTab ?? hasHostname(url);
+</script>
+
+<a
+	class={bgImage ? 'card thumb-card' : 'card'}
+	href={url}
+	target={redirect ? '_blank' : undefined}
+	rel={newTab ? 'noopener noreferrer' : undefined}
+	title={name}
+	style={bgImage
+		? `
+	background-image:linear-gradient(rgba(0, 0, 0, 0.6),
+rgba(0, 0, 0, 0.6)), url(${bgImage});
+`
+		: ''}
+>
+	<div class="card-icon">
+		{@html svg ?? ''}
+		{@html img ? `<img src="${img}" alt="${name}" />` : ''}
+	</div>
+	<div class="card-content">
+		<h3 class="card-content__title">{name}</h3>
+		<span class="card-content__author">{description}</span>
+	</div>
+</a>

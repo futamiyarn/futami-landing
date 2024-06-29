@@ -9,7 +9,7 @@ interface YT {
 	isoDate: string;
 }
 
-const single = async (url: string, limit?: number) => {
+const single = async (url: string, limit?: number | null) => {
 	const parser = new Parser();
 
 	let data: any;
@@ -35,7 +35,7 @@ const single = async (url: string, limit?: number) => {
 	return { items: result, name: data.title, url: data.link };
 };
 
-const multi = async (urls: string[], limit?: number) => {
+const multi = async (urls: string[], limit?: number | null) => {
 	const parser = new Parser();
 
 	let result: Array<any> = [];
