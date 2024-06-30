@@ -1,5 +1,9 @@
 ---
 import Layout from '@layouts/Layout.astro';
+
+import TilinImage from '@lib/images/tilin.png';
+import BigTilin from '@lib/images/big-tilin.png';
+import { Image } from 'astro:assets';
 ---
 
 <Layout title="Futami Website" className="container-error">
@@ -8,8 +12,18 @@ import Layout from '@layouts/Layout.astro';
 		class="container-error__button"
 		onclick="document.getElementById('tilin').play()"
 	>
-		<img src="/assets/images/tilin.webp" alt="tilin" class="md:w-30 w-24" />
+		<Image
+			src={BigTilin}
+			alt="tilin"
+			class="md:w-30 w-24"
+			quality={'mid'}
+			width={128}
+			height={128}
+		/>
 	</button>
+	<!-- <a href="https://www.pixiv.net/en/artworks/95272811" class="block text-sm"
+		>source</a
+	> -->
 	<h1 class="container-error__heading">This page not found</h1>
 	<p class="container-error__paragraph">
 		<a

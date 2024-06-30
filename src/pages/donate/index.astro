@@ -4,6 +4,10 @@ import CardItem from '@components/CardItem.astro';
 import Layout from '@layouts/Layout.astro';
 
 import Trakteer from '@lib/images/trakteer.svg?raw';
+import Saweria from '@lib/images/saweria.png';
+import KoFi from '@lib/images/kofi.png';
+
+import { Image } from 'astro:assets';
 ---
 
 <Layout title="Donate - Futami" className="totality-container">
@@ -22,18 +26,30 @@ import Trakteer from '@lib/images/trakteer.svg?raw';
 			name="Saweria"
 			url="https://saweria.co/futami"
 			description="Min Rp. 5.000"
-			img="/assets/images/saweria.png"
-		/>
+		>
+			<Image
+				src={Saweria}
+				alt={'Saweria'}
+				quality={'mid'}
+				width={50}
+				height={50}
+				slot="image-astro"
+			/>
+		</CardItem>
 	</CardGroup>
 
 	<!-- Overseas (US Dollar) -->
 	<CardGroup nameGroup="Overseas (US Dollar)">
 		<!-- Ko-fi -->
-		<CardItem
-			name="Ko-fi"
-			url='https://ko-fi.com/futami"'
-			description="$3 each"
-			img="/assets/images/kofi.png"
-		/>
+		<CardItem name="Ko-fi" url="https://ko-fi.com/futami" description="$3 each">
+			<Image
+				src={KoFi}
+				alt={'Saweria'}
+				quality={'mid'}
+				width={50}
+				height={50}
+				slot="image-astro"
+			/>
+		</CardItem>
 	</CardGroup>
 </Layout>

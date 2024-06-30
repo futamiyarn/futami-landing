@@ -37,6 +37,7 @@ rgba(0, 0, 0, 0.6)), url(${bgImage});
 	<div class="card-icon">
 		<Fragment set:html={svg ?? ''} />
 		<Fragment set:html={img ? `<img src="${img}" alt="${name}" />` : ''} />
+		<slot name="image-astro" />
 	</div>
 	<div class="card-content">
 		<h3 class="card-content__title">{name}</h3>

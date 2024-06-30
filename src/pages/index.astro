@@ -1,6 +1,4 @@
 ---
-import ContentCard from '@layouts/ContentCard.svelte';
-
 import Layout from '@layouts/Layout.astro';
 import CardGroup from '@components/CardGroup.astro';
 import CardItem from '@components/CardItem.astro';
@@ -13,7 +11,8 @@ import FaUsers from '@lib/images/font-awesome/users-solid.svg?raw';
 
 import { multi } from '@modules/yt-grabber';
 
-import Trivia from '@components/trivia.svelte';
+import Trivia from '@components/svelte/trivia.svelte';
+import RandomPlaylist from '@components/svelte/RandomPlaylist.svelte';
 
 const youtube_data = await multi(
 	[
@@ -42,24 +41,9 @@ const youtube_data = await multi(
 				);
 			})
 		}
+		<RandomPlaylist client:load />
 
-		<!-- FutaLatest -->
-		<CardItem
-			name="FutaLatest"
-			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
-			description="News and Popcuture"
-			svg={FaYouTube}
-		/>
-
-		<!-- Tutorial -->
-		<CardItem
-			name="Tutorial"
-			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
-			description="How To series"
-			svg={FaYouTube}
-		/>
-
-		<ButtonCard title="Look more" href="/youtube" />
+		<ButtonCard title="Look more" href="/youtube/futami" />
 	</CardGroup>
 
 	<!-- Short Bio Link -->
