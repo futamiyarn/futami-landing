@@ -10,6 +10,9 @@ interface Props {
 }
 
 const { title, className = '' } = Astro.props;
+
+const isPreview =
+	`${import.meta.env.PUBLIC_POKEAPI}`.toLowerCase() == 'true' ? true : false;
 ---
 
 <script>
@@ -49,5 +52,23 @@ const { title, className = '' } = Astro.props;
 				rel="noopener noreferrer">@FutamiYarn</a
 			>
 		</footer>
+		{
+			!isPreview ? (
+				''
+			) : (
+				<div class="fixed bottom-0 w-screen bg-red-dark-primary px-5 py-2 text-center font-heading font-bold">
+					This webisite on testing preview only, visit{' '}
+					<a
+						href="http://futami.my.id"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-slate-300"
+					>
+						stable
+					</a>{' '}
+					version.
+				</div>
+			)
+		}
 	</body>
 </html>
