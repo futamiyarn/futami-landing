@@ -10,9 +10,9 @@ import { single } from '@modules/yt-grabber';
 import youtube from '@lib/data/youtube.json';
 
 import { Image } from 'astro:assets';
-import FutamiProfile from '@lib/images/channel-profile/futami.jpg';
+import FutamiProfile from '@lib/images/channel-profile/futami.png';
 import FutaminiProfile from '@lib/images/channel-profile/futamini.jpg';
-import CoverProfile from '@lib/images/channel-profile/futamicover.jpg';
+import CoverProfile from '@lib/images/channel-profile/futamicover.png';
 
 export function getStaticPaths() {
 	const pages = youtube;
@@ -49,9 +49,9 @@ const youtube_data = await single(
 						? FutaminiProfile
 						: CoverProfile}
 				alt={'Saweria'}
-				quality={'mid'}
-				width={50}
-				height={50}
+				quality={75}
+				width={128}
+				height={128}
 				slot="image-astro"
 			/>
 		</CardItem>
