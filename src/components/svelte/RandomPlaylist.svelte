@@ -33,6 +33,5 @@
 		name={pl.name}
 		url={`https://www.youtube.com/playlist?list=${pl.id}`}
 		description={pl.description}
-		icon="hugeicons:playlist-01"
 	/>
 {/each}
