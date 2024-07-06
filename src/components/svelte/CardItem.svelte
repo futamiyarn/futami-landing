@@ -40,11 +40,11 @@ rgba(0, 0, 0, 0.6)), url(${bgImage});
 			{...$$props}
 			><g
 				fill="none"
-				stroke="#888888"
+				stroke="currentColor"
 				stroke-linecap="round"
 				stroke-linejoin="round"
 				stroke-width="1.5"
-				color="#888888"
+				color="currentColor"
 				><path
 					d="M3 15c0-2.809 0-4.213.674-5.222a4 4 0 0 1 1.104-1.104C5.787 8 7.19 8 10 8h4c2.809 0 4.213 0 5.222.674a4 4 0 0 1 1.104 1.104C21 10.787 21 12.19 21 15s0 4.213-.674 5.222a4 4 0 0 1-1.104 1.104C18.213 22 16.81 22 14 22h-4c-2.809 0-4.213 0-5.222-.674a4 4 0 0 1-1.104-1.104C3 19.213 3 17.81 3 15"
 				/><path
