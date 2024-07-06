@@ -1,7 +1,6 @@
 <script>
 	import youtube from '@lib/data/youtube.json';
 	import CardItem from '@components/svelte/CardItem.svelte';
-	import FaYouTube from '@lib/images/font-awesome/svelte/youtube.svelte?raw';
 
 	function fisherYatesShuffle(array) {
 		let m = array.length,
@@ -34,6 +33,6 @@
 		name={pl.name}
 		url={`https://www.youtube.com/playlist?list=${pl.id}`}
 		description={pl.description}
-		svg={FaYouTube}
+		icon="hugeicons:playlist-01"
 	/>
 {/each}

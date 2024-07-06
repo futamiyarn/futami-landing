@@ -5,7 +5,6 @@ import Layout from '@layouts/Layout.astro';
 
 import Trakteer from '@lib/images/trakteer.svg?raw';
 import Saweria from '@lib/images/saweria.png';
-import KoFi from '@lib/images/kofi.png';
 
 import { Image } from 'astro:assets';
 ---
@@ -41,15 +40,11 @@ import { Image } from 'astro:assets';
 	<!-- Overseas (US Dollar) -->
 	<CardGroup nameGroup="Overseas (US Dollar)">
 		<!-- Ko-fi -->
-		<CardItem name="Ko-fi" url="https://ko-fi.com/futami" description="$3 each">
-			<Image
-				src={KoFi}
-				alt={'Saweria'}
-				quality={75}
-				width={128}
-				height={128}
-				slot="image-astro"
-			/>
-		</CardItem>
+		<CardItem
+			name="Ko-fi"
+			url="https://ko-fi.com/futami"
+			description="$3 each"
+			icon="simple-icons:kofi"
+		/>
 	</CardGroup>
 </Layout>

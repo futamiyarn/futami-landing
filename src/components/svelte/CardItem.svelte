@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let name, description, url: string;
 	export let newTab: boolean = false;
-	export let svg: any = null;
+	export let icon: string = '';
 	export let img: string = '';
 	export let bgImage: string = '';
 
@@ -13,6 +13,7 @@
 	}
 
 	const redirect = newTab ?? hasHostname(url);
+	import Icon from '@iconify/svelte';
 </script>
 
 <a
@@ -23,13 +24,13 @@
 	title={name}
 	style={bgImage
 		? `
-	background-image:linear-gradient(rgba(0, 0, 0, 0.6),
+    background-image:linear-gradient(rgba(0, 0, 0, 0.6),
 rgba(0, 0, 0, 0.6)), url(${bgImage});
 `
 		: ''}
 >
 	<div class="card-icon">
-		{@html svg ?? ''}
+		<Icon {icon} />
 		{@html img ? `<img src="${img}" alt="${name}" />` : ''}
 	</div>
 	<div class="card-content">

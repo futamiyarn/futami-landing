@@ -3,13 +3,6 @@ import CardGroup from '@components/CardGroup.astro';
 import CardItem from '@components/CardItem.astro';
 import Layout from '@layouts/Layout.astro';
 
-import FaYouTube from '@lib/images/font-awesome/youtube.svg?raw';
-import FaTiktok from '@lib/images/font-awesome/tiktok.svg?raw';
-import FaInstagram from '@lib/images/font-awesome/instagram.svg?raw';
-import FaXTwitter from '@lib/images/font-awesome/x-twitter.svg?raw';
-import FaFacebook from '@lib/images/font-awesome/facebook.svg?raw';
-import FaCoins from '@lib/images/font-awesome/coins-solid.svg?raw';
-
 import { Image } from 'astro:assets';
 import FutamiProfile from '@lib/images/channel-profile/futami.png';
 import FutaminiProfile from '@lib/images/channel-profile/futamini.jpg';
@@ -75,7 +68,7 @@ import CoverProfile from '@lib/images/channel-profile/futamicover.png';
 			name="YouTube Shorts"
 			url="https://youtube.com/@futamiyarn/shorts?sub_confirmation=1"
 			description="Futami Ch. (Shorts Edition)"
-			svg={FaYouTube}
+			icon="shorts"
 		/>
 
 		<!-- TikTok -->
@@ -83,7 +76,7 @@ import CoverProfile from '@lib/images/channel-profile/futamicover.png';
 			name="TikTok"
 			url="https://tiktok.com/@futamiyarn"
 			description="Why I make this?"
-			svg={FaTiktok}
+			icon="iconoir:tiktok"
 		/>
 
 		<!-- Instagram -->
@@ -91,7 +84,7 @@ import CoverProfile from '@lib/images/channel-profile/futamicover.png';
 			name="Instagram"
 			url="https://instagram.com/futamiyarn"
 			description="Also, why I make this?"
-			svg={FaInstagram}
+			icon="hugeicons:instagram"
 		/>
 	</CardGroup>
 
@@ -102,7 +95,7 @@ import CoverProfile from '@lib/images/channel-profile/futamicover.png';
 			name="X (Twitter)"
 			url="https://x.com/futamiyarn"
 			description="Stalking Vtuber"
-			svg={FaXTwitter}
+			icon="hugeicons:new-twitter-rectangle"
 		/>
 
 		<!-- Facebook -->
@@ -110,7 +103,7 @@ import CoverProfile from '@lib/images/channel-profile/futamicover.png';
 			name="Facebook"
 			url="https://facebook.com/futamiyarn"
 			description="More shitpost here!"
-			svg={FaFacebook}
+			icon="hugeicons:facebook-01"
 		/>
 
 		<!-- Instagram -->
@@ -118,7 +111,7 @@ import CoverProfile from '@lib/images/channel-profile/futamicover.png';
 			name="Instagram"
 			url="https://instagram.com/futamiyarn"
 			description="Random Content"
-			svg={FaInstagram}
+			icon="hugeicons:instagram"
 		/>
 
 		<!-- Donate -->
@@ -126,7 +119,7 @@ import CoverProfile from '@lib/images/channel-profile/futamicover.png';
 			name="Donate"
 			url="/donate"
 			description="Support this creator"
-			svg={FaCoins}
+			icon="iconoir:donate"
 		/>
 	</CardGroup>
 </Layout>

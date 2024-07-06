@@ -4,11 +4,6 @@ import CardGroup from '@components/CardGroup.astro';
 import CardItem from '@components/CardItem.astro';
 import ButtonCard from '@components/ButtonCard.astro';
 
-import FaYouTube from '@lib/images/font-awesome/youtube.svg?raw';
-import FaTiktok from '@lib/images/font-awesome/tiktok.svg?raw';
-import FaCoins from '@lib/images/font-awesome/coins-solid.svg?raw';
-import FaUsers from '@lib/images/font-awesome/users-solid.svg?raw';
-
 import { multi } from '@modules/yt-grabber';
 
 import Trivia from '@components/svelte/trivia.svelte';
@@ -36,7 +31,7 @@ const youtube_data = await multi(
 						url={data.url}
 						description={data.author}
 						bgImage={`https://i.ytimg.com/vi/${data.id}/hqdefault.jpg`}
-						svg={FaYouTube}
+						icon="mdi:youtube"
 					/>
 				);
 			})
@@ -53,7 +48,7 @@ const youtube_data = await multi(
 			name="Main Channel"
 			url="https://youtube.com/@futamiyarn?sub_confirmation=1"
 			description="Games, Tutorial, and More"
-			svg={FaYouTube}
+			icon="iconoir:youtube"
 		/>
 
 		<!-- Tiktok -->
@@ -61,7 +56,7 @@ const youtube_data = await multi(
 			name="TikTok"
 			url="https://tiktok.com/@futamiyarn"
 			description="More Short content"
-			svg={FaTiktok}
+			icon="iconoir:tiktok"
 		/>
 
 		<!-- Social -->
@@ -69,7 +64,7 @@ const youtube_data = await multi(
 			name="Social"
 			url="/social"
 			description="Look another social"
-			svg={FaUsers}
+			icon="solar:users-group-two-rounded-line-duotone"
 		/>
 
 		<!-- Donate -->
@@ -77,7 +72,7 @@ const youtube_data = await multi(
 			name="Donate"
 			url="/donate"
 			description="Support this creator"
-			svg={FaCoins}
+			icon="iconoir:donate"
 		/>
 	</CardGroup>
 </Layout>
