@@ -2,18 +2,22 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import cloudflare from '@astrojs/cloudflare';
-import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 // https://astro.build/config
 export default defineConfig({
+	output: 'server',
+	adapter: cloudflare(),
 	vite: {
 		css: {
 			preprocessorOptions: { scss: { api: 'modern' } }
 		},
-		plugins: [nodePolyfills()]
+		build: {
+			minify: false
+		},
+		ssr: {
+			external: ['rss-parser']
+		}
 	},
-	output: 'server',
-	adapter: cloudflare(),
 	experimental: {
 		serverIslands: true
 	},
