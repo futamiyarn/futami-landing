@@ -3,36 +3,26 @@
 @use './fonts/onest.scss'; // Onest
 
 // Components
-@use './components/cards.scss'; // Cards
-@use './components/header.scss'; // Header
-@use './components/error.scss'; // Error
-@use './components/yt-tabs.scss'; // YouTube Tabs
+@use './components/cards.scss';
+@use './components/navbar.scss';
+@use './components/error.scss';
 
 // Tailwind utilities
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// Main body color
+// Styles
 body {
-	// Light Mode
-	@apply bg-red-background text-ysn-black;
-	// Dark Mode
-	@apply dark:bg-ysn-black dark:text-red-background;
+	@apply bg-background-light dark:bg-background-dark;
+	@apply text-text-light dark:text-text-dark;
 }
 
-// Trivia in home page
-.trivia {
-	// Spacing
-	@apply mb-8 mt-2;
-	// Text style
-	@apply text-center font-heading font-bold;
-	// Text sizing
-	@apply md:text-3xl xl:text-5xl;
+main {
+	@apply container mx-auto p-4;
 }
 
-// Footer
-footer {
+.footer {
 	// Spacing
 	@apply pb-6 pt-2;
 	// Text styling
@@ -41,9 +31,9 @@ footer {
 
 .footer-link {
 	// Coloring link (light)
-	@apply text-futa-red hover:text-futa-red/80;
+	@apply text-primary-light hover:text-primary-light/80;
 	// Coloring link (dark)
-	@apply dark:text-red-dark-primary dark:hover:text-red-dark-primary/80;
+	@apply dark:text-primary-dark dark:hover:text-primary-dark/80;
 	// Transition
 	@apply transition-colors duration-150 ease-out;
 }

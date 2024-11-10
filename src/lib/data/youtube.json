@@ -1,23 +1,5 @@
-[
-	{
-		"name": "Futami Cover",
-		"yt_handle": "futamicover",
-		"description": "AI Covers",
-		"handle": "futamicover",
-		"id": "UCvS8dMWixR99hkRmEhT16wA"
-	},
-	{
-		"name": "FutaMINI",
-		"yt_handle": "futamini",
-		"description": "Random content",
-		"handle": "futamini",
-		"id": "UClUhaSDL2kdewsgi9b7J9aQ"
-	},
-	{
-		"name": "Futami Ch.",
-		"yt_handle": "futamiyarn",
-		"description": "Games, Tutorial, and More",
-		"handle": "futami",
+{
+	"futami": {
 		"id": "UCY_76_kibnLb0hgOdZXI-aQ",
 		"playlist": [
 			{
@@ -31,5 +13,11 @@
 				"description": "How To series"
 			}
 		]
+	},
+	"futamini": {
+		"id": "UClUhaSDL2kdewsgi9b7J9aQ"
+	},
+	"futamicover": {
+		"id": "UCvS8dMWixR99hkRmEhT16wA"
 	}
-]
+}

@@ -1,50 +1,41 @@
 ---
-import CardGroup from '@components/CardGroup.astro';
-import CardItem from '@components/CardItem.astro';
-import Layout from '@layouts/Layout.astro';
+import CardContainer from '@lib/components/CardContainer.astro';
+import Card from '@lib/components/Card.astro';
+import Layout from '@lib/components/layout.astro';
 
-import Trakteer from '@lib/images/trakteer.svg?raw';
-import Saweria from '@lib/images/saweria.png';
-
-import { Image } from 'astro:assets';
+import Trakteer from '@lib/assets/svg/icons/trakteer.svg?raw';
+import Saweria from '@lib/assets/svg/icons/saweria.svg?raw';
+import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 ---
 
 <Layout title="Donate - Futami" className="totality-container">
 	<!-- In Indonesia (IDR) -->
-	<CardGroup nameGroup="In Indonesia (IDR)">
+	<CardContainer nameGroup="In Indonesia (IDR)">
 		<!-- Trakteer -->
-		<CardItem
+		<Card
 			name="Trakteer"
 			url="https://trakteer.id/futami"
-			description="Rp. 5.000 each"
+			description="Rp. 5.000 each (Indonesia Only)"
 			svg={Trakteer}
 		/>
 
 		<!-- Saweria -->
-		<CardItem
+		<Card
 			name="Saweria"
 			url="https://saweria.co/futami"
-			description="Min Rp. 5.000"
-		>
-			<Image
-				src={Saweria}
-				alt={'Saweria'}
-				quality={75}
-				width={128}
-				height={128}
-				slot="image-astro"
-			/>
-		</CardItem>
-	</CardGroup>
+			description="Min Rp. 5.000 (Indonesia Only)"
+			svg={Saweria}
+		/>
+	</CardContainer>
 
 	<!-- Overseas (US Dollar) -->
-	<CardGroup nameGroup="Overseas (US Dollar)">
+	<CardContainer nameGroup="Overseas (US Dollar)">
 		<!-- Ko-fi -->
-		<CardItem
+		<Card
 			name="Ko-fi"
 			url="https://ko-fi.com/futami"
 			description="$3 each"
-			icon="simple-icons:kofi"
+			svg={Kofi}
 		/>
-	</CardGroup>
+	</CardContainer>
 </Layout>

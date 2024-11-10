@@ -1,35 +1,56 @@
 ---
-import CardGroup from '@components/CardGroup.astro';
-import CardItem from '@components/CardItem.astro';
-import Layout from '@layouts/Layout.astro';
+import CardContainer from '@lib/components/CardContainer.astro';
+import Card from '@lib/components/Card.astro';
+import Layout from '@lib/components/layout.astro';
 
 import { Image } from 'astro:assets';
-import FutamiProfile from '@lib/images/channel-profile/futami.png';
-import FutaminiProfile from '@lib/images/channel-profile/futamini.jpg';
-import CoverProfile from '@lib/images/channel-profile/futamicover.png';
+import FutamiProfile from '@lib/assets/images/channel-profile/futami.jpg';
+import FutaminiProfile from '@lib/assets/images/channel-profile/futamini.jpg';
+import CoverProfile from '@lib/assets/images/channel-profile/futamicover.png';
+
+import TikTok from '@lib/assets/svg/icons/tiktok.svg?raw';
+import YtShorts from '@lib/assets/svg/icons/yt_shorts.svg?raw';
+import Instagram from '@lib/assets/svg/icons/instagram.svg?raw';
+import X from '@lib/assets/svg/icons/twitter_x.svg?raw';
+import Facebook from '@lib/assets/svg/icons/facebook.svg?raw';
+import Bluesky from '@lib/assets/svg/icons/bluesky.svg?raw';
+import Teleslider from '@lib/assets/svg/icons/teleslider_icon.svg?raw';
+import Trakteer from '@lib/assets/svg/icons/trakteer.svg?raw';
+import Saweria from '@lib/assets/svg/icons/saweria.svg?raw';
+import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 ---
 
 <Layout title="Social - Futami" className="totality-container">
+	<!-- Apps -->
+	<CardContainer nameGroup="Apps">
+		<Card
+			name="Teleslider"
+			description="Teleprompter but sideway"
+			svg={Teleslider}
+			url="https://teleslider.futami.my.id"
+		/>
+	</CardContainer>
 	<!-- Youtube -->
-	<CardGroup nameGroup="YouTube">
+	<CardContainer nameGroup="YouTube">
 		<!-- Futami Ch. -->
-		<CardItem
+		<Card
 			name="Futami Ch."
-			url="https://youtube.com/@futamiyarn?sub_confirmation=1"
-			description="Games, Tutorial, and More"
+			url="https://youtube.com/@futamifuta?sub_confirmation=1"
+			description="Games, Anime, Tutorial"
 		>
 			<Image
 				src={FutamiProfile}
-				alt={'Saweria'}
+				alt={'Futami Channel'}
 				quality={75}
 				width={128}
 				height={128}
+				loading="eager"
 				slot="image-astro"
 			/>
-		</CardItem>
+		</Card>
 
 		<!-- FutaMINI -->
-		<CardItem
+		<Card
 			name="FutaMINI"
 			url="https://youtube.com/@futamini?sub_confirmation=1"
 			description="Random content"
@@ -40,15 +61,16 @@ import CoverProfile from '@lib/images/channel-profile/futamicover.png';
 				quality={75}
 				width={128}
 				height={128}
+				loading="eager"
 				slot="image-astro"
 			/>
-		</CardItem>
+		</Card>
 
 		<!-- Futami Cover -->
-		<CardItem
+		<Card
 			name="Futami Cover"
 			url="https://youtube.com/@futamicover?sub_confirmation=1"
-			description="AI Covers"
+			description="AI Covers (less upload)"
 		>
 			<Image
 				src={CoverProfile}
@@ -56,70 +78,95 @@ import CoverProfile from '@lib/images/channel-profile/futamicover.png';
 				quality={75}
 				width={128}
 				height={128}
+				loading="eager"
 				slot="image-astro"
 			/>
-		</CardItem>
-	</CardGroup>
+		</Card>
+	</CardContainer>
 
 	<!-- More Shorts -->
-	<CardGroup nameGroup="More Shorts">
+	<CardContainer nameGroup="More Shorts">
 		<!-- YouTube Shorts -->
-		<CardItem
-			name="YouTube Shorts"
-			url="https://youtube.com/@futamiyarn/shorts?sub_confirmation=1"
-			description="Futami Ch. (Shorts Edition)"
-			icon="shorts"
+		<Card
+			name="Futami Ch."
+			url="https://youtube.com/@futamifuta/shorts"
+			description="YouTube Shorts"
+			svg={YtShorts}
 		/>
 
 		<!-- TikTok -->
-		<CardItem
+		<Card
 			name="TikTok"
-			url="https://tiktok.com/@futamiyarn"
-			description="Why I make this?"
-			icon="iconoir:tiktok"
+			url="https://tiktok.com/@futamifuta"
+			description="Futami TikTok"
+			svg={TikTok}
 		/>
 
 		<!-- Instagram -->
-		<CardItem
+		<Card
 			name="Instagram"
-			url="https://instagram.com/futamiyarn"
-			description="Also, why I make this?"
-			icon="hugeicons:instagram"
+			url="https://instagram.com/futamifuta"
+			description="Update and Reels"
+			svg={Instagram}
 		/>
-	</CardGroup>
+	</CardContainer>
 
 	<!-- Comunities -->
-	<CardGroup nameGroup="Comunities">
+	<CardContainer nameGroup="Comunities">
 		<!-- X (Twitter) -->
-		<CardItem
+		<Card
 			name="X (Twitter)"
-			url="https://x.com/futamiyarn"
+			url="https://x.com/futamifuta"
 			description="Stalking Vtuber"
-			icon="hugeicons:new-twitter-rectangle"
+			svg={X}
 		/>
 
 		<!-- Facebook -->
-		<CardItem
+		<Card
 			name="Facebook"
-			url="https://facebook.com/futamiyarn"
+			url="https://facebook.com/futamifuta"
 			description="More shitpost here!"
-			icon="hugeicons:facebook-01"
+			svg={Facebook}
 		/>
 
 		<!-- Instagram -->
-		<CardItem
+		<Card
 			name="Instagram"
-			url="https://instagram.com/futamiyarn"
-			description="Random Content"
-			icon="hugeicons:instagram"
+			url="https://instagram.com/futamifuta"
+			description="My Updates"
+			svg={Instagram}
 		/>
 
-		<!-- Donate -->
-		<CardItem
-			name="Donate"
-			url="/donate"
-			description="Support this creator"
-			icon="iconoir:donate"
+		<!-- Bluesky -->
+		<Card
+			name="Bluesky"
+			url="https://bsky.app/profile/futami.my.id"
+			description="Futami Bluesky"
+			svg={Bluesky}
 		/>
-	</CardGroup>
+	</CardContainer>
+
+	<!-- Donate -->
+	<CardContainer nameGroup="Donate">
+		<Card
+			name="Trakteer"
+			url="https://trakteer.id/futami"
+			description="Rp. 5.000 each (Indonesia Only)"
+			svg={Trakteer}
+		/>
+
+		<Card
+			name="Saweria"
+			url="https://saweria.co/futami"
+			description="Min Rp. 5.000 (Indonesia Only)"
+			svg={Saweria}
+		/>
+
+		<Card
+			name="Ko-fi"
+			url="https://ko-fi.com/futami"
+			description="Min $3 (All Regions)"
+			svg={Kofi}
+		/>
+	</CardContainer>
 </Layout>

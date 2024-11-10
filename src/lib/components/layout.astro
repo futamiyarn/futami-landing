@@ -1,0 +1,42 @@
+---
+interface Props {
+	title?: string;
+	className?: string;
+}
+
+const { title = 'Futami', className = '' } = Astro.props;
+
+import '@lib/styles/app.scss';
+import Favicon from './Favicon.astro';
+import Header from './Header.astro';
+---
+
+<script>
+	import '@lib/scripts/theme-selector';
+	import '@lib/scripts/frametrower';
+</script>
+
+<html lang="en" class="dark scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<Favicon />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Header />
+		<main class={'bg-background-light dark:bg-background-dark ' + className}>
+			<slot />
+		</main>
+		<footer class="footer">
+			{new Date().getFullYear()} &#169;
+			<a
+				href="https://x.com/futamifuta"
+				target="_blank"
+				class="footer-link"
+				rel="noopener noreferrer">@Futami</a
+			>
+		</footer>
+	</body>
+</html>

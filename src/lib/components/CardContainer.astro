@@ -1,0 +1,26 @@
+---
+interface Props {
+	nameGroup: string;
+	footer_name?: string;
+	footer_url?: string;
+}
+
+const { nameGroup, footer_name, footer_url } = Astro.props;
+---
+
+<section class="card-container">
+	<h3 class="card-title">{nameGroup}</h3>
+
+	<div class="cards"><slot /></div>
+	{
+		footer_name ? (
+			<div class="card-footer">
+				<a href={footer_url} class="card-footer__button">
+					{footer_name}
+				</a>
+			</div>
+		) : (
+			''
+		)
+	}
+</section>
