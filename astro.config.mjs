@@ -14,5 +14,8 @@ export default defineConfig({
 	},
 	output: 'server',
 	adapter: cloudflare(),
+	experimental: {
+		serverIslands: true
+	},
 	integrations: [tailwind()]
 });
