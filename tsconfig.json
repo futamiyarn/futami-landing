@@ -4,6 +4,9 @@
 		"baseUrl": ".",
 		"paths": {
 			"@*": ["src/*"]
-		}
+		},
+		"types": ["node"],
+		"skipLibCheck": true,
+		"moduleResolution": "node"
 	}
 }

@@ -1,23 +1,33 @@
-.totality-container {
-	// Container
-	@apply container mx-auto px-4 py-1 lg:max-w-[1024px];
-}
+.card {
+	&-title {
+		@apply px-2 py-0.5 font-heading text-3xl font-bold;
+	}
 
-.name-category {
-	@apply font-heading text-3xl font-bold;
-}
+	&-container {
+		@apply mx-auto mb-5 px-3 last:mb-0 sm:px-5 md:max-w-[768px];
+	}
 
-.cards-category {
-	// Category box Styling
-	@apply mb-4 flex flex-col gap-y-2 rounded-md px-5 py-4;
-	// Light Color
-	@apply bg-red-secondary/40;
-	// Dark color
-	@apply dark:bg-red-dark-secondary/30;
+	&-footer {
+		@apply flex w-full justify-end p-2;
+
+		&__button {
+			// Button styling
+			@apply inline-block rounded-full px-4 py-1 font-bold shadow-md;
+			// Button background (light)
+			// Button coloring (light)
+			@apply bg-primary-light/90 text-white;
+			// Button hover coloring (light)
+			@apply hover:bg-primary-light/50;
+			// Transition
+			@apply transition-colors duration-200 ease-out;
+		}
+	}
 }
 
 .cards {
-	@apply flex flex-wrap justify-center gap-2 truncate;
+	@apply my-1 flex flex-wrap justify-center gap-2 truncate p-4;
+	@apply bg-secondary-light dark:bg-secondary-dark;
+	@apply rounded-md shadow-md;
 
 	.card {
 		// Card styling
@@ -25,7 +35,7 @@
 		// Centering Card
 		@apply flex items-center justify-center text-center;
 		// Card color (light)
-		@apply bg-red-primary text-white;
+		@apply bg-primary-light text-text-dark dark:bg-primary-dark dark:text-text-light;
 		// Card hover and transition
 		@apply transition duration-200 ease-out hover:brightness-[1.25];
 
@@ -66,6 +76,8 @@
 			@apply bg-cover bg-center;
 			// Make Card slighly bigger and text in down-left align
 			@apply aspect-[16/5] items-end justify-start text-left;
+			// Text and icon color
+			@apply text-text-dark;
 
 			// Make card in video aspect on mobile
 			&:first-child {
@@ -83,15 +95,13 @@
 }
 
 .read-more {
-	@apply flex w-full justify-end;
-
 	&__link {
 		// Button styling
 		@apply inline-block rounded-full px-4 py-1 font-bold;
 		// Button coloring (light)
-		@apply bg-red-primary/90 text-white;
+		// @apply bg-red-primary/90 text-white;
 		// Button hover coloring (light)
-		@apply hover:bg-red-primary/50;
+		// @apply hover:bg-red-primary/50;
 		// Transition
 		@apply transition-colors duration-200 ease-out;
 	}

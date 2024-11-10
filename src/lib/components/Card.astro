@@ -1,0 +1,46 @@
+---
+interface Props {
+	name: string;
+	description?: string;
+	url: string;
+	newTab?: boolean;
+	svg?: string;
+	img?: string;
+	bgImage?: string;
+}
+
+const { name, description, url, newTab, svg, img, bgImage } = Astro.props;
+
+function hasHostname(link: string) {
+	const regex = /^(https?:\/\/)?([a-zA-Z0-9.-]+)(\/[a-zA-Z0-9.-]*)*\/?$/;
+	const match = link.match(regex);
+	// Check if the second capturing group (hostname) exists in the match
+	return match && match[2] !== undefined;
+}
+
+const redirect = newTab ?? hasHostname(url);
+---
+
+<a
+	class={bgImage ? 'card thumb-card' : 'card'}
+	href={url}
+	target={redirect ? '_blank' : undefined}
+	rel={newTab ? 'noopener noreferrer' : undefined}
+	title={name}
+	style={bgImage
+		? `
+	background-image:linear-gradient(rgba(0, 0, 0, 0.6),
+rgba(0, 0, 0, 0.6)), url(${bgImage});
+`
+		: ''}
+>
+	<div class="card-icon">
+		<Fragment set:html={svg ?? ''} />
+		<Fragment set:html={img ? `<img src="${img}" alt="${name}" />` : ''} />
+		<slot name="image-astro" />
+	</div>
+	<div class="card-content">
+		<h3 class="card-content__title">{name}</h3>
+		{description ? <span class="card-content__author">{description}</span> : ''}
+	</div>
+</a>

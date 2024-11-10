@@ -1,0 +1,24 @@
+.header {
+	@apply w-full py-4;
+
+	.navbar {
+		@apply container mx-auto flex h-12 items-center justify-between px-4;
+
+		&-logo {
+			@apply h-10 text-primary-light drop-shadow-md dark:text-primary-dark;
+
+			svg {
+				@apply h-full w-auto;
+			}
+		}
+	}
+}
+
+.logo {
+	&-mobile {
+		@apply inline-block md:hidden;
+	}
+	&-desktop {
+		@apply hidden md:block;
+	}
+}
