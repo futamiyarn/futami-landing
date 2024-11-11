@@ -1,4 +1,4 @@
-import Parser from 'rss-parser';
+import xmlToJson from './xml_converter';
 
 interface YT {
 	title: string;
@@ -10,15 +10,16 @@ interface YT {
 }
 
 const single = async (id: string, limit?: number | null) => {
-	const parser = new Parser();
+	const data = await fetch(
+		`https://www.youtube.com/feeds/videos.xml?channel_id=${id}`
+	)
+		.then((res) => res.text())
+		.then((data) => JSON.parse(xmlToJson(data)));
+	///
 
-	let data: any;
 	let result: any;
-	const url = `https://www.youtube.com/feeds/videos.xml?channel_id=${id}`;
 
-	data = await parser.parseURL(url);
-	result = data.items.flat();
-	result = limit ? result.slice(0, limit) : result;
+	result = limit ? data.items.slice(0, limit) : data.items;
 
 	result = result.map((data: YT) => {
 		if (data.id && data.id.includes('yt:video'))
@@ -27,13 +28,13 @@ const single = async (id: string, limit?: number | null) => {
 				pubDate: data.pubDate,
 				author: data.author,
 				url: data.link,
-				id: data.id.replace('yt:video:', '')
+				id: data.id
 			};
 
 		return data;
 	});
 
-	return { items: result, name: data.title, url: data.link };
+	return { items: result, name: data.name, url: data.url };
 };
 
 // const multi = async (id: string[], limit?: number | null) => {

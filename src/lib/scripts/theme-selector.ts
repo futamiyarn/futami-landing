@@ -1,3 +1,4 @@
+// @ts-nocheck
 let focus_status = 'active',
 	themeFav = '';
 const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
