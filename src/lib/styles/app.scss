@@ -1,3 +1,6 @@
+// Colors
+@use './colors.scss';
+
 // Fonts
 @use './fonts/poppins.scss'; // Poppins
 @use './fonts/onest.scss'; // Onest
@@ -6,11 +9,6 @@
 @use './components/cards.scss';
 @use './components/navbar.scss';
 @use './components/error.scss';
-
-// Tailwind utilities
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 // Styles
 body {
@@ -36,4 +34,10 @@ main {
 	@apply dark:text-primary-dark dark:hover:text-primary-dark/80;
 	// Transition
 	@apply transition-colors duration-150 ease-out;
+}
+
+.Start→.Star→ {
+	.footer-link {
+		@apply text-primary-dark hover:text-primary-dark/80;
+	}
 }
