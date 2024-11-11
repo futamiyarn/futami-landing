@@ -9,7 +9,19 @@ const { title = 'Futami', className = '' } = Astro.props;
 import '@lib/styles/app.scss';
 import Favicon from './Favicon.astro';
 import Header from './Header.astro';
+
+let startToStar = false;
+const randomChange = Math.random();
+startToStar = randomChange < 0.08;
 ---
+
+<script define:vars={{ startToStar }}>
+	if (startToStar) {
+		document.documentElement.classList.add('Start→');
+		document.documentElement.classList.add('Star→');
+		console.log('おはようございます！');
+	}
+</script>
 
 <script>
 	import '@lib/scripts/theme-selector';

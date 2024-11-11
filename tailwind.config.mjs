@@ -6,24 +6,24 @@ export default {
 		extend: {
 			colors: {
 				text: {
-					light: '#1e060a',
-					dark: '#f9e1e5'
+					light: 'rgb(var(--text-light))',
+					dark: 'rgb(var(--text-dark))'
 				},
 				background: {
-					light: '#f8dde0',
-					dark: '#181f2a'
+					light: 'rgb(var(--background-light))',
+					dark: 'rgb(var(--background-dark))'
 				},
 				primary: {
-					light: '#83161f',
-					dark: '#e97c85'
+					light: 'rgb(var(--primary-light))',
+					dark: 'rgb(var(--primary-dark))'
 				},
 				secondary: {
-					light: '#d7939e',
-					dark: '#6c2833'
+					light: 'rgb(var(--secondary-light))',
+					dark: 'rgb(var(--secondary-dark))'
 				},
 				accent: {
-					light: '#d85f73',
-					dark: '#a0273b'
+					light: 'rgb(var(--accent-light))',
+					dark: 'rgb(var(--accent-dark))'
 				}
 			}
 		},

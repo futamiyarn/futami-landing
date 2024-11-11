@@ -5,7 +5,12 @@
 		@apply container mx-auto flex h-12 items-center justify-between px-4;
 
 		&-logo {
-			@apply h-10 text-primary-light drop-shadow-md dark:text-primary-dark;
+			@apply h-10 text-primary-light drop-shadow-md hover:opacity-80 dark:text-primary-dark;
+			@apply transition duration-200 ease-out;
+
+			&.logo-jp {
+				@apply hidden;
+			}
 
 			svg {
 				@apply h-full w-auto;
@@ -20,5 +25,18 @@
 	}
 	&-desktop {
 		@apply hidden md:block;
+	}
+}
+
+.Start→.Star→ {
+	.navbar-logo {
+		@apply text-primary-dark;
+	}
+
+	.logo-en {
+		@apply hidden;
+	}
+	.logo-jp {
+		@apply block;
 	}
 }

@@ -13,9 +13,8 @@
 		&__button {
 			// Button styling
 			@apply inline-block rounded-full px-4 py-1 font-bold shadow-md;
-			// Button background (light)
-			// Button coloring (light)
-			@apply bg-primary-light/90 text-white;
+			// Button
+			@apply bg-primary-light/90 text-text-dark;
 			// Button hover coloring (light)
 			@apply hover:bg-primary-light/50;
 			// Transition
@@ -94,15 +93,16 @@
 	}
 }
 
-.read-more {
-	&__link {
-		// Button styling
-		@apply inline-block rounded-full px-4 py-1 font-bold;
-		// Button coloring (light)
-		// @apply bg-red-primary/90 text-white;
-		// Button hover coloring (light)
-		// @apply hover:bg-red-primary/50;
-		// Transition
-		@apply transition-colors duration-200 ease-out;
+.Start→.Star→ {
+	.card {
+		@apply text-text-light;
+
+		&.thumb-card {
+			@apply text-text-dark;
+		}
+
+		&-footer__button {
+			@apply text-text-light;
+		}
 	}
 }

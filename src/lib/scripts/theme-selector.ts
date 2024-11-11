@@ -1,3 +1,4 @@
+// @ts-nocheck
 let focus_status = 'active',
 	themeFav = '';
 const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
@@ -30,15 +31,3 @@ window.addEventListener('visibilitychange', () => changeFavicon());
 
 changeTheme();
 changeFavicon();
-
-const logoDesktop = Array.from(
-	document.getElementsByClassName('logo-desktop')
-) as HTMLElement[];
-
-const randomChange = Math.random();
-console.log(randomChange);
-
-if (randomChange < 0.08) {
-	logoDesktop[0].style.display = 'none';
-	logoDesktop[1].removeAttribute('style');
-}

@@ -1,0 +1,33 @@
+// Tailwind utilities
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Color
+@layer base {
+	:root {
+		--text-light: 30 6 10;
+		--text-dark: 249 225 229;
+		--background-light: 248 221 224;
+		--background-dark: 24 31 42;
+		--primary-light: 131 22 31;
+		--primary-dark: 233 124 133;
+		--secondary-light: 215 147 158;
+		--secondary-dark: 108 40 51;
+		--accent-light: 216 95 115;
+		--accent-dark: 160 39 59;
+	}
+
+	.Start→.Star→ {
+		--text-light: 15 14 6;
+		--text-dark: 249 248 240;
+		--background-light: 252 251 243;
+		--background-dark: 12 11 3;
+		--primary-light: 255 229 61;
+		--primary-dark: 194 168 0;
+		--secondary-light: 243 228 130;
+		--secondary-dark: 125 110 12;
+		--accent-light: 249 225 67;
+		--accent-dark: 188 164 6;
+	}
+}
