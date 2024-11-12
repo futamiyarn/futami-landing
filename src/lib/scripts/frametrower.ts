@@ -1,3 +1,2 @@
 import flamethrower from 'flamethrower-router';
-	export default flamethrower({ prefetch: 'hover' });
-
+export default flamethrower({ prefetch: 'hover' });

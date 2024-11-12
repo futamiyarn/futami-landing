@@ -8,10 +8,7 @@ import { Image } from 'astro:assets';
 
 <Layout title="Futami Website" className="container-error">
 	<audio src="/assets/audios/tilin.ogg" id="tilin"></audio>
-	<button
-		class="container-error__button"
-		onclick="document.getElementById('tilin').play()"
-	>
+	<button class="container-error__button" id="play-tilin">
 		<Image
 			src={BigTilin}
 			alt="tilin"
@@ -34,3 +31,11 @@ import { Image } from 'astro:assets';
 		can't find <b>{Astro.url.pathname}</b>
 	</p>
 </Layout>
+
+<script defer>
+	document.getElementById('play-tilin').onclick = () => {
+		const audio = document.getElementById('tilin');
+		audio.volume = 0.35;
+		audio.play();
+	};
+</script>
