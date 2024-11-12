@@ -9,13 +9,12 @@ const { title = 'Futami', className = '' } = Astro.props;
 import '@lib/styles/app.scss';
 import Favicon from './Favicon.astro';
 import Header from './Header.astro';
-
-let startToStar = false;
-const randomChange = Math.random();
-startToStar = randomChange < 0.08;
 ---
 
-<script define:vars={{ startToStar }}>
+<script is:inline>
+	const randomChange = Math.random();
+	const startToStar = randomChange < 0.03;
+
 	if (startToStar) {
 		document.documentElement.classList.add('Start→');
 		document.documentElement.classList.add('Star→');
@@ -32,6 +31,10 @@ startToStar = randomChange < 0.08;
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="description"
+			content="This is normal linktree Futami Website, please rate 1-10"
+		/>
 		<meta name="generator" content={Astro.generator} />
 		<Favicon />
 		<title>{title}</title>
