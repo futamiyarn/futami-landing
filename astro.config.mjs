@@ -7,7 +7,7 @@ import svelte from '@astrojs/svelte';
 
 // https://astro.build/config
 export default defineConfig({
-	adapter: cloudflare({ imageService: 'cloudflare' }),
+	adapter: cloudflare(),
 	integrations: [tailwind(), svelte()],
 	output: 'server',
 
