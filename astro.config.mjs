@@ -9,8 +9,10 @@ import svelte from '@astrojs/svelte';
 export default defineConfig({
 	adapter: cloudflare(),
 	integrations: [tailwind(), svelte()],
-	output: 'server',
-
+	output: 'hybrid',
+	experimental: {
+		// serverIslands: true
+	},
 	redirects: {
 		'/youtube/futacover': '/youtube/futamicover',
 		'/youtube': '/youtube/futami'

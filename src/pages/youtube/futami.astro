@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import Layout from '@lib/components/layout.astro';
 import CardYoutube from '@lib/components/CardYoutube.astro';
 import CardContainer from '@lib/components/CardContainer.astro';
@@ -52,5 +54,8 @@ import CoverProfile from '@lib/assets/images/channel-profile/futamicover.png';
 			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
 		/>
 	</CardContainer>
-	<CardYoutube />
+
+	<CardContainer nameGroup="Videos">
+		<CardYoutube />
+	</CardContainer>
 </Layout>
