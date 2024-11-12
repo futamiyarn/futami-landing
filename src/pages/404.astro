@@ -32,7 +32,7 @@ import { Image } from 'astro:assets';
 	</p>
 </Layout>
 
-<script defer>
+<script is:inline>
 	document.getElementById('play-tilin').onclick = () => {
 		const audio = document.getElementById('tilin');
 		audio.volume = 0.35;

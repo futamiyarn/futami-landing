@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import Layout from '@lib/components/layout.astro';
 import CardYoutube from '@lib/components/CardYoutube.astro';
 import CardContainer from '@lib/components/CardContainer.astro';
@@ -38,5 +40,7 @@ import FutamiProfile from '@lib/assets/images/channel-profile/futami.jpg';
 		</Card>
 	</CardContainer>
 
-	<CardYoutube channel_id={ChannelData.futamicover.id} server:defer />
+	<CardContainer nameGroup="Videos">
+		<CardYoutube channel_id={ChannelData.futamicover.id} />
+	</CardContainer>
 </Layout>

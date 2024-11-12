@@ -11,7 +11,7 @@ export default defineConfig({
 	integrations: [tailwind(), svelte()],
 	output: 'hybrid',
 	experimental: {
-		serverIslands: true
+		// serverIslands: true
 	},
 	redirects: {
 		'/youtube/futacover': '/youtube/futamicover',

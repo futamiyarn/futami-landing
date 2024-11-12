@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import CardContainer from '@lib/components/CardContainer.astro';
 import Card from '@lib/components/Card.astro';
 import Layout from '@lib/components/layout.astro';
@@ -22,12 +24,13 @@ import Teleslider from '@lib/assets/svg/icons/teleslider_icon.svg?raw';
 		/>
 	</CardContainer>
 
-	<CardYoutube
-		limit_videos={4}
+	<CardContainer
+		nameGroup="YouTube Videos"
 		footer_name="More Futami Videos"
 		footer_url="/youtube/futami"
-		server:defer
-	/>
+	>
+		<CardYoutube limit_videos={4} />
+	</CardContainer>
 
 	<!-- Playlist -->
 

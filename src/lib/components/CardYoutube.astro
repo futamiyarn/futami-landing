@@ -1,5 +1,4 @@
 ---
-import CardContainer from '@lib/components/CardContainer.astro';
 import Card from '@lib/components/Card.astro';
 import YoutubeIcon from '@lib/assets/svg/icons/youtube.svg?raw';
 
@@ -14,25 +13,18 @@ interface Props {
 	limit_videos?: number;
 }
 
-const { nameGroup, footer_name, footer_url, channel_id, limit_videos } =
-	Astro.props;
+const { channel_id, limit_videos } = Astro.props;
 const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos);
 ---
 
-<CardContainer
-	nameGroup={nameGroup ?? 'Videos'}
-	footer_name={footer_name}
-	footer_url={footer_url ?? '#'}
->
-	{
-		yt_data.items.map((item: YouTube) => (
-			<Card
-				name={item.title}
-				description={item.author}
-				url={'https://www.youtube.com/shorts/' + item.id}
-				svg={YoutubeIcon}
-				bgImage={`https://img.youtube.com/vi/${item.id}/mqdefault.jpg`}
-			/>
-		))
-	}
-</CardContainer>
+{
+	yt_data.items.map((item: YouTube) => (
+		<Card
+			name={item.title}
+			description={item.author}
+			url={'https://www.youtube.com/shorts/' + item.id}
+			svg={YoutubeIcon}
+			bgImage={`https://img.youtube.com/vi/${item.id}/mqdefault.jpg`}
+		/>
+	))
+}
