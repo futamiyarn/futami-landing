@@ -15,11 +15,17 @@ export default defineConfig({
 	},
 	redirects: {
 		'/youtube/futacover': '/youtube/futamicover',
-		'/youtube': '/youtube/futami'
+		'/youtube': '/youtube/futami',
+		'/futami': '/youtube/futami',
+		'/futamicover': '/youtube/futamicover',
+		'/futamini': '/youtube/futamini'
 	},
 	vite: {
 		css: {
 			preprocessorOptions: { scss: { api: 'modern' } }
 		}
+	},
+	build: {
+		inlineStylesheets: 'never'
 	}
 });

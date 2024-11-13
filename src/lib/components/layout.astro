@@ -4,9 +4,10 @@ interface Props {
 	className?: string;
 }
 
+import '@lib/styles/app.scss';
+
 const { title = 'Futami', className = '' } = Astro.props;
 
-import '@lib/styles/app.scss';
 import Favicon from './Favicon.astro';
 import Header from './Header.astro';
 ---
