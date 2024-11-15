@@ -1,13 +1,10 @@
 ---
 export const prerender = false;
 
-import Layout from '@lib/components/layout.astro';
-import CardYoutube from '@lib/components/CardYoutube.astro';
-import CardContainer from '@lib/components/CardContainer.astro';
-import Card from '@lib/components/Card.astro';
-
-import Playlist from '@lib/assets/svg/icons/playlist.svg?raw';
-import { Image } from 'astro:assets';
+import Layout from '@layouts/Layout.astro';
+import CardYoutube from '@components/CardYoutube.astro';
+import CardContainer from '@components/CardContainer.astro';
+import Card from '@components/Card.astro';
 
 import FutaminiProfile from '@lib/assets/images/channel-profile/futamini.jpg';
 import CoverProfile from '@lib/assets/images/channel-profile/futamicover.png';
@@ -15,41 +12,21 @@ import CoverProfile from '@lib/assets/images/channel-profile/futamicover.png';
 
 <Layout title="Futami Videos - Futami" className="totality-container">
 	<CardContainer nameGroup="Other Channels">
-		<Card name="Futamini" url="/youtube/futamini">
-			<Image
-				src={FutaminiProfile}
-				alt={'Futamini'}
-				quality={75}
-				width={128}
-				height={128}
-				loading="eager"
-				slot="image-astro"
-			/>
-		</Card>
+		<Card name="Futamini" url="/youtube/futamini" img={FutaminiProfile} />
 
-		<Card name="Futamicover" url="/youtube/futamicover">
-			<Image
-				src={CoverProfile}
-				alt={'Futami Cover'}
-				quality={75}
-				width={128}
-				height={128}
-				loading="eager"
-				slot="image-astro"
-			/>
-		</Card>
+		<Card name="Futamicover" url="/youtube/futamicover" img={CoverProfile} />
 	</CardContainer>
 
 	<CardContainer nameGroup="Playlist">
 		<Card
 			name="FutaLatest"
-			svg={Playlist}
+			iconName="playlist"
 			description="News and Popcuture"
 			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
 		/>
 		<Card
 			name="Tutorial"
-			svg={Playlist}
+			iconName="playlist"
 			description="How To"
 			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
 		/>

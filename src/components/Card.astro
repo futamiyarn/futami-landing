@@ -1,16 +1,19 @@
 ---
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
-	name: string;
-	description?: string;
-	url: string;
-	newTab?: boolean;
-	svg?: string;
-	img?: string;
 	bgImage?: string;
 	className?: string;
+	description?: string;
+	iconName?: string;
+	img?: ImageMetadata;
+	name: string;
+	url: string;
 }
 
-const { name, description, url, newTab, svg, img, bgImage, className } =
+const { name, description, url, iconName, img, bgImage, className } =
 	Astro.props;
 
 function hasHostname(link: string) {
@@ -20,14 +23,14 @@ function hasHostname(link: string) {
 	return match && match[2] !== undefined;
 }
 
-const redirect = newTab ?? hasHostname(url);
+const redirect = hasHostname(url);
 ---
 
 <a
 	class={`${bgImage ? 'card thumb-card' : 'card'} ${className}`}
 	href={url}
 	target={redirect ? '_blank' : undefined}
-	rel={newTab ? 'noopener noreferrer' : undefined}
+	rel={redirect ? 'noopener noreferrer' : undefined}
 	title={name}
 	style={bgImage
 		? `
@@ -37,9 +40,20 @@ rgba(0, 0, 0, 0.6)), url(${bgImage});
 		: ''}
 >
 	<div class="card-icon">
-		<Fragment set:html={svg ?? ''} />
-		<Fragment set:html={img ? `<img src="${img}" alt="${name}" />` : ''} />
-		<slot name="image-astro" />
+		{iconName && <Icon name={iconName} />}
+		{
+			img && (
+				<Image
+					src={img}
+					alt={name}
+					quality={75}
+					width={128}
+					height={128}
+					loading="eager"
+					slot="image-astro"
+				/>
+			)
+		}
 	</div>
 	<div class="card-content">
 		<h3 class="card-content__title">{name}</h3>

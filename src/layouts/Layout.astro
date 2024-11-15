@@ -8,25 +8,9 @@ import '@lib/styles/app.scss';
 
 const { title = 'Futami', className = '' } = Astro.props;
 
-import Favicon from './Favicon.astro';
+import Favicon from '@components/Favicon.astro';
 import Header from './Header.astro';
 ---
-
-<script is:inline>
-	const randomChange = Math.random();
-	const startToStar = randomChange < 0.03;
-
-	if (startToStar) {
-		document.documentElement.classList.add('Start→');
-		document.documentElement.classList.add('Star→');
-		console.log('おはようございます！');
-	}
-</script>
-
-<script>
-	import '@lib/scripts/theme-selector';
-	import '@lib/scripts/frametrower';
-</script>
 
 <html lang="en" class="dark scroll-smooth">
 	<head>
@@ -39,6 +23,23 @@ import Header from './Header.astro';
 		<meta name="generator" content={Astro.generator} />
 		<Favicon />
 		<title>{title}</title>
+		<!--Scripts-->
+		<script is:inline>
+			const randomChange = Math.random();
+			const startToStar = randomChange < 0.03;
+
+			if (startToStar) {
+				document.documentElement.classList.add('Start→');
+				document.documentElement.classList.add('Star→');
+				console.log('おはようございます！');
+			}
+		</script>
+
+		<script>
+			import '@lib/scripts/theme-selector';
+			import '@lib/scripts/frametrower';
+		</script>
+		<!--End Scripts-->
 	</head>
 	<body>
 		<Header />

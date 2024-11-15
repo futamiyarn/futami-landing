@@ -4,11 +4,12 @@ import tailwind from '@astrojs/tailwind';
 import cloudflare from '@astrojs/cloudflare';
 
 import svelte from '@astrojs/svelte';
+import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
 	adapter: cloudflare(),
-	integrations: [tailwind(), svelte()],
+	integrations: [tailwind(), svelte(), icon()],
 	output: 'hybrid',
 	experimental: {
 		// serverIslands: true

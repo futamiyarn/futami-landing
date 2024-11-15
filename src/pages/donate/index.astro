@@ -1,11 +1,7 @@
 ---
-import CardContainer from '@lib/components/CardContainer.astro';
-import Card from '@lib/components/Card.astro';
-import Layout from '@lib/components/layout.astro';
-
-import Trakteer from '@lib/assets/svg/icons/trakteer.svg?raw';
-import Saweria from '@lib/assets/svg/icons/saweria.svg?raw';
-import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
+import CardContainer from '@components/CardContainer.astro';
+import Card from '@components/Card.astro';
+import Layout from '@layouts/Layout.astro';
 ---
 
 <Layout title="Donate - Futami" className="totality-container">
@@ -16,7 +12,7 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="Trakteer"
 			url="https://trakteer.id/futami"
 			description="Rp. 5.000 each (Indonesia Only)"
-			svg={Trakteer}
+			iconName="trakteer"
 		/>
 
 		<!-- Saweria -->
@@ -24,7 +20,7 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="Saweria"
 			url="https://saweria.co/futami"
 			description="Min Rp. 5.000 (Indonesia Only)"
-			svg={Saweria}
+			iconName="saweria"
 		/>
 	</CardContainer>
 
@@ -35,7 +31,7 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="Ko-fi"
 			url="https://ko-fi.com/futami"
 			description="$3 each"
-			svg={Kofi}
+			iconName="kofi"
 		/>
 	</CardContainer>
 </Layout>

@@ -1,6 +1,5 @@
 ---
-import Card from '@lib/components/Card.astro';
-import YoutubeIcon from '@lib/assets/svg/icons/youtube.svg?raw';
+import Card from '@components/Card.astro';
 
 import { single, type YouTube } from '@lib/scripts/yt-grabber';
 import youtube from '@lib/data/youtube.json';
@@ -23,7 +22,7 @@ const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos);
 			name={item.title}
 			description={item.author}
 			url={'https://www.youtube.com/shorts/' + item.id}
-			svg={YoutubeIcon}
+			iconName="youtube"
 			bgImage={`https://img.youtube.com/vi/${item.id}/mqdefault.jpg`}
 		/>
 	))

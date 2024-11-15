@@ -1,23 +1,11 @@
 ---
-import CardContainer from '@lib/components/CardContainer.astro';
-import Card from '@lib/components/Card.astro';
-import Layout from '@lib/components/layout.astro';
+import CardContainer from '@components/CardContainer.astro';
+import Card from '@components/Card.astro';
+import Layout from '@layouts/Layout.astro';
 
-import { Image } from 'astro:assets';
 import FutamiProfile from '@lib/assets/images/channel-profile/futami.jpg';
 import FutaminiProfile from '@lib/assets/images/channel-profile/futamini.jpg';
 import CoverProfile from '@lib/assets/images/channel-profile/futamicover.png';
-
-import TikTok from '@lib/assets/svg/icons/tiktok.svg?raw';
-import YtShorts from '@lib/assets/svg/icons/yt_shorts.svg?raw';
-import Instagram from '@lib/assets/svg/icons/instagram.svg?raw';
-import X from '@lib/assets/svg/icons/twitter_x.svg?raw';
-import Facebook from '@lib/assets/svg/icons/facebook.svg?raw';
-import Bluesky from '@lib/assets/svg/icons/bluesky.svg?raw';
-import Teleslider from '@lib/assets/svg/icons/teleslider_icon.svg?raw';
-import Trakteer from '@lib/assets/svg/icons/trakteer.svg?raw';
-import Saweria from '@lib/assets/svg/icons/saweria.svg?raw';
-import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 ---
 
 <Layout title="Social - Futami" className="totality-container">
@@ -26,7 +14,7 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 		<Card
 			name="Teleslider"
 			description="Teleprompter but sideway"
-			svg={Teleslider}
+			iconName="teleslider"
 			url="https://teleslider.futami.my.id"
 		/>
 	</CardContainer>
@@ -37,51 +25,24 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="Futami Ch."
 			url="https://youtube.com/@futamifuta?sub_confirmation=1"
 			description="Games, Anime, Tutorial"
-		>
-			<Image
-				src={FutamiProfile}
-				alt={'Futami Channel'}
-				quality={75}
-				width={128}
-				height={128}
-				loading="eager"
-				slot="image-astro"
-			/>
-		</Card>
+			img={FutamiProfile}
+		/>
 
 		<!-- FutaMINI -->
 		<Card
 			name="FutaMINI"
 			url="https://youtube.com/@futamini?sub_confirmation=1"
 			description="Random content"
-		>
-			<Image
-				src={FutaminiProfile}
-				alt={'Futamini'}
-				quality={75}
-				width={128}
-				height={128}
-				loading="eager"
-				slot="image-astro"
-			/>
-		</Card>
+			img={FutaminiProfile}
+		/>
 
 		<!-- Futami Cover -->
 		<Card
 			name="Futami Cover"
 			url="https://youtube.com/@futamicover?sub_confirmation=1"
 			description="AI Covers (less upload)"
-		>
-			<Image
-				src={CoverProfile}
-				alt={'Futami Cover'}
-				quality={75}
-				width={128}
-				height={128}
-				loading="eager"
-				slot="image-astro"
-			/>
-		</Card>
+			img={CoverProfile}
+		/>
 	</CardContainer>
 
 	<!-- More Shorts -->
@@ -91,7 +52,7 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="Futami Ch."
 			url="https://youtube.com/@futamifuta/shorts"
 			description="YouTube Shorts"
-			svg={YtShorts}
+			iconName="yt_shorts"
 		/>
 
 		<!-- TikTok -->
@@ -99,7 +60,7 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="TikTok"
 			url="https://tiktok.com/@futamifuta"
 			description="Futami TikTok"
-			svg={TikTok}
+			iconName="tiktok"
 		/>
 
 		<!-- Instagram -->
@@ -107,7 +68,7 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="Instagram"
 			url="https://instagram.com/futamifuta"
 			description="Update and Reels"
-			svg={Instagram}
+			iconName="instagram"
 		/>
 	</CardContainer>
 
@@ -118,7 +79,7 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="X (Twitter)"
 			url="https://x.com/futamifuta"
 			description="Stalking Vtuber"
-			svg={X}
+			iconName="twitter_x"
 		/>
 
 		<!-- Facebook -->
@@ -126,7 +87,7 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="Facebook"
 			url="https://facebook.com/futamifuta"
 			description="More shitpost here!"
-			svg={Facebook}
+			iconName="facebook"
 		/>
 
 		<!-- Instagram -->
@@ -134,7 +95,7 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="Instagram"
 			url="https://instagram.com/futamifuta"
 			description="My Updates"
-			svg={Instagram}
+			iconName="instagram"
 		/>
 
 		<!-- Bluesky -->
@@ -142,7 +103,7 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="Bluesky"
 			url="https://bsky.app/profile/futami.my.id"
 			description="Futami Bluesky"
-			svg={Bluesky}
+			iconName="bluesky"
 		/>
 	</CardContainer>
 
@@ -152,21 +113,21 @@ import Kofi from '@lib/assets/svg/icons/kofi.svg?raw';
 			name="Trakteer"
 			url="https://trakteer.id/futami"
 			description="Rp. 5.000 each (Indonesia Only)"
-			svg={Trakteer}
+			iconName="trakteer"
 		/>
 
 		<Card
 			name="Saweria"
 			url="https://saweria.co/futami"
 			description="Min Rp. 5.000 (Indonesia Only)"
-			svg={Saweria}
+			iconName="saweria"
 		/>
 
 		<Card
 			name="Ko-fi"
 			url="https://ko-fi.com/futami"
 			description="Min $3 (All Regions)"
-			svg={Kofi}
+			iconName="kofi"
 		/>
 	</CardContainer>
 </Layout>

@@ -1,17 +1,10 @@
 ---
 export const prerender = false;
 
-import CardContainer from '@lib/components/CardContainer.astro';
-import Card from '@lib/components/Card.astro';
-import Layout from '@lib/components/layout.astro';
-import CardYoutube from '@lib/components/CardYoutube.astro';
-
-import Playlist from '@lib/assets/svg/icons/playlist.svg?raw';
-import Youtube from '@lib/assets/svg/icons/youtube.svg?raw';
-import TikTok from '@lib/assets/svg/icons/tiktok.svg?raw';
-import Social from '@lib/assets/svg/icons/groups.svg?raw';
-import Wallet from '@lib/assets/svg/icons/wallet.svg?raw';
-import Teleslider from '@lib/assets/svg/icons/teleslider_icon.svg?raw';
+import CardContainer from '@components/CardContainer.astro';
+import Card from '@components/Card.astro';
+import Layout from '@layouts/Layout.astro';
+import CardYoutube from '@components/CardYoutube.astro';
 ---
 
 <Layout title="Futami Website">
@@ -19,7 +12,7 @@ import Teleslider from '@lib/assets/svg/icons/teleslider_icon.svg?raw';
 		<Card
 			name="Teleslider"
 			description="Teleprompter but sideway"
-			svg={Teleslider}
+			iconName="teleslider"
 			url="https://teleslider.futami.my.id"
 		/>
 	</CardContainer>
@@ -37,14 +30,14 @@ import Teleslider from '@lib/assets/svg/icons/teleslider_icon.svg?raw';
 	<CardContainer nameGroup="Playlist">
 		<Card
 			name="FutaLatest"
-			svg={Playlist}
+			iconName="playlist"
 			description="News and Popcuture"
 			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
 		/>
 
 		<Card
 			name="Tutorial"
-			svg={Playlist}
+			iconName="playlist"
 			description="How To"
 			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz5EKlSdgDmh3PjqEcDzZizz"
 		/>
@@ -55,7 +48,7 @@ import Teleslider from '@lib/assets/svg/icons/teleslider_icon.svg?raw';
 	<CardContainer nameGroup="Social">
 		<Card
 			name="Futami"
-			svg={Youtube}
+			iconName="youtube"
 			description="Youtube Channel"
 			url="https://www.youtube.com/channel/UCY_76_kibnLb0hgOdZXI-aQ"
 		/>
@@ -64,11 +57,11 @@ import Teleslider from '@lib/assets/svg/icons/teleslider_icon.svg?raw';
 			name="TikTok"
 			description="Futami TikTok Account"
 			url="https://www.tiktok.com/@futamifuta"
-			svg={TikTok}
+			iconName="tiktok"
 		/>
 
-		<Card name="Social" url="/social" svg={Social} />
+		<Card name="Social" url="/social" iconName="groups" />
 
-		<Card name="Donate" url="/donate" svg={Wallet} />
+		<Card name="Donate" url="/donate" iconName="wallet" />
 	</CardContainer>
 </Layout>
