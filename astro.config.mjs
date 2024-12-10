@@ -10,10 +10,6 @@ import icon from 'astro-icon';
 export default defineConfig({
 	adapter: cloudflare(),
 	integrations: [tailwind(), svelte(), icon()],
-	output: 'hybrid',
-	experimental: {
-		// serverIslands: true
-	},
 	redirects: {
 		'/youtube/futacover': '/youtube/futamicover',
 		'/youtube': '/youtube/futami',

@@ -4,7 +4,11 @@ export default {
 	useTabs: true,
 	singleQuote: true,
 	trailingComma: 'none',
-	plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
+	plugins: [
+		'prettier-plugin-astro',
+		'prettier-plugin-tailwindcss'
+		//'prettier-plugin-svelte'
+	],
 	overrides: [
 		{
 			files: '*.astro',
@@ -12,5 +16,11 @@ export default {
 				parser: 'astro'
 			}
 		}
+		/*{
+			files: '*.svelte',
+			options: {
+				parser: 'svelte'
+			}
+		}*/
 	]
 };

@@ -45,3 +45,4 @@ pnpm-debug.log*
 # End of https://www.toptal.com/developers/gitignore/api/yarn
 
 src/pages/en/
+*.*~

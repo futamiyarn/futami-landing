@@ -1,6 +1,7 @@
 # Futami "Linktree" Website
 
 A [Futami](https://futami.my.id) website created with [Astro](https://astro.build) SSG and serve in [Cloudflare Pages](https://pages.cloudflare.com/).
+
 > This website has secret theme!!!
 
 ## 🧞 Commands
@@ -8,7 +9,7 @@ A [Futami](https://futami.my.id) website created with [Astro](https://astro.buil
 All commands are run from the root of the project, from a terminal:
 
 | Command                   | Action                                           |
-|:--------------------------|:-------------------------------------------------|
+| :------------------------ | :----------------------------------------------- |
 | `npm install`             | Installs dependencies                            |
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build your production site to `./dist/`          |
