@@ -17,12 +17,22 @@ import CardYoutube from '@components/CardYoutube.astro';
 		/>
 	</CardContainer>
 
-	<CardContainer
-		nameGroup="YouTube Videos"
-		footer_name="More Futami Videos"
-		footer_url="/youtube/futami"
-	>
-		<CardYoutube limit_videos={4} />
+	<!-- Platforms -->
+
+	<CardContainer nameGroup="Platform">
+		<Card
+			name="Futami"
+			iconName="youtube"
+			description="Youtube Channel"
+			url="https://www.youtube.com/channel/UCY_76_kibnLb0hgOdZXI-aQ"
+		/>
+
+		<Card
+			name="TikTok"
+			description="Futami TikTok Account"
+			url="https://www.tiktok.com/@futamiid"
+			iconName="tiktok"
+		/>
 	</CardContainer>
 
 	<!-- Playlist -->
@@ -50,23 +60,15 @@ import CardYoutube from '@components/CardYoutube.astro';
 		/>
 	</CardContainer>
 
-	<!-- Social -->
+	<CardContainer
+		nameGroup="YouTube Videos"
+		footer_name="More Futami Videos"
+		footer_url="/youtube/futami"
+	>
+		<CardYoutube limit_videos={4} />
+	</CardContainer>
 
-	<CardContainer nameGroup="Social">
-		<Card
-			name="Futami"
-			iconName="youtube"
-			description="Youtube Channel"
-			url="https://www.youtube.com/channel/UCY_76_kibnLb0hgOdZXI-aQ"
-		/>
-
-		<Card
-			name="TikTok"
-			description="Futami TikTok Account"
-			url="https://www.tiktok.com/@futamiid"
-			iconName="tiktok"
-		/>
-
+	<CardContainer nameGroup="Pages">
 		<Card name="Social" url="/social" iconName="groups" />
 
 		<Card name="Donate" url="/donate" iconName="wallet" />
