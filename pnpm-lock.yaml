@@ -5476,7 +5476,7 @@ snapshots:
       workerd: 1.20241205.0
       ws: 8.18.0
       youch: 3.3.4
-      zod: 3.24.0
+      zod: 3.24.1
     transitivePeerDependencies:
       - bufferutil
       - supports-color
