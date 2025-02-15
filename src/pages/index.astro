@@ -11,48 +11,30 @@ import Icons from '@components/Icons.astro';
 <Layout title="Futami Website">
 	<!-- Social Link -->
 	<CardContainer isIcon>
-		<Icons
-			name="Instagram"
-			url="https://www.instagram.com/futamiid"
-			iconName="instagram"
-		/>
-		<Icons
-			name="Twitter"
-			url="https://twitter.com/futamiid"
-			iconName="twitter_x"
-		/>
-	</CardContainer>
-	<!-- Apps -->
-	<CardContainer nameGroup="Apps">
-		<Card
-			name="Teleslider"
-			description="Teleprompter but sideway"
-			iconName="teleslider"
-			url="https://teleslider.futami.my.id"
-		/>
-	</CardContainer>
-
-	<!-- Platforms -->
-
-	<CardContainer nameGroup="Platform">
 		<Card
 			name="Futami"
 			iconName="youtube"
-			description="Youtube Channel"
 			url="https://www.youtube.com/channel/UCY_76_kibnLb0hgOdZXI-aQ"
 		/>
 
 		<Card
 			name="TikTok"
-			description="Futami TikTok Account"
 			url="https://www.tiktok.com/@futamiid"
 			iconName="tiktok"
 		/>
+		<Card name="Social" url="/social" iconName="groups" />
+		<Card name="Donate" url="/donate" iconName="wallet" />
 	</CardContainer>
-
+	
+	<CardContainer
+		nameGroup="Latest Videos"
+		footer_name="More Videos"
+		footer_url="/youtube/futami"
+	>
+		<CardYoutube limit_videos={2} />
+	</CardContainer>
 	<!-- Playlist -->
-
-	<CardContainer nameGroup="Playlist">
+	<CardContainer nameGroup="Series">
 		<Card
 			name="FutaLatest"
 			iconName="playlist"
@@ -74,18 +56,14 @@ import Icons from '@components/Icons.astro';
 			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz78A6rWK_9lnxoF1QOT2FOd"
 		/>
 	</CardContainer>
-
-	<CardContainer
-		nameGroup="YouTube Videos"
-		footer_name="More Futami Videos"
-		footer_url="/youtube/futami"
-	>
-		<CardYoutube limit_videos={4} />
+	<!-- Apps -->
+	<CardContainer nameGroup="Apps">
+		<Card
+			name="Teleslider"
+			description="Teleprompter but sideway"
+			iconName="teleslider"
+			url="https://teleslider.futami.my.id"
+		/>
 	</CardContainer>
 
-	<CardContainer nameGroup="Pages">
-		<Card name="Social" url="/social" iconName="groups" />
-
-		<Card name="Donate" url="/donate" iconName="wallet" />
-	</CardContainer>
 </Layout>
