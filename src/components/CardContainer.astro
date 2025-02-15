@@ -1,17 +1,18 @@
 ---
 interface Props {
-	nameGroup: string;
+	nameGroup?: string;
 	footer_name?: string;
 	footer_url?: string;
+	isIcon?: boolean;
 }
 
-const { nameGroup, footer_name, footer_url } = Astro.props;
+const { nameGroup, footer_name, footer_url, isIcon } = Astro.props;
 ---
 
 <section class="card-container">
-	<h3 class="card-title">{nameGroup}</h3>
+	{nameGroup && <h3 class="card-title">{nameGroup}</h3>}
 
-	<div class="cards"><slot /></div>
+	<div class={'cards ' + (isIcon ? `icons` : '')}><slot /></div>
 	{
 		footer_name ? (
 			<div class="card-footer">
