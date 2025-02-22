@@ -10,14 +10,17 @@ interface Props {
 	footer_url?: string;
 	channel_id?: string;
 	limit_videos?: number;
+	hide_next?: boolean;
 }
 
 const { channel_id, limit_videos } = Astro.props;
-const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos);
+const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos, hide_next);
 ---
 
 {
-	yt_data.items.map((item: YouTube) => (
+	yt_data.items
+	.filter((item: YouTube, i) => (hide_next) ? i === 0 : true)
+	.map((item: YouTube) => (
 		<Card
 			name={item.title}
 			description={item.author}
