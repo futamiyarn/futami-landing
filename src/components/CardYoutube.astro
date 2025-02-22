@@ -13,13 +13,13 @@ interface Props {
 	hide_next?: boolean;
 }
 
-const { channel_id, limit_videos } = Astro.props;
-const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos, hide_next);
+const { channel_id, limit_videos, hide_next } = Astro.props;
+const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos);
 ---
 
 {
 	yt_data.items
-	.filter((item: YouTube, i) => ((hide_next) ? i === 0 : true))
+	.filter((_, i: number) => ((hide_next) ? i === 0 : true))
 	.map((item: YouTube) => (
 		<Card
 			name={item.title}
