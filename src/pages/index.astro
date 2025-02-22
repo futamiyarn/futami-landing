@@ -25,13 +25,21 @@ import Icons from '@components/Icons.astro';
 		<Icons name="Social" url="/social" iconName="groups" />
 		<Icons name="Donate" url="/donate" iconName="wallet" />
 	</CardContainer>
-	
+	<!-- Apps -->
+	<CardContainer nameGroup="Apps">
+		<Card
+			name="Teleslider"
+			description="Teleprompter but sideway"
+			iconName="teleslider"
+			url="https://teleslider.futami.my.id"
+		/>
+	</CardContainer>
 	<CardContainer
 		nameGroup="Latest Videos"
 		footer_name="More Videos"
 		footer_url="/youtube/futami"
 	>
-		<CardYoutube limit_videos={2} />
+		<CardYoutube limit_videos={2} hide_next />
 	</CardContainer>
 	<!-- Playlist -->
 	<CardContainer nameGroup="Series">
@@ -56,13 +64,17 @@ import Icons from '@components/Icons.astro';
 			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz78A6rWK_9lnxoF1QOT2FOd"
 		/>
 	</CardContainer>
-	<!-- Apps -->
-	<CardContainer nameGroup="Apps">
+	<!-- Affiliate link -->
+	<CardContainer
+		nameGroup="Good Product"
+		footer_name="Find More"
+		footer_url="/donate/affiliate"
+	>
 		<Card
-			name="Teleslider"
-			description="Teleprompter but sideway"
+			name="INBEX PH3"
+			description="Tripod + Topdown phone holder"
 			iconName="teleslider"
-			url="https://teleslider.futami.my.id"
+			url="https://s.shopee.co.id/3AsmMy6cN6"
 		/>
 	</CardContainer>
 
