@@ -19,7 +19,7 @@ const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos, hide
 
 {
 	yt_data.items
-	.filter((item: YouTube, i) => (hide_next) ? i === 0 : true)
+	.filter((item: YouTube, i) => ((hide_next) ? i === 0 : true))
 	.map((item: YouTube) => (
 		<Card
 			name={item.title}
