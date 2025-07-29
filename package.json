@@ -12,10 +12,10 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
-		"@astrojs/cloudflare": "^12.2.1",
-		"@astrojs/svelte": "^7.0.4",
-		"@astrojs/tailwind": "^5.1.5",
-		"astro": "^5.1.10",
+		"@astrojs/cloudflare": "^12.5.3",
+		"@astrojs/svelte": "^7.1.0",
+		"@astrojs/tailwind": "^6.0.2",
+		"astro": "^5.8.1",
 		"astro-icon": "^1.1.4",
 		"flamethrower-router": "0.0.0-meme.12",
 		"svelte": "^5.10.0",
@@ -37,5 +37,11 @@
 	},
 	"overrides": {
 		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"workerd"
+		]
 	}
 }

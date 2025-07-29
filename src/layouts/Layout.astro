@@ -25,8 +25,27 @@ import Header from './Header.astro';
 		<title>{title}</title>
 		<!--Scripts-->
 		<script is:inline>
+			const today = new Date();
+			const month = today.getMonth(); // 0-11 (January is 0)
+			const day = today.getDate();
+
+			let themeProbability = 0.03; // Default probability
+
+			// Check for April 15-25 or October 15-25
+			if (
+				(month === 3 && day >= 15 && day <= 25) ||
+				(month === 9 && day >= 15 && day <= 25)
+			) {
+				themeProbability = 0.06;
+			}
+
+			// Override for April 20
+			if (month === 3 && day === 20) {
+				themeProbability = 0.5;
+			}
+
 			const randomChange = Math.random();
-			const startToStar = randomChange < 0.03;
+			const startToStar = randomChange < themeProbability;
 
 			if (startToStar) {
 				document.documentElement.classList.add('Start→');

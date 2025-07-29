@@ -19,14 +19,14 @@ const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos);
 
 {
 	yt_data.items
-	.filter((item: YouTube, i: number) => ((hide_next) ? i === 0 : true))
-	.map((item: YouTube) => (
-		<Card
-			name={item.title}
-			description={item.author}
-			url={'https://www.youtube.com/shorts/' + item.id}
-			iconName="youtube"
-			bgImage={`https://img.youtube.com/vi/${item.id}/mqdefault.jpg`}
-		/>
-	))
+		.filter((item: YouTube, i: number) => (hide_next ? i === 0 : true))
+		.map((item: YouTube) => (
+			<Card
+				name={item.title}
+				description={item.author}
+				url={'https://www.youtube.com/shorts/' + item.id}
+				iconName="youtube"
+				bgImage={`https://img.youtube.com/vi/${item.id}/mqdefault.jpg`}
+			/>
+		))
 }
