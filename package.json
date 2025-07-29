@@ -27,6 +27,7 @@
 		"@babel/parser": "^7.26.3",
 		"@sveltejs/vite-plugin-svelte": "^5.0.1",
 		"@types/node": "^22.10.1",
+		"axios": "^1.11.0",
 		"form-data": "^4.0.4",
 		"glob": "^11.0.0",
 		"prettier": "^3.4.2",
