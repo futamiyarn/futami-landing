@@ -1,41 +1,90 @@
 ---
-import Layout from '@layouts/Layout.astro';
-
-// import TilinImage from '@lib/images/tilin.png';
-import BigTilin from '@lib/assets/images/big-tilin.png';
+import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+
+// Pastikan file ini ada di path yang benar, atau sesuaikan path-nya
+// Jika error, cek apakah folder src/lib/assets/images ada
+import BigTilin from '@lib/assets/images/big-tilin.png'; 
 ---
 
-<Layout title="Futami Website" className="container-error">
-	<audio src="/assets/audios/tilin.ogg" id="tilin"></audio>
-	<button class="container-error__button" id="play-tilin">
-		<Image
-			src={BigTilin}
-			alt="tilin"
-			class="md:w-30 w-24"
-			quality={'mid'}
-			width={128}
-			height={128}
-		/>
-	</button>
-	<!-- <a href="https://www.pixiv.net/en/artworks/95272811" class="block text-sm"
-		>source</a
-	> -->
-	<h1 class="container-error__heading">This page not found</h1>
-	<p class="container-error__paragraph">
-		<a
-			href="https://www.youtube.com/watch?v=HiRaQaxORFw"
-			target="_blank"
-			rel="noopener noreferrer">Serika</a
-		>
-		can't find <b>{Astro.url.pathname}</b>
-	</p>
+<Layout title="404 - Page Not Found">
+  <main class="w-full max-w-[480px] p-6 flex flex-col items-center justify-center text-center min-h-[60vh] gap-6">
+    
+    <!-- Audio Element -->
+    <audio src="/assets/audios/tilin.ogg" id="tilin"></audio>
+
+    <!-- Interactive Image Button -->
+    <button 
+      id="play-tilin" 
+      class="group relative rounded-3xl overflow-hidden transition-transform active:scale-95 focus:outline-none focus:ring-4 focus:ring-primary/30"
+      aria-label="Play secret sound"
+    >
+      <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300"></div>
+      <Image
+        src={BigTilin}
+        alt="tilin"
+        class="w-32 md:w-40 h-auto object-contain drop-shadow-xl"
+        quality={'mid'}
+        width={160}
+        height={160}
+      />
+    </button>
+
+    <!-- Error Text Content -->
+    <div class="flex flex-col gap-2">
+      <h1 class="text-3xl font-extrabold text-primary container-heading">
+        Page Not Found
+      </h1>
+      
+      <p class="text-on-surface/80 text-lg leading-relaxed">
+        <a
+          href="https://www.youtube.com/watch?v=HiRaQaxORFw"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-bold text-primary-container hover:text-primary transition-colors underline decoration-2 underline-offset-4"
+        >
+          Serika
+        </a>
+        can't find <b class="bg-surface-container px-2 py-0.5 rounded text-primary">{Astro.url.pathname}</b>
+      </p>
+    </div>
+
+    <!-- Back Home Button -->
+    <a href="/" class="mt-4 px-8 py-3 rounded-full bg-secondary-container text-secondary-on-container font-semibold transition-all hover:brightness-110 shadow-sm hover:shadow-md">
+      Back to Home
+    </a>
+
+  </main>
 </Layout>
 
 <script is:inline>
-	document.getElementById('play-tilin').onclick = () => {
-		const audio = document.getElementById('tilin');
-		audio.volume = 0.35;
-		audio.play();
-	};
+  const btn = document.getElementById('play-tilin');
+  if (btn) {
+    btn.onclick = () => {
+      const audio = document.getElementById('tilin');
+      if (audio) {
+        audio.volume = 0.35;
+        audio.currentTime = 0; // Reset audio agar bisa dispam klik
+        audio.play();
+      }
+    };
+  }
 </script>
+
+<style>
+  /* Animasi kecil untuk teks heading agar lebih expressive */
+  .container-heading {
+    animation: fadeInDown 0.5s ease-out;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

@@ -1,59 +1,32 @@
 ---
+import '../styles/main.css';
+
 interface Props {
-	title?: string;
-	className?: string;
+	title: string;
 }
 
-import '@lib/styles/app.scss';
-
-const { title = 'Futami', className = '' } = Astro.props;
-
-import Favicon from '@components/Favicon.astro';
-import Header from './Header.astro';
+const { title } = Astro.props;
 ---
 
-<html lang="en" class="dark scroll-smooth">
+<!doctype html>
+<html lang="id">
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
+		<meta name="description" content="Futami Linktree Material 3" />
 		<meta name="viewport" content="width=device-width" />
-		<meta
-			name="description"
-			content="This is normal linktree Futami Website, please rate 1-10"
-		/>
-		<meta name="generator" content={Astro.generator} />
-		<Favicon />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		
+        <!-- Fonts: Poppins (400, 600, 700) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+        
+        <!-- Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
 		<title>{title}</title>
-		<!--Scripts-->
-		<script is:inline>
-			const randomChange = Math.random();
-			const startToStar = randomChange < 0.03;
-
-			if (startToStar) {
-				document.documentElement.classList.add('Start→');
-				document.documentElement.classList.add('Star→');
-				console.log('おはようございます！');
-			}
-		</script>
-
-		<script>
-			import '@lib/scripts/theme-selector';
-			import '@lib/scripts/frametrower';
-		</script>
-		<!--End Scripts-->
 	</head>
-	<body>
-		<Header />
-		<main class={'bg-background-light dark:bg-background-dark ' + className}>
-			<slot />
-		</main>
-		<footer class="footer">
-			{new Date().getFullYear()} &#169;
-			<a
-				href="https://x.com/futamiid"
-				target="_blank"
-				class="footer-link"
-				rel="noopener noreferrer">@Futami</a
-			>
-		</footer>
+	<body class="bg-surface text-on-surface font-sans antialiased flex justify-center min-h-screen">
+		<slot />
 	</body>
 </html>

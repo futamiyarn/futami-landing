@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  thumbnail: string;
+  href?: string;
+}
+
+const { title, thumbnail, href = "#" } = Astro.props;
+---
+
+<a href={href} class="block rounded-3xl overflow-hidden relative aspect-video group shadow-md">
+  <img 
+    src={thumbnail} 
+    alt={title} 
+    class="w-full h-full object-cover brightness-[0.8] group-hover:scale-105 transition-transform duration-500"
+    onerror="this.src='https://placehold.co/600x400/2f0e13/e88d92?text=No+Thumb'"
+  />
+  
+  <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 to-transparent text-white flex items-center gap-3">
+    <div class="w-10 h-10 flex items-center justify-center bg-white rounded-full shrink-0">
+        <i class="fa-brands fa-youtube text-xl text-red-600 ml-0.5"></i>
+    </div>
+    <span class="font-bold text-base drop-shadow-md line-clamp-2 leading-tight">{title}</span>
+  </div>
+</a>

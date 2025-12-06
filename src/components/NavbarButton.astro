@@ -1,0 +1,17 @@
+---
+interface Props {
+  href: string;
+  icon: string;
+  label?: string;
+}
+
+const { href, icon, label = "Social link" } = Astro.props;
+---
+
+<a 
+  href={href} 
+  aria-label={label}
+  class="w-14 h-14 bg-primary-container text-primary-on-container rounded-2xl flex items-center justify-center text-2xl transition-all duration-200 hover:-translate-y-1 hover:brightness-110 hover:shadow-md active:scale-95"
+>
+  <i class={icon}></i>
+</a>
