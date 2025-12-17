@@ -1,23 +1,33 @@
 ---
 interface Props {
-  title: string;
-  subtitle?: string;
-  icon?: string;
-  href?: string;
+	title: string;
+	subtitle?: string;
+	icon?: string;
+	href?: string;
 }
 
-const { title, subtitle, icon = "fa-solid fa-link", href = "#" } = Astro.props;
+const { title, subtitle, icon = 'fa-solid fa-link', href = '#' } = Astro.props;
 ---
 
-<a href={href} class="group flex items-center p-4 px-6 rounded-3xl relative overflow-hidden transition-transform duration-200 bg-primary-container text-primary-on-container active:scale-95">
-  <!-- Ripple Overlay -->
-  <div class="absolute inset-0 transition-colors duration-200 pointer-events-none bg-transparent group-active:bg-white/20"></div>
+<a
+	href={href}
+	class="group bg-primary-container text-primary-on-container relative flex items-center overflow-hidden rounded-3xl p-4 px-6 transition-transform duration-200 active:scale-95"
+>
+	<!-- Ripple Overlay -->
+	<div
+		class="pointer-events-none absolute inset-0 bg-transparent transition-colors duration-200 group-active:bg-white/20"
+	>
+	</div>
 
-  <div class="text-2xl w-8 text-center mr-6 shrink-0 z-10">
-    <i class={icon}></i>
-  </div>
-  <div class="flex flex-col z-10">
-    <span class="font-extrabold text-lg leading-tight">{title}</span>
-    {subtitle && <span class="text-sm opacity-80 font-medium mt-0.5">{subtitle}</span>}
-  </div>
+	<div class="z-10 mr-6 w-8 shrink-0 text-center text-2xl">
+		<i class={icon}></i>
+	</div>
+	<div class="z-10 flex flex-col">
+		<span class="text-lg leading-tight font-extrabold">{title}</span>
+		{
+			subtitle && (
+				<span class="mt-0.5 text-sm font-medium opacity-80">{subtitle}</span>
+			)
+		}
+	</div>
 </a>
