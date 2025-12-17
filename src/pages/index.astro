@@ -12,12 +12,12 @@ import VideoCard from '../components/VideoCard.astro';
   <Navbar>
     <NavbarButton 
       href="#" 
-      icon="fa-brands fa-youtube" 
+      icon="fa-solid fa-video" 
       label="YouTube Channel" 
     />
     <NavbarButton 
       href="#" 
-      icon="fa-brands fa-tiktok" 
+      icon="fa-solid fa-newspaper" 
       label="TikTok Account" 
     />
     <NavbarButton 
@@ -32,21 +32,16 @@ import VideoCard from '../components/VideoCard.astro';
     />
   </Navbar>
 
-  <!-- Apps Section -->
-  <Section title="Apps">
-    <Card 
-      icon="fa-solid fa-server" 
-      title="Teleslider" 
-      subtitle="Teleprompter but sideway" 
-      href="https://teleslider.app" 
-    />
-  </Section>
-
-  <!-- Latest Videos Section -->
+  <!-- Latest Videos Section (Sekarang 2 Konten) -->
   <Section title="Latest Videos">
     <VideoCard 
       title="KABAR BURUK! Squad Busters..." 
       thumbnail="https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+      href="#"
+    />
+    <VideoCard 
+      title="Review Setup Minimalis 2025" 
+      thumbnail="https://i.ytimg.com/vi/jNQXAC9IVRw/mqdefault.jpg"
       href="#"
     />
     
@@ -55,19 +50,72 @@ import VideoCard from '../components/VideoCard.astro';
     </a>
   </Section>
 
-  <!-- Series Section -->
-  <Section title="Series">
-    <Card icon="fa-brands fa-tiktok" title="FutaLatest" subtitle="News and Popculture" />
-    <Card icon="fa-brands fa-tiktok" title="Tutorial" subtitle="How To" />
-    <Card icon="fa-brands fa-tiktok" title="Clash Story" subtitle="All about Clash and Supercell" />
+  <!-- Latest Blog Section -->
+  <Section title="Latest Articles">
+    <Card 
+      icon="fa-solid fa-pen-nib" 
+      title="Cara Konsisten Ngonten" 
+      subtitle="Tips produktivitas creator 2025" 
+      href="#" 
+    />
+    <Card 
+      icon="fa-solid fa-code" 
+      title="Belajar Astro JS" 
+      subtitle="Framework modern super cepat" 
+      href="#" 
+    />
+    <Card 
+      icon="fa-solid fa-microchip" 
+      title="Review Setup Desk" 
+      subtitle="Upgrade gear budget pelajar" 
+      href="#" 
+    />
+
+    <a href="#" slot="action" class="inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md">
+      Read Blog <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+    </a>
   </Section>
 
-  <!-- Product Section -->
-  <Section title="Good Product">
-    <Card icon="fa-solid fa-camera" title="INBEX PH3" subtitle="Tripod + Topdown phone holder" />
+  <!-- Platform Section (Dipindah ke bawah Blog) -->
+  <Section title="Platform">
+    <Card 
+      icon="fa-brands fa-youtube" 
+      title="YouTube" 
+      subtitle="Futami Channel" 
+      href="#" 
+    />
+    <Card 
+      icon="fa-brands fa-tiktok" 
+      title="TikTok" 
+      subtitle="@Futami" 
+      href="#" 
+    />
+    <Card 
+      icon="fa-solid fa-newspaper" 
+      title="Blog" 
+      subtitle="Baca Artikel Terbaru" 
+      href="#" 
+    />
     
+    <!-- Tombol Platform Lain (Baru) -->
     <a href="#" slot="action" class="inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md">
-      Find More
+      Other Platform <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
     </a>
+  </Section>
+
+  <!-- Support Me Section (Revisi: Affiliate & Donasi Only) -->
+  <Section title="Support Me">
+    <Card 
+      icon="fa-solid fa-cart-shopping" 
+      title="Affiliate" 
+      subtitle="Rekomendasi Gear & Gadget" 
+      href="#" 
+    />
+    <Card 
+      icon="fa-solid fa-coins" 
+      title="Donasi" 
+      subtitle="Dukung via Saweria / Trakteer" 
+      href="#" 
+    />
   </Section>
 </Layout>
