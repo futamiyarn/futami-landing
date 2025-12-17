@@ -1,121 +1,127 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Section from '../components/Section.astro';
-import Navbar from '../components/Navbar.astro';
-import NavbarButton from '../components/NavbarButton.astro';
-import Card from '../components/Card.astro';
-import VideoCard from '../components/VideoCard.astro';
+export const prerender = false;
+
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/Section.astro';
+import Navbar from '@components/Navbar.astro';
+import NavbarButton from '@components/NavbarButton.astro';
+import Card from '@components/Card.astro';
+import VideoCard from '@components/VideoCard.astro';
 ---
 
 <Layout title="Futami Linktree">
-  <!-- Navbar: Tombol ditulis langsung di sini (Declarative) -->
-  <Navbar>
-    <NavbarButton 
-      href="#" 
-      icon="fa-solid fa-video" 
-      label="YouTube Channel" 
-    />
-    <NavbarButton 
-      href="#" 
-      icon="fa-solid fa-newspaper" 
-      label="TikTok Account" 
-    />
-    <NavbarButton 
-      href="#" 
-      icon="fa-solid fa-user-group" 
-      label="Community Group" 
-    />
-    <NavbarButton 
-      href="#" 
-      icon="fa-solid fa-wallet" 
-      label="Support / Saweria" 
-    />
-  </Navbar>
 
-  <!-- Latest Videos Section (Sekarang 2 Konten) -->
-  <Section title="Latest Videos">
-    <VideoCard 
-      title="KABAR BURUK! Squad Busters..." 
-      thumbnail="https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
-      href="#"
-    />
-    <VideoCard 
-      title="Review Setup Minimalis 2025" 
-      thumbnail="https://i.ytimg.com/vi/jNQXAC9IVRw/mqdefault.jpg"
-      href="#"
-    />
-    
-    <a href="#" slot="action" class="inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md">
-      More Videos <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-    </a>
-  </Section>
+	<!-- Navbar / Social Link -->
+	<Navbar>
+		<NavbarButton 
+			label="YouTube Channel" 
+			icon="fa-solid fa-video" 
+			href="#" 
+		/>
+		<NavbarButton 
+			label="TikTok Account" 
+			icon="fa-solid fa-newspaper" 
+			href="#" 
+		/>
+		<NavbarButton 
+			label="Community Group" 
+			icon="fa-solid fa-user-group" 
+			href="#" 
+		/>
+		<NavbarButton 
+			label="Support / Saweria" 
+			icon="fa-solid fa-wallet" 
+			href="#" 
+		/>
+	</Navbar>
 
-  <!-- Latest Blog Section -->
-  <Section title="Latest Articles">
-    <Card 
-      icon="fa-solid fa-pen-nib" 
-      title="Cara Konsisten Ngonten" 
-      subtitle="Tips produktivitas creator 2025" 
-      href="#" 
-    />
-    <Card 
-      icon="fa-solid fa-code" 
-      title="Belajar Astro JS" 
-      subtitle="Framework modern super cepat" 
-      href="#" 
-    />
-    <Card 
-      icon="fa-solid fa-microchip" 
-      title="Review Setup Desk" 
-      subtitle="Upgrade gear budget pelajar" 
-      href="#" 
-    />
+	<!-- Latest Videos -->
+	<Section title="Latest Videos">
+		<VideoCard 
+			title="KABAR BURUK! Squad Busters..." 
+			thumbnail="https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+			href="#"
+		/>
+		<VideoCard 
+			title="Review Setup Minimalis 2025" 
+			thumbnail="https://i.ytimg.com/vi/jNQXAC9IVRw/mqdefault.jpg"
+			href="#"
+		/>
+		
+		<!-- Class panjang diganti jadi btn-action -->
+		<a href="#" slot="action" class="btn-action">
+			More Videos <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+		</a>
+	</Section>
 
-    <a href="#" slot="action" class="inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md">
-      Read Blog <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-    </a>
-  </Section>
+	<!-- Latest Articles -->
+	<Section title="Latest Articles">
+		<Card 
+			title="Cara Konsisten Ngonten" 
+			subtitle="Tips produktivitas creator 2025" 
+			icon="fa-solid fa-pen-nib" 
+			href="#" 
+		/>
+		<Card 
+			title="Belajar Astro JS" 
+			subtitle="Framework modern super cepat" 
+			icon="fa-solid fa-code" 
+			href="#" 
+		/>
+		<Card 
+			title="Review Setup Desk" 
+			subtitle="Upgrade gear budget pelajar" 
+			icon="fa-solid fa-microchip" 
+			href="#" 
+		/>
 
-  <!-- Platform Section (Dipindah ke bawah Blog) -->
-  <Section title="Platform">
-    <Card 
-      icon="fa-brands fa-youtube" 
-      title="YouTube" 
-      subtitle="Futami Channel" 
-      href="#" 
-    />
-    <Card 
-      icon="fa-brands fa-tiktok" 
-      title="TikTok" 
-      subtitle="@Futami" 
-      href="#" 
-    />
-    <Card 
-      icon="fa-solid fa-newspaper" 
-      title="Blog" 
-      subtitle="Baca Artikel Terbaru" 
-      href="#" 
-    />
-    
-    <!-- Tombol Platform Lain (Baru) -->
-    <a href="#" slot="action" class="inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md">
-      Other Platform <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-    </a>
-  </Section>
+		<!-- Class panjang diganti jadi btn-action -->
+		<a href="#" slot="action" class="btn-action">
+			Read Blog <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+		</a>
+	</Section>
 
-  <!-- Support Me Section (Revisi: Affiliate & Donasi Only) -->
-  <Section title="Support Me">
-    <Card 
-      icon="fa-solid fa-cart-shopping" 
-      title="Affiliate" 
-      subtitle="Rekomendasi Gear & Gadget" 
-      href="#" 
-    />
-    <Card 
-      icon="fa-solid fa-coins" 
-      title="Donasi" 
-      subtitle="Dukung via Saweria / Trakteer" 
-      href="#" 
-    />
-  </Section>
+	<!-- Platform -->
+	<Section title="Platform">
+		<Card 
+			title="YouTube" 
+			subtitle="Futami Channel" 
+			icon="fa-brands fa-youtube" 
+			href="#" 
+		/>
+		<Card 
+			title="TikTok" 
+			subtitle="@Futami" 
+			icon="fa-brands fa-tiktok" 
+			href="#" 
+		/>
+		<Card 
+			title="Blog" 
+			subtitle="Baca Artikel Terbaru" 
+			icon="fa-solid fa-newspaper" 
+			href="#" 
+		/>
+		
+		<!-- Class panjang diganti jadi btn-action -->
+		<a href="#" slot="action" class="btn-action">
+			Other Platform <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+		</a>
+	</Section>
+
+	<!-- Support Me / Affiliate -->
+	<Section title="Support Me">
+		<Card 
+			title="Affiliate" 
+			subtitle="Rekomendasi Gear & Gadget" 
+			icon="fa-solid fa-cart-shopping" 
+			href="#" 
+		/>
+		<Card 
+			title="Donasi" 
+			subtitle="Dukung via Saweria / Trakteer" 
+			icon="fa-solid fa-coins" 
+			href="#" 
+		/>
+	</Section>
+
 </Layout>

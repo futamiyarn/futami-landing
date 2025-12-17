@@ -36,3 +36,9 @@
 	--md-sys-color-secondary-container: #72343b;
 	--md-sys-color-on-secondary-container: #ffdadc;
 }
+
+/* Custom Components / Utilities */
+/* Memindahkan class tombol yang panjang dari index.astro ke sini */
+.btn-action {
+	@apply inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md cursor-pointer decoration-0;
+}
