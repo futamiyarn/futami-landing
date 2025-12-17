@@ -7,73 +7,92 @@ import BigTilin from '../lib/assets/images/big-tilin.png';
 ---
 
 <Layout title="500 - Server Error">
-  <main class="w-full max-w-[480px] p-6 flex flex-col items-center justify-center text-center min-h-[60vh] gap-6">
-    
-    <audio src="/assets/audios/tilin.ogg" id="tilin"></audio>
+	<main
+		class="flex min-h-[60vh] w-full max-w-[480px] flex-col items-center justify-center gap-6 p-6 text-center"
+	>
+		<audio src="/assets/audios/tilin.ogg" id="tilin"></audio>
 
-    <button 
-      id="play-tilin" 
-      class="group relative rounded-3xl overflow-hidden transition-transform active:scale-95 focus:outline-none focus:ring-4 focus:ring-error/30"
-    >
-      <div class="absolute inset-0 bg-error/0 group-hover:bg-error/10 transition-colors duration-300"></div>
-      <Image
-        src={BigTilin}
-        alt="tilin"
-        class="w-32 md:w-40 h-auto object-contain drop-shadow-xl grayscale-[50%] group-hover:grayscale-0 transition-all duration-300"
-        quality={'mid'}
-        width={160}
-        height={160}
-      />
-    </button>
+		<button
+			id="play-tilin"
+			class="group focus:ring-error/30 relative overflow-hidden rounded-3xl transition-transform focus:ring-4 focus:outline-none active:scale-95"
+		>
+			<div
+				class="bg-error/0 group-hover:bg-error/10 absolute inset-0 transition-colors duration-300"
+			>
+			</div>
+			<Image
+				src={BigTilin}
+				alt="tilin"
+				class="h-auto w-32 object-contain drop-shadow-xl grayscale-[50%] transition-all duration-300 group-hover:grayscale-0 md:w-40"
+				quality={'mid'}
+				width={160}
+				height={160}
+			/>
+		</button>
 
-    <div class="flex flex-col gap-2">
-      <h1 class="text-3xl font-extrabold text-red-400 container-heading">
-        My Server Brokk
-      </h1>
-      
-      <p class="text-on-surface/80 text-lg leading-relaxed">
-        <a
-          href="https://www.youtube.com/watch?v=HiRaQaxORFw"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="font-bold text-red-300 hover:text-red-200 transition-colors underline decoration-2 underline-offset-4"
-        >
-          Serika
-        </a>
-        is trying to fix the server...
-      </p>
-    </div>
+		<div class="flex flex-col gap-2">
+			<h1 class="container-heading text-3xl font-extrabold text-red-400">
+				My Server Brokk
+			</h1>
 
-    <a href="/" class="mt-4 px-8 py-3 rounded-full bg-surface-container-high text-primary font-semibold transition-all hover:brightness-110">
-      Try Refreshing
-    </a>
+			<p class="text-on-surface/80 text-lg leading-relaxed">
+				<a
+					href="https://www.youtube.com/watch?v=HiRaQaxORFw"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="font-bold text-red-300 underline decoration-2 underline-offset-4 transition-colors hover:text-red-200"
+				>
+					Serika
+				</a>
+				is trying to fix the server...
+			</p>
+		</div>
 
-  </main>
+		<a
+			href="/"
+			class="bg-surface-container-high text-primary mt-4 rounded-full px-8 py-3 font-semibold transition-all hover:brightness-110"
+		>
+			Try Refreshing
+		</a>
+	</main>
 </Layout>
 
 <script is:inline>
-  const btn = document.getElementById('play-tilin');
-  if (btn) {
-    btn.onclick = () => {
-      const audio = document.getElementById('tilin');
-      if (audio) {
-        audio.volume = 0.35;
-        audio.currentTime = 0;
-        audio.play();
-      }
-    };
-  }
+	const btn = document.getElementById('play-tilin');
+	if (btn) {
+		btn.onclick = () => {
+			const audio = document.getElementById('tilin');
+			if (audio) {
+				audio.volume = 0.35;
+				audio.currentTime = 0;
+				audio.play();
+			}
+		};
+	}
 </script>
 
 <style>
-  .container-heading {
-    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
-  }
+	.container-heading {
+		animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+	}
 
-  @keyframes shake {
-    10%, 90% { transform: translate3d(-1px, 0, 0); }
-    20%, 80% { transform: translate3d(2px, 0, 0); }
-    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-    40%, 60% { transform: translate3d(4px, 0, 0); }
-  }
+	@keyframes shake {
+		10%,
+		90% {
+			transform: translate3d(-1px, 0, 0);
+		}
+		20%,
+		80% {
+			transform: translate3d(2px, 0, 0);
+		}
+		30%,
+		50%,
+		70% {
+			transform: translate3d(-4px, 0, 0);
+		}
+		40%,
+		60% {
+			transform: translate3d(4px, 0, 0);
+		}
+	}
 </style>

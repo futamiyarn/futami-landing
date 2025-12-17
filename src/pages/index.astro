@@ -2,91 +2,72 @@
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import Navbar from '../components/Navbar.astro';
-import NavbarButton from '../components/NavbarButton.astro'; // Pastikan file ini sudah ada
+import NavbarButton from '../components/NavbarButton.astro';
 import Card from '../components/Card.astro';
 import VideoCard from '../components/VideoCard.astro';
-
-// Tidak ada lagi array socialLinks di sini
 ---
 
 <Layout title="Futami Linktree">
-  <main class="w-full max-w-[480px] p-6 flex flex-col gap-8 mx-auto">
+  <!-- Navbar: Tombol ditulis langsung di sini (Declarative) -->
+  <Navbar>
+    <NavbarButton 
+      href="#" 
+      icon="fa-brands fa-youtube" 
+      label="YouTube Channel" 
+    />
+    <NavbarButton 
+      href="#" 
+      icon="fa-brands fa-tiktok" 
+      label="TikTok Account" 
+    />
+    <NavbarButton 
+      href="#" 
+      icon="fa-solid fa-user-group" 
+      label="Community Group" 
+    />
+    <NavbarButton 
+      href="#" 
+      icon="fa-solid fa-wallet" 
+      label="Support / Saweria" 
+    />
+  </Navbar>
+
+  <!-- Apps Section -->
+  <Section title="Apps">
+    <Card 
+      icon="fa-solid fa-server" 
+      title="Teleslider" 
+      subtitle="Teleprompter but sideway" 
+      href="https://teleslider.app" 
+    />
+  </Section>
+
+  <!-- Latest Videos Section -->
+  <Section title="Latest Videos">
+    <VideoCard 
+      title="KABAR BURUK! Squad Busters..." 
+      thumbnail="https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+      href="#"
+    />
     
-    <!-- Header Logo -->
-    <header class="text-center mb-2">
-      <div class="inline-flex items-center gap-2 text-4xl font-extrabold tracking-tight select-none">
-        <i class="fa-solid fa-bullseye text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary-container"></i> 
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Futami</span>
-      </div>
-    </header>
+    <a href="#" slot="action" class="inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md">
+      More Videos <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+    </a>
+  </Section>
 
-    <!-- Navbar: Tombol ditulis langsung di sini (Declarative) -->
-    <Navbar>
-      <NavbarButton 
-        href="#" 
-        icon="fa-brands fa-youtube" 
-        label="YouTube Channel" 
-      />
-      <NavbarButton 
-        href="#" 
-        icon="fa-brands fa-tiktok" 
-        label="TikTok Account" 
-      />
-      <NavbarButton 
-        href="#" 
-        icon="fa-solid fa-user-group" 
-        label="Community Group" 
-      />
-      <NavbarButton 
-        href="#" 
-        icon="fa-solid fa-wallet" 
-        label="Support / Saweria" 
-      />
-    </Navbar>
+  <!-- Series Section -->
+  <Section title="Series">
+    <Card icon="fa-brands fa-tiktok" title="FutaLatest" subtitle="News and Popculture" />
+    <Card icon="fa-brands fa-tiktok" title="Tutorial" subtitle="How To" />
+    <Card icon="fa-brands fa-tiktok" title="Clash Story" subtitle="All about Clash and Supercell" />
+  </Section>
 
-    <!-- Apps Section -->
-    <Section title="Apps">
-      <Card 
-        icon="fa-solid fa-server" 
-        title="Teleslider" 
-        subtitle="Teleprompter but sideway" 
-        href="https://teleslider.app" 
-      />
-    </Section>
-
-    <!-- Latest Videos Section -->
-    <Section title="Latest Videos">
-      <VideoCard 
-        title="KABAR BURUK! Squad Busters..." 
-        thumbnail="https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
-        href="#"
-      />
-      
-      <a href="#" slot="action" class="inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md">
-        More Videos <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-      </a>
-    </Section>
-
-    <!-- Series Section -->
-    <Section title="Series">
-      <Card icon="fa-brands fa-tiktok" title="FutaLatest" subtitle="News and Popculture" />
-      <Card icon="fa-brands fa-tiktok" title="Tutorial" subtitle="How To" />
-      <Card icon="fa-brands fa-tiktok" title="Clash Story" subtitle="All about Clash and Supercell" />
-    </Section>
-
-    <!-- Product Section -->
-    <Section title="Good Product">
-      <Card icon="fa-solid fa-camera" title="INBEX PH3" subtitle="Tripod + Topdown phone holder" />
-      
-      <a href="#" slot="action" class="inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md">
-        Find More
-      </a>
-    </Section>
-
-    <!-- Footer -->
-    <footer class="text-center text-primary-container font-bold py-8 text-sm opacity-80">
-      2025 © @Futami
-    </footer>
-
-  </main>
+  <!-- Product Section -->
+  <Section title="Good Product">
+    <Card icon="fa-solid fa-camera" title="INBEX PH3" subtitle="Tripod + Topdown phone holder" />
+    
+    <a href="#" slot="action" class="inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md">
+      Find More
+    </a>
+  </Section>
 </Layout>
