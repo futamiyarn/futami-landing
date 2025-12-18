@@ -9,65 +9,55 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <Layout title="Futami - talk about anything">
-
 	<Navbar>
-		<NavbarButton 
-			label="Video Content" 
-			icon="video" 
-			href="/platform" 
-		/>
-		<NavbarButton 
-			label="Community Group" 
-			icon="socials" 
-			href="/social" 
-		/>
-		<NavbarButton 
-			label="Finantial Support" 
-			icon="wallet" 
-			href="/donate" 
-		/>
+		<NavbarButton label="Video Content" icon="video" href="/platform" />
+		<NavbarButton label="Community Group" icon="socials" href="/social" />
+		<NavbarButton label="Finantial Support" icon="wallet" href="/donate" />
 	</Navbar>
 
 	<Section title="Latest Videos">
 		<CardYoutube limit_videos={2} client:load />
-		
-		<a href="/platform/videos" slot="action" class="btn-action flex items-center">
-			More Videos <Icon name="arrow-right" class="ml-2 w-4 h-4" />
+
+		<a
+			href="/platform/videos"
+			slot="action"
+			class="btn-action flex items-center"
+		>
+			More Videos <Icon name="arrow-right" class="ml-2 h-4 w-4" />
 		</a>
 	</Section>
 
 	<Section title="Platform">
-		<Card 
-			title="YouTube" 
-			subtitle="Main Channel" 
-			icon="youtube" 
-			href="https://youtube.com/@futamiid" 
+		<Card
+			title="YouTube"
+			subtitle="Main Channel"
+			icon="youtube"
+			href="https://youtube.com/@futamiid"
 		/>
-		<Card 
-			title="TikTok" 
-			subtitle="Other Official Shorts" 
-			icon="tiktok" 
-			href="https://tiktok.com/@futamiid" 
+		<Card
+			title="TikTok"
+			subtitle="Other Official Shorts"
+			icon="tiktok"
+			href="https://tiktok.com/@futamiid"
 		/>
-		
+
 		<a href="/platform" slot="action" class="btn-action flex items-center">
-			Other Platform <Icon name="arrow-right" class="ml-2 w-4 h-4" />
+			Other Platform <Icon name="arrow-right" class="ml-2 h-4 w-4" />
 		</a>
 	</Section>
 
 	<Section title="Support Me">
-		<Card 
-			title="Affiliate" 
-			subtitle="Buy gear and app stuff" 
-			icon="cart" 
-			href="/donate/affiliate" 
+		<Card
+			title="Affiliate"
+			subtitle="Buy gear and app stuff"
+			icon="cart"
+			href="/donate/affiliate"
 		/>
-		<Card 
-			title="Donasi" 
-			subtitle='Direct "free" money' 
-			icon="coins" 
-			href="/donate" 
+		<Card
+			title="Donasi"
+			subtitle='Direct "free" money'
+			icon="coins"
+			href="/donate"
 		/>
 	</Section>
-
 </Layout>

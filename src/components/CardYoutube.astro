@@ -17,9 +17,9 @@ const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos);
 
 {
 	yt_data.items
-		.filter((item: YouTube, i: number) => ((hide_next) ? i === 0 : true))
+		.filter((item: YouTube, i: number) => (hide_next ? i === 0 : true))
 		.map((item: YouTube) => (
-            /* Menggunakan VideoCard agar style sesuai dengan 
+			/* Menggunakan VideoCard agar style sesuai dengan 
                tampilan "Latest Videos" di index.astro saat ini 
             */
 			<VideoCard

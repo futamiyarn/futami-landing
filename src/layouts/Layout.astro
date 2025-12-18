@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import '@styles/main.css';
 // Import font internal di sini
-import '@styles/poppins.scss'; 
+import '@styles/poppins.scss';
 
 interface Props {
 	title: string;
@@ -18,30 +18,38 @@ const { title } = Astro.props;
 		<meta name="description" content="Futami Linktree Material 3" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		
-        <!-- Icons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        
+
+		<!-- Icons -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		/>
+
 		<title>{title}</title>
 	</head>
-	<body class="bg-surface text-on-surface font-sans antialiased flex justify-center min-h-screen">
-        <!-- Main Container dipindah ke sini agar Header & Footer konsisten -->
-        <main class="w-full max-w-[480px] p-6 flex flex-col gap-8 mx-auto">
-            
-            <header class="text-center mb-2">
-		    <a href="/" class="inline-flex items-center gap-2 text-4xl font-extrabold tracking-tight select-none">
-			    <Icon name="logo/logo-text" class="text-primary"/>
-		    </a>
-            </header>
+	<body
+		class="bg-surface text-on-surface flex min-h-screen justify-center font-sans antialiased"
+	>
+		<!-- Main Container dipindah ke sini agar Header & Footer konsisten -->
+		<main class="mx-auto flex w-full max-w-[480px] flex-col gap-8 p-6">
+			<header class="mb-2 text-center">
+				<a
+					href="/"
+					class="inline-flex items-center gap-2 text-4xl font-extrabold tracking-tight select-none"
+				>
+					<Icon name="logo/logo-text" class="text-primary" />
+				</a>
+			</header>
 
-            <!-- Slot untuk konten halaman -->
-		    <slot />
+			<!-- Slot untuk konten halaman -->
+			<slot />
 
-            <!-- Footer (Pindah dari index.astro) -->
-            <footer class="text-center text-primary-container font-bold py-8 text-sm opacity-80">
-                2025 © @Futami
-            </footer>
-
-        </main>
+			<!-- Footer (Pindah dari index.astro) -->
+			<footer
+				class="text-primary-container py-8 text-center text-sm font-bold opacity-80"
+			>
+				2025 © @Futami
+			</footer>
+		</main>
 	</body>
 </html>

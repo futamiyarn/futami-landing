@@ -43,5 +43,5 @@
    - Mengubah `py-2.5` menjadi `py-2` agar tinggi tombol sedikit lebih ringkas.
 */
 .btn-action {
-	@apply inline-flex items-center px-5 py-2 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md cursor-pointer decoration-0;
+	@apply bg-secondary-container text-secondary-on-container inline-flex cursor-pointer items-center rounded-full px-5 py-2 text-sm font-semibold decoration-0 transition-all hover:shadow-md hover:brightness-125;
 }

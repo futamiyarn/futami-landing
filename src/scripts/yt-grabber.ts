@@ -35,7 +35,7 @@ export const single = async (channelId: string, limit?: number | null) => {
 		const response = await fetch(
 			`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
 		);
-		
+
 		if (!response.ok) throw new Error('Failed to fetch YouTube feed');
 
 		const textData = await response.text();

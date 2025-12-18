@@ -7,23 +7,13 @@ import CardYoutube from '@components/CardYoutube.astro';
 ---
 
 <Layout title="Latest Videos - Futami">
-
 	<Navbar>
-		<NavbarButton 
-			label="Platform" 
-			icon="content" 
-			href="/platform" 
-		/>
-		<NavbarButton 
-			label="Videos" 
-			icon="video" 
-			href="#" 
-		/>
+		<NavbarButton label="Platform" icon="content" href="/platform" />
+		<NavbarButton label="Videos" icon="video" href="#" />
 	</Navbar>
 
 	<Section title="Latest Videos">
 		<!-- Menampilkan 15 video terbaru -->
 		<CardYoutube limit_videos={15} client:load />
 	</Section>
-
 </Layout>

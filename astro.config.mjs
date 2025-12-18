@@ -1,7 +1,5 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
-
 import svelte from '@astrojs/svelte';
 import icon from 'astro-icon';
 
@@ -26,29 +24,29 @@ export default defineConfig({
 	adapter: await getAdapter(),
 
 	integrations: [svelte(), icon()],
-	redirects: {
-	},
+	redirects: {},
 	vite: {
 		css: {
 			preprocessorOptions: { scss: { api: 'modern' } }
 		},
 
-		plugins: [{
-        name: 'watch-local-icons',
-        configureServer(server) {
-          // Menambahkan event listener ke watcher Vite
-          server.watcher.on('all', (event, path) => {
-            // Cek apakah file yang berubah ada di folder src/icons
-            if (path.includes('src/icons')) {
-              console.log(`🎨 Icon changed: ${event} - reloading...`);
-              
-              // Kirim sinyal full-reload ke browser
-              server.ws.send({ type: 'full-reload' });
-            }
-          });
-        },
-      },
-			tailwindcss(),
+		plugins: [
+			{
+				name: 'watch-local-icons',
+				configureServer(server) {
+					// Menambahkan event listener ke watcher Vite
+					server.watcher.on('all', (event, path) => {
+						// Cek apakah file yang berubah ada di folder src/icons
+						if (path.includes('src/icons')) {
+							console.log(`🎨 Icon changed: ${event} - reloading...`);
+
+							// Kirim sinyal full-reload ke browser
+							server.ws.send({ type: 'full-reload' });
+						}
+					});
+				}
+			},
+			tailwindcss()
 		]
 	},
 	build: {
