@@ -1,12 +1,13 @@
 ---
 interface Props {
-	title: string;
+title: string;
+id?: string;
 }
 
-const { title } = Astro.props;
+const { title, id } = Astro.props;
 ---
 
-<div class="section-container" data-state="open">
+<div class="section-container" id={id} data-state="open">
 	<!-- Header Clickable -->
 	<div
 		class="section-header group mb-2 flex cursor-pointer items-center gap-2 pl-2 select-none"
