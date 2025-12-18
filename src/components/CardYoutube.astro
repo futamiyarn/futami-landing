@@ -1,0 +1,31 @@
+---
+import VideoCard from './VideoCard.astro';
+import { single, type YouTube } from '@scripts/yt-grabber';
+import youtube from '@data/youtube.json';
+
+interface Props {
+	channel_id?: string;
+	limit_videos?: number;
+	hide_next?: boolean;
+}
+
+const { channel_id, limit_videos, hide_next } = Astro.props;
+
+// Fetch data menggunakan script yang kamu sediakan
+const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos);
+---
+
+{
+	yt_data.items
+		.filter((item: YouTube, i: number) => ((hide_next) ? i === 0 : true))
+		.map((item: YouTube) => (
+            /* Menggunakan VideoCard agar style sesuai dengan 
+               tampilan "Latest Videos" di index.astro saat ini 
+            */
+			<VideoCard
+				title={item.title}
+				thumbnail={`https://img.youtube.com/vi/${item.id}/mqdefault.jpg`}
+				href={`https://www.youtube.com/watch?v=${item.id}`}
+			/>
+		))
+}
