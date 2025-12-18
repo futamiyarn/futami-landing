@@ -1,5 +1,8 @@
 ---
-import '../styles/main.css';
+import { Icon } from 'astro-icon/components';
+import '@styles/main.css';
+// Import font internal di sini
+import '@styles/poppins.scss'; 
 
 interface Props {
 	title: string;
@@ -16,11 +19,6 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		
-        <!-- Fonts: Poppins (400, 600, 700) -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
-        
         <!-- Icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         
@@ -30,12 +28,10 @@ const { title } = Astro.props;
         <!-- Main Container dipindah ke sini agar Header & Footer konsisten -->
         <main class="w-full max-w-[480px] p-6 flex flex-col gap-8 mx-auto">
             
-            <!-- Header Logo (Pindah dari index.astro) -->
             <header class="text-center mb-2">
-                <div class="inline-flex items-center gap-2 text-4xl font-extrabold tracking-tight select-none">
-                    <i class="fa-solid fa-bullseye text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary-container"></i> 
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Futami</span>
-                </div>
+		    <a href="/" class="inline-flex items-center gap-2 text-4xl font-extrabold tracking-tight select-none">
+			    <Icon name="logo/logo-text" class="text-primary"/>
+		    </a>
             </header>
 
             <!-- Slot untuk konten halaman -->

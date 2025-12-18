@@ -2,57 +2,66 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
-// Sesuaikan path ini dengan lokasi aset gambar Anda
-import BigTilin from '../lib/assets/images/big-tilin.png';
+// Pastikan file ini ada di path yang benar, atau sesuaikan path-nya
+// Jika error, cek apakah folder src/lib/assets/images ada
+import Speaki from '@assets/images/speaki.webp';
 ---
 
-<Layout title="500 - Server Error">
+<Layout title="404 - Page Not Found">
 	<main
 		class="flex min-h-[60vh] w-full max-w-[480px] flex-col items-center justify-center gap-6 p-6 text-center"
 	>
-		<audio src="/assets/audios/tilin.ogg" id="tilin"></audio>
+		<!-- Audio Element -->
+		<audio src="/assets/audios/speaki-yapping-2.ogg" id="tilin"></audio>
 
+		<!-- Interactive Image Button -->
 		<button
 			id="play-tilin"
-			class="group focus:ring-error/30 relative overflow-hidden rounded-3xl transition-transform focus:ring-4 focus:outline-none active:scale-95"
+			class="group focus:ring-primary/30 relative overflow-hidden rounded-3xl transition-transform focus:ring-4 focus:outline-none active:scale-95"
+			aria-label="Play secret sound"
 		>
 			<div
-				class="bg-error/0 group-hover:bg-error/10 absolute inset-0 transition-colors duration-300"
+				class="bg-primary/0 group-hover:bg-primary/10 absolute inset-0 transition-colors duration-300"
 			>
 			</div>
 			<Image
-				src={BigTilin}
-				alt="tilin"
-				class="h-auto w-32 object-contain drop-shadow-xl grayscale-[50%] transition-all duration-300 group-hover:grayscale-0 md:w-40"
+				src={Speaki}
+				alt="speaki"
+				class="h-auto w-32 object-contain drop-shadow-xl md:w-40"
 				quality={'mid'}
 				width={160}
 				height={160}
 			/>
 		</button>
 
+		<!-- Error Text Content -->
 		<div class="flex flex-col gap-2">
-			<h1 class="container-heading text-3xl font-extrabold text-red-400">
-				My Server Brokk
+			<h1 class="text-primary container-heading text-3xl font-extrabold">
+				Page is Broken
 			</h1>
 
 			<p class="text-on-surface/80 text-lg leading-relaxed">
 				<a
-					href="https://www.youtube.com/watch?v=HiRaQaxORFw"
+						href="https://youtube.com/watch?v=SYacnl6MpSA"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="font-bold text-red-300 underline decoration-2 underline-offset-4 transition-colors hover:text-red-200"
+					class="text-primary-container hover:text-primary font-bold underline decoration-2 underline-offset-4 transition-colors"
 				>
-					Serika
+					Speaki
 				</a>
-				is trying to fix the server...
+				can't fixing <b
+					class="bg-surface-container text-primary rounded px-2 py-0.5"
+					>{Astro.url.pathname}</b
+				>
 			</p>
 		</div>
 
+		<!-- Back Home Button -->
 		<a
 			href="/"
-			class="bg-surface-container-high text-primary mt-4 rounded-full px-8 py-3 font-semibold transition-all hover:brightness-110"
+			class="bg-secondary-container text-secondary-on-container mt-4 rounded-full px-8 py-3 font-semibold shadow-sm transition-all hover:shadow-md hover:brightness-110"
 		>
-			Try Refreshing
+			Back to Home
 		</a>
 	</main>
 </Layout>
@@ -64,7 +73,7 @@ import BigTilin from '../lib/assets/images/big-tilin.png';
 			const audio = document.getElementById('tilin');
 			if (audio) {
 				audio.volume = 0.35;
-				audio.currentTime = 0;
+				audio.currentTime = 0; // Reset audio agar bisa dispam klik
 				audio.play();
 			}
 		};
@@ -72,27 +81,19 @@ import BigTilin from '../lib/assets/images/big-tilin.png';
 </script>
 
 <style>
+	/* Animasi kecil untuk teks heading agar lebih expressive */
 	.container-heading {
-		animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+		animation: fadeInDown 0.5s ease-out;
 	}
 
-	@keyframes shake {
-		10%,
-		90% {
-			transform: translate3d(-1px, 0, 0);
+	@keyframes fadeInDown {
+		from {
+			opacity: 0;
+			transform: translateY(-10px);
 		}
-		20%,
-		80% {
-			transform: translate3d(2px, 0, 0);
-		}
-		30%,
-		50%,
-		70% {
-			transform: translate3d(-4px, 0, 0);
-		}
-		40%,
-		60% {
-			transform: translate3d(4px, 0, 0);
+		to {
+			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 </style>

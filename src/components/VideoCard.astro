@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 interface Props {
 	title: string;
 	thumbnail: string;
@@ -26,7 +28,8 @@ const { title, thumbnail, href = '#' } = Astro.props;
 		<div
 			class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white"
 		>
-			<i class="fa-brands fa-youtube ml-0.5 text-xl text-red-600"></i>
+			{/* Mengganti icon YouTube Font Awesome dengan Astro Icon */}
+			<Icon name="youtube" class="text-2xl text-red-600" />
 		</div>
 		<span class="line-clamp-2 text-base leading-tight font-bold drop-shadow-md"
 			>{title}</span

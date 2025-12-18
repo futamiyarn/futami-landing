@@ -1,14 +1,19 @@
 ---
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
 interface Props {
 	title: string;
 	subtitle?: string;
+	// Hapus default 'mdi:link' agar tidak error jika lupa set icon
 	icon?: string;
+	image?: ImageMetadata | string;
 	href?: string;
 }
 
-const { title, subtitle, icon = 'fa-solid fa-link', href = '#' } = Astro.props;
+// Default icon kita ubah ke 'link' (pastikan file link.svg ada) atau kosongkan
+const { title, subtitle, icon = 'link', image, href = '#' } = Astro.props;
 
-// Cek apakah link eksternal (tidak diawali '/' atau '#')
 const isExternal = !href.startsWith('/') && !href.startsWith('#');
 ---
 
@@ -16,23 +21,41 @@ const isExternal = !href.startsWith('/') && !href.startsWith('#');
 	href={href}
     target={isExternal ? "_blank" : undefined}
     rel={isExternal ? "noopener noreferrer" : undefined}
-	class="group bg-primary-container text-primary-on-container relative flex items-center overflow-hidden rounded-3xl p-4 px-6 transition-transform duration-200 active:scale-95"
+	class="group bg-primary-container text-primary-on-container relative flex items-center overflow-hidden rounded-3xl p-4 transition-transform duration-200 active:scale-95 hover:shadow-lg ring-1 ring-white/5"
 >
-	<!-- Ripple Overlay -->
 	<div
 		class="pointer-events-none absolute inset-0 bg-transparent transition-colors duration-200 group-active:bg-white/20"
 	>
 	</div>
 
-	<div class="z-10 mr-6 w-8 shrink-0 text-center text-2xl">
-		<i class={icon}></i>
-	</div>
-	<div class="z-10 flex flex-col">
-		<span class="text-lg leading-tight font-extrabold">{title}</span>
+	<div class="z-10 mr-4 w-10 shrink-0 flex items-center justify-center">
 		{
-			subtitle && (
-				<span class="mt-0.5 text-sm font-medium opacity-80">{subtitle}</span>
+			image ? (
+				<div class="h-10 w-10 overflow-hidden rounded-full border-2 border-white/20 bg-white">
+					{typeof image === 'string' ? (
+						<img src={image} alt={title} class="h-full w-full object-cover" />
+					) : (
+						<Image src={image} alt={title} class="h-full w-full object-cover" />
+					)}
+				</div>
+			) : (
+				// Menggunakan class w-8 h-8
+				<Icon name={icon} class="w-8 h-8 opacity-90" />
 			)
 		}
+	</div>
+	
+	<div class="z-10 flex flex-col min-w-0">
+		<span class="text-base leading-tight font-extrabold truncate pr-2">{title}</span>
+		{
+			subtitle && (
+				<span class="mt-0.5 text-xs font-medium opacity-80 truncate pr-2">{subtitle}</span>
+			)
+		}
+	</div>
+
+	<div class="absolute right-4 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
+		<!-- Pastikan kamu punya arrow-right.svg atau chevron-right.svg -->
+		<Icon name="arrow-right" class="text-xl opacity-50" />
 	</div>
 </a>

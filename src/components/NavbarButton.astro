@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 interface Props {
 	href: string;
 	icon: string;
@@ -11,7 +13,13 @@ const { href, icon, label = 'Social link' } = Astro.props;
 <a
 	href={href}
 	aria-label={label}
-	class="bg-primary-container text-primary-on-container flex h-14 w-14 items-center justify-center rounded-2xl text-2xl transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:brightness-110 active:scale-95"
+	class="bg-primary-container text-primary-on-container flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:brightness-110 active:scale-95"
 >
-	<i class={icon}></i>
+	<!-- 
+		PERUBAHAN UKURAN:
+		- Container: h-12 w-12 (48px) -> Sebelumnya h-14 w-14 (56px)
+		- Icon: w-8 h-8 (32px) -> Sebelumnya w-7 h-7 (28px)
+		- Radius: rounded-xl -> Sebelumnya rounded-2xl
+	-->
+	<Icon name={icon} class="w-8 h-8" />
 </a>

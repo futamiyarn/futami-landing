@@ -5,118 +5,67 @@ import Navbar from '@components/Navbar.astro';
 import NavbarButton from '@components/NavbarButton.astro';
 import Card from '@components/Card.astro';
 import CardYoutube from '@components/CardYoutube.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <Layout title="Futami - talk about anything">
 
-	<!-- Navbar / Social Link -->
 	<Navbar>
 		<NavbarButton 
 			label="Video Content" 
-			icon="fa-solid fa-video" 
-			href="#" 
+			icon="video" 
+			href="/platform" 
 		/>
-		
-		<!-- 
-		<NavbarButton 
-			label="TikTok Account" 
-			icon="fa-solid fa-newspaper" 
-			href="#" 
-		/> 
-		-->
-		
 		<NavbarButton 
 			label="Community Group" 
-			icon="fa-solid fa-user-group" 
-			href="#" 
+			icon="socials" 
+			href="/social" 
 		/>
 		<NavbarButton 
 			label="Finantial Support" 
-			icon="fa-solid fa-wallet" 
+			icon="wallet" 
 			href="/donate" 
 		/>
 	</Navbar>
 
-	<!-- Latest Videos -->
 	<Section title="Latest Videos">
-		<!-- Menggunakan CardYoutube untuk fetch otomatis -->
 		<CardYoutube limit_videos={2} client:load />
 		
-		<a href="#" slot="action" class="btn-action">
-			More Videos <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+		<a href="/platform/videos" slot="action" class="btn-action flex items-center">
+			More Videos <Icon name="arrow-right" class="ml-2 w-4 h-4" />
 		</a>
 	</Section>
 
-	<!-- Latest Articles (COMMENTED OUT) -->
-	<!--
-	<Section title="Latest Articles">
-		<Card 
-			title="Cara Konsisten Ngonten" 
-			subtitle="Tips produktivitas creator 2025" 
-			icon="fa-solid fa-pen-nib" 
-			href="#" 
-		/>
-		<Card 
-			title="Belajar Astro JS" 
-			subtitle="Framework modern super cepat" 
-			icon="fa-solid fa-code" 
-			href="#" 
-		/>
-		<Card 
-			title="Review Setup Desk" 
-			subtitle="Upgrade gear budget pelajar" 
-			icon="fa-solid fa-microchip" 
-			href="#" 
-		/>
-
-		<a href="#" slot="action" class="btn-action">
-			Read Blog <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-		</a>
-	</Section>
-	-->
-
-	<!-- Platform -->
 	<Section title="Platform">
 		<Card 
 			title="YouTube" 
 			subtitle="Main Channel" 
-			icon="fa-brands fa-youtube" 
-			href="#" 
+			icon="youtube" 
+			href="https://youtube.com/@futamiid" 
 		/>
 		<Card 
 			title="TikTok" 
 			subtitle="Other Official Shorts" 
-			icon="fa-brands fa-tiktok" 
-			href="#" 
+			icon="tiktok" 
+			href="https://tiktok.com/@futamiid" 
 		/>
 		
-		<!-- Blog Card (COMMENTED OUT) -->
-		<!--
-		<Card 
-			title="Blog" 
-			subtitle="Baca Artikel Terbaru" 
-			icon="fa-solid fa-newspaper" 
-			href="#" 
-		/>
-		-->
-		
-		<a href="#" slot="action" class="btn-action">
-			Other Platform <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+		<a href="/platform" slot="action" class="btn-action flex items-center">
+			Other Platform <Icon name="arrow-right" class="ml-2 w-4 h-4" />
 		</a>
 	</Section>
 
-	<!-- Support Me / Affiliate -->
 	<Section title="Support Me">
 		<Card 
 			title="Affiliate" 
 			subtitle="Buy gear and app stuff" 
-			icon="fa-solid fa-cart-shopping" 
-			href="#" 
+			icon="cart" 
+			href="/donate/affiliate" 
 		/>
 		<Card 
 			title="Donasi" 
 			subtitle='Direct "free" money' 
-			icon="fa-solid fa-coins" 
+			icon="coins" 
 			href="/donate" 
 		/>
 	</Section>

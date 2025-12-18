@@ -7,23 +7,14 @@ import NavbarButton from '@components/NavbarButton.astro';
 ---
 
 <Layout title="Donate - Futami">
-	<!-- Navbar (Opsional: Tombol Kembali) -->
-	<Navbar>
-		<NavbarButton 
-			label="Back to Home" 
-			icon="fa-solid fa-arrow-left" 
-			href="/" 
-		/>
-	</Navbar>
-
 	<!-- In Indonesia (IDR) -->
-	<Section title="In Indonesia (IDR)">
+	<Section title="Direct Donate">
 		<!-- Trakteer -->
 		<Card
 			title="Trakteer"
 			subtitle="Rp. 5.000 each (Indonesia Only)"
 			href="https://trakteer.id/futami"
-			icon="fa-solid fa-ice-cream" 
+			icon="trakteer" 
 		/>
 
 		<!-- Saweria -->
@@ -31,18 +22,16 @@ import NavbarButton from '@components/NavbarButton.astro';
 			title="Saweria"
 			subtitle="Min Rp. 5.000 (Indonesia Only)"
 			href="https://saweria.co/futami"
-			icon="fa-solid fa-wallet" 
+			icon="saweria" 
 		/>
-	</Section>
 
 	<!-- Overseas (US Dollar) -->
-	<Section title="Overseas (US Dollar)">
 		<!-- Ko-fi -->
 		<Card
 			title="Ko-fi"
 			subtitle="$3 each"
 			href="https://ko-fi.com/futami"
-			icon="fa-solid fa-mug-hot"
+			icon="kofi"
 		/>
 	</Section>
 </Layout>

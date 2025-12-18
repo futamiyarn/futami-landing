@@ -38,7 +38,10 @@
 }
 
 /* Custom Components / Utilities */
-/* Memindahkan class tombol yang panjang dari index.astro ke sini */
+/* PERUBAHAN:
+   - Mengubah `px-6` menjadi `px-5` agar tombol tidak terlalu lebar.
+   - Mengubah `py-2.5` menjadi `py-2` agar tinggi tombol sedikit lebih ringkas.
+*/
 .btn-action {
-	@apply inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md cursor-pointer decoration-0;
+	@apply inline-flex items-center px-5 py-2 rounded-full font-semibold text-sm transition-all bg-secondary-container text-secondary-on-container hover:brightness-125 hover:shadow-md cursor-pointer decoration-0;
 }

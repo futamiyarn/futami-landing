@@ -28,18 +28,29 @@ export default defineConfig({
 
 	integrations: [svelte(), icon()],
 	redirects: {
-		'/youtube/futacover': '/youtube/futamicover',
-		'/youtube': '/youtube/futami',
-		'/futami': '/youtube/futami',
-		'/futamicover': '/youtube/futamicover',
-		'/futamini': '/youtube/futamini'
 	},
 	vite: {
 		css: {
 			preprocessorOptions: { scss: { api: 'modern' } }
 		},
 
-		plugins: [tailwindcss()]
+		plugins: [{
+        name: 'watch-local-icons',
+        configureServer(server) {
+          // Menambahkan event listener ke watcher Vite
+          server.watcher.on('all', (event, path) => {
+            // Cek apakah file yang berubah ada di folder src/icons
+            if (path.includes('src/icons')) {
+              console.log(`🎨 Icon changed: ${event} - reloading...`);
+              
+              // Kirim sinyal full-reload ke browser
+              server.ws.send({ type: 'full-reload' });
+            }
+          });
+        },
+      },
+			tailwindcss(),
+		]
 	},
 	build: {
 		inlineStylesheets: 'never'
