@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
-import svelte from '@astrojs/svelte';
 import icon from 'astro-icon';
 
 import tailwindcss from '@tailwindcss/vite';
@@ -23,7 +22,7 @@ export default defineConfig({
 	// Use await here to resolve the dynamic import
 	adapter: await getAdapter(),
 
-	integrations: [svelte(), icon()],
+	integrations: [ icon()],
 	redirects: {},
 	vite: {
 		css: {
