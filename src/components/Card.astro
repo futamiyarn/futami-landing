@@ -1,62 +1,67 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
 
 interface Props {
-	bgImage?: string;
-	className?: string;
-	description?: string;
-	iconName?: string;
-	img?: ImageMetadata;
-	name: string;
-	url: string;
+	title: string;
+	subtitle?: string;
+	// Hapus default 'mdi:link' agar tidak error jika lupa set icon
+	icon?: string;
+	image?: ImageMetadata | string;
+	href?: string;
 }
 
-const { name, description, url, iconName, img, bgImage, className } =
-	Astro.props;
+// Default icon kita ubah ke 'link' (pastikan file link.svg ada) atau kosongkan
+const { title, subtitle, icon = 'link', image, href = '#' } = Astro.props;
 
-function hasHostname(link: string) {
-	const regex = /^(https?:\/\/)?([a-zA-Z0-9.-]+)(\/[a-zA-Z0-9.-]*)*\/?$/;
-	const match = link.match(regex);
-	// Check if the second capturing group (hostname) exists in the match
-	return match && match[2] !== undefined;
-}
-
-const redirect = hasHostname(url);
+const isExternal = !href.startsWith('/') && !href.startsWith('#');
 ---
 
 <a
-	class={`${bgImage ? 'card thumb-card' : 'card'} ${className}`}
-	href={url}
-	target={redirect ? '_blank' : undefined}
-	rel={redirect ? 'noopener noreferrer' : undefined}
-	title={name}
-	style={bgImage
-		? `
-	background-image:linear-gradient(rgba(0, 0, 0, 0.6),
-rgba(0, 0, 0, 0.6)), url(${bgImage});
-`
-		: ''}
+	href={href}
+	target={isExternal ? '_blank' : undefined}
+	rel={isExternal ? 'noopener noreferrer' : undefined}
+	class="group bg-primary-container text-primary-on-container relative flex items-center overflow-hidden rounded-3xl p-4 ring-1 ring-white/5 transition-transform duration-200 hover:shadow-lg active:scale-95"
 >
-	<div class="card-icon">
-		{iconName && <Icon name={iconName} />}
+	<div
+		class="pointer-events-none absolute inset-0 bg-transparent transition-colors duration-200 group-active:bg-white/20"
+	>
+	</div>
+
+	<div class="z-10 mr-4 flex w-10 shrink-0 items-center justify-center">
 		{
-			img && (
-				<Image
-					src={img}
-					alt={name}
-					quality={75}
-					width={128}
-					height={128}
-					loading="eager"
-					slot="image-astro"
-				/>
+			image ? (
+				<div class="h-10 w-10 overflow-hidden rounded-full border-2 border-white/20 bg-white">
+					{typeof image === 'string' ? (
+						<img src={image} alt={title} class="h-full w-full object-cover" />
+					) : (
+						<Image src={image} alt={title} class="h-full w-full object-cover" />
+					)}
+				</div>
+			) : (
+				// Menggunakan class w-8 h-8
+				<Icon name={icon} class="h-8 w-8 opacity-90" />
 			)
 		}
 	</div>
-	<div class="card-content">
-		<h3 class="card-content__title">{name}</h3>
-		{description ? <span class="card-content__author">{description}</span> : ''}
+
+	<div class="z-10 flex min-w-0 flex-col">
+		<span class="truncate pr-2 text-base leading-tight font-extrabold"
+			>{title}</span
+		>
+		{
+			subtitle && (
+				<span class="mt-0.5 truncate pr-2 text-xs font-medium opacity-80">
+					{subtitle}
+				</span>
+			)
+		}
+	</div>
+
+	<div
+		class="absolute right-4 -translate-x-2 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+	>
+		<!-- Pastikan kamu punya arrow-right.svg atau chevron-right.svg -->
+		<Icon name="arrow-right" class="text-xl opacity-50" />
 	</div>
 </a>

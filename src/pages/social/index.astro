@@ -1,141 +1,82 @@
 ---
-import CardContainer from '@components/CardContainer.astro';
+import Section from '@components/Section.astro';
 import Card from '@components/Card.astro';
 import Layout from '@layouts/Layout.astro';
-
-import FutamiProfile from '@lib/assets/images/channel-profile/futami.jpg';
-import FutaminiProfile from '@lib/assets/images/channel-profile/futamini.jpg';
-import CoverProfile from '@lib/assets/images/channel-profile/futamicover.png';
 ---
 
-<Layout title="Social - Futami" className="totality-container">
-	<!-- Apps -->
-	<CardContainer nameGroup="Apps">
+<Layout title="Social - Futami">
+	<!-- 1. Platform (Single Button) -->
+	<Section title="Platform">
 		<Card
-			name="Teleslider"
-			description="Teleprompter but sideway"
-			iconName="teleslider"
-			url="https://teleslider.futami.my.id"
+			title="Platforms"
+			subtitle="Videos, blog, and more"
+			icon="video"
+			href="/platform"
 		/>
-	</CardContainer>
-	<!-- Youtube -->
-	<CardContainer nameGroup="YouTube">
-		<!-- Futami Ch. -->
+	</Section>
+
+	<!-- 2. Communities (Tetap Dipertahankan) -->
+	<Section title="Communities">
 		<Card
-			name="Futami Ch."
-			url="https://youtube.com/@futamiid?sub_confirmation=1"
-			description="Games, Anime, Tutorial"
-			img={FutamiProfile}
+			title="X (Twitter)"
+			subtitle="Stalking Vtuber"
+			icon="twitter_x"
+			href="https://x.com/futamiid"
+		/>
+		<Card
+			title="Facebook"
+			subtitle="More shitpost here!"
+			icon="facebook"
+			href="https://facebook.com/futamiid"
+		/>
+		<Card
+			title="Instagram"
+			subtitle="My Updates"
+			icon="instagram"
+			href="https://instagram.com/futamiid"
+		/>
+		<Card
+			title="Threads"
+			subtitle="My Updates"
+			icon="threads"
+			href="https://threads.net/@futamiid"
+		/>
+		<Card
+			title="Bluesky"
+			subtitle="Futami Bluesky"
+			icon="bluesky"
+			href="https://bsky.app/profile/futami.my.id"
+		/>
+	</Section>
+
+	<!-- 3. Support Me (Gabungan Donate & Affiliate) -->
+	<Section title="Support Me" id="support">
+		<!-- Affiliate (Sesuai request seperti index home) -->
+		<Card
+			title="Affiliate"
+			subtitle="Buy gear and app stuff"
+			icon="cart"
+			href="/donate/affiliate"
 		/>
 
-		<!-- FutaMINI -->
+		<!-- Donation Links -->
 		<Card
-			name="FutaMINI"
-			url="https://youtube.com/@futamini?sub_confirmation=1"
-			description="Random content"
-			img={FutaminiProfile}
+			title="Trakteer"
+			subtitle="Rp. 5.000 each (ID Only)"
+			icon="trakteer"
+			href="https://trakteer.id/futami"
 		/>
-
-		<!-- Futami Cover -->
 		<Card
-			name="Futami Cover"
-			url="https://youtube.com/@futamicover?sub_confirmation=1"
-			description="AI Covers (less upload)"
-			img={CoverProfile}
+			title="Saweria"
+			subtitle="Min Rp. 5.000 (ID Only)"
+			icon="saweria"
+			href="https://saweria.co/futami"
 		/>
-	</CardContainer>
-
-	<!-- More Shorts -->
-	<CardContainer nameGroup="More Shorts">
-		<!-- YouTube Shorts -->
 		<Card
-			name="Futami Ch."
-			url="https://youtube.com/@futamiid/shorts"
-			description="YouTube Shorts"
-			iconName="yt_shorts"
+			title="Ko-fi"
+			subtitle="Min $3 (All Regions)"
+			icon="kofi"
+			href="https://ko-fi.com/futami"
 		/>
-
-		<!-- TikTok -->
-		<Card
-			name="TikTok"
-			url="https://tiktok.com/@futamiid"
-			description="Futami TikTok"
-			iconName="tiktok"
-		/>
-
-		<!-- Instagram -->
-		<Card
-			name="Instagram"
-			url="https://instagram.com/futamiid"
-			description="Update and Reels"
-			iconName="instagram"
-		/>
-	</CardContainer>
-
-	<!-- Comunities -->
-	<CardContainer nameGroup="Comunities">
-		<!-- X (Twitter) -->
-		<Card
-			name="X (Twitter)"
-			url="https://x.com/futamiid"
-			description="Stalking Vtuber"
-			iconName="twitter_x"
-		/>
-
-		<!-- Facebook -->
-		<Card
-			name="Facebook"
-			url="https://facebook.com/futamiid"
-			description="More shitpost here!"
-			iconName="facebook"
-		/>
-
-		<!-- Instagram -->
-		<Card
-			name="Instagram"
-			url="https://instagram.com/futamiid"
-			description="My Updates"
-			iconName="instagram"
-		/>
-
-		<!-- Threads -->
-		<Card
-			name="Threads"
-			url="https://threads.net/@futamiid"
-			description="My Updates"
-			iconName="threads"
-		/>
-
-		<!-- Bluesky -->
-		<Card
-			name="Bluesky"
-			url="https://bsky.app/profile/futami.my.id"
-			description="Futami Bluesky"
-			iconName="bluesky"
-		/>
-	</CardContainer>
-
-	<!-- Donate -->
-	<CardContainer nameGroup="Donate">
-		<Card
-			name="Trakteer"
-			url="https://trakteer.id/futami"
-			description="Rp. 5.000 each (Indonesia Only)"
-			iconName="trakteer"
-		/>
-
-		<Card
-			name="Saweria"
-			url="https://saweria.co/futami"
-			description="Min Rp. 5.000 (Indonesia Only)"
-			iconName="saweria"
-		/>
-
-		<Card
-			name="Ko-fi"
-			url="https://ko-fi.com/futami"
-			description="Min $3 (All Regions)"
-			iconName="kofi"
-		/>
-	</CardContainer>
+	</Section>
 </Layout>

@@ -22,9 +22,9 @@ main {
 
 .footer {
 	// Spacing
-	@apply pb-6 pt-2;
+	@apply pt-2 pb-6;
 	// Text styling
-	@apply text-center font-heading text-sm font-bold;
+	@apply font-heading text-center text-sm font-bold;
 }
 
 .footer-link {

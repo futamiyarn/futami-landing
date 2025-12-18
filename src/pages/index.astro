@@ -1,81 +1,63 @@
 ---
-export const prerender = false;
-
-import CardContainer from '@components/CardContainer.astro';
-import Card from '@components/Card.astro';
 import Layout from '@layouts/Layout.astro';
+import Section from '@components/Section.astro';
+import Navbar from '@components/Navbar.astro';
+import NavbarButton from '@components/NavbarButton.astro';
+import Card from '@components/Card.astro';
 import CardYoutube from '@components/CardYoutube.astro';
-import Icons from '@components/Icons.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
-<Layout title="Futami Website">
-	<!-- Social Link -->
-	<CardContainer isIcon>
-		<Icons
-			name="Futami"
-			iconName="youtube"
-			url="https://www.youtube.com/channel/UCY_76_kibnLb0hgOdZXI-aQ"
+<Layout title="Futami - talk about anything">
+	<Navbar>
+		<NavbarButton label="Video Content" icon="content" href="/platform" />
+		<NavbarButton label="Community Group" icon="socials" href="/social" />
+		<NavbarButton label="Finantial Support" icon="wallet" href="/donate" />
+	</Navbar>
+
+	<Section title="Latest Videos">
+		<CardYoutube limit_videos={2} client:load />
+
+		<a
+			href="/platform/videos"
+			slot="action"
+			class="btn-action flex items-center"
+		>
+			More Videos <Icon name="arrow-right" class="ml-2 h-4 w-4" />
+		</a>
+	</Section>
+
+	<Section title="Platform">
+		<Card
+			title="YouTube"
+			subtitle="Main Channel"
+			icon="youtube"
+			href="https://youtube.com/@futamiid"
+		/>
+		<Card
+			title="TikTok"
+			subtitle="Other Official Shorts"
+			icon="tiktok"
+			href="https://tiktok.com/@futamiid"
 		/>
 
-		<Icons
-			name="TikTok"
-			url="https://www.tiktok.com/@futamiid"
-			iconName="tiktok"
-		/>
-		<Icons name="Social" url="/social" iconName="groups" />
-		<Icons name="Donate" url="/donate" iconName="wallet" />
-	</CardContainer>
-	<!-- Apps -->
-	<CardContainer nameGroup="Apps">
-		<Card
-			name="Teleslider"
-			description="Teleprompter but sideway"
-			iconName="teleslider"
-			url="https://teleslider.futami.my.id"
-		/>
-	</CardContainer>
-	<CardContainer
-		nameGroup="Latest Videos"
-		footer_name="More Videos"
-		footer_url="/youtube/futami"
-	>
-		<CardYoutube limit_videos={2} hide_next />
-	</CardContainer>
-	<!-- Playlist -->
-	<CardContainer nameGroup="Series">
-		<Card
-			name="FutaLatest"
-			iconName="playlist"
-			description="News and Popcuture"
-			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
-		/>
+		<a href="/platform" slot="action" class="btn-action flex items-center">
+			Other Platform <Icon name="arrow-right" class="ml-2 h-4 w-4" />
+		</a>
+	</Section>
 
+	<Section title="Support Me">
 		<Card
-			name="Tutorial"
-			iconName="playlist"
-			description="How To"
-			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz5EKlSdgDmh3PjqEcDzZizz"
+			title="Affiliate"
+			subtitle="Buy gear and app stuff"
+			icon="cart"
+			href="/donate/affiliate"
 		/>
-
 		<Card
-			name="Clash Story"
-			iconName="playlist"
-			description="All about Clash and Supercell"
-			url="https://www.youtube.com/playlist?list=PLQX-jAZdOlz78A6rWK_9lnxoF1QOT2FOd"
+			title="Donasi"
+			subtitle='Direct "free" money'
+			icon="coins"
+			href="/donate"
 		/>
-	</CardContainer>
-	<!-- Affiliate link -->
-	<CardContainer
-		nameGroup="Good Product"
-		footer_name="Find More"
-		footer_url="/donate/affiliate"
-	>
-		<Card
-			name="INBEX PH3"
-			description="Tripod + Topdown phone holder"
-			iconName="teleslider"
-			url="https://s.shopee.co.id/3AsmMy6cN6"
-		/>
-	</CardContainer>
-
+	</Section>
 </Layout>

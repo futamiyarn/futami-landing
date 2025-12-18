@@ -1,6 +1,6 @@
 .card {
 	&-title {
-		@apply px-2 py-0.5 font-heading text-3xl font-bold;
+		@apply font-heading px-2 py-0.5 text-3xl font-bold;
 	}
 
 	&-container {
@@ -62,7 +62,7 @@
 			@apply flex w-full flex-col truncate;
 
 			&__title {
-				@apply w-full truncate font-heading font-bold;
+				@apply font-heading w-full truncate font-bold;
 			}
 
 			&__author {
@@ -97,7 +97,7 @@
 			// Card styling
 			@apply gap-y-0.5 truncate rounded-md p-3 shadow-md;
 			// Make content same height and square
-			@apply overflow-auto inline-block;
+			@apply inline-block overflow-auto;
 			// Centering Card
 			@apply flex flex-col items-center justify-center text-center;
 			// Card color (light)
@@ -118,12 +118,11 @@
 				}
 			}
 
-
-		&-description {
-			@apply text-sm w-full truncate leading-none;
+			&-description {
+				@apply w-full truncate text-sm leading-none;
+			}
 		}
 	}
-}
 }
 
 .Start→.Star→ {

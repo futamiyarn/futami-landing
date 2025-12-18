@@ -1,0 +1,73 @@
+---
+interface Props {
+	title: string;
+	id?: string;
+}
+
+const { title, id } = Astro.props;
+---
+
+<div class="section-container" id={id} data-state="open">
+	<!-- Header Clickable -->
+	<div
+		class="section-header group mb-2 flex cursor-pointer items-center gap-2 pl-2 select-none"
+		role="button"
+		tabindex="0"
+	>
+		<h2 class="text-on-surface flex-1 text-2xl font-bold">{title}</h2>
+
+		<!-- Flip Arrow Button -->
+		<button
+			class="toggle-btn bg-surface-container-high text-primary flex h-8 w-8 items-center justify-center rounded-full transition-transform duration-300 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-[color-mix(in_srgb,var(--md-sys-color-primary)_10%,var(--md-sys-color-surface-container-high))]"
+			aria-label="Toggle section"
+		>
+			<i class="fa-solid fa-chevron-down"></i>
+		</button>
+	</div>
+
+	<!-- Collapsible Content -->
+	<div
+		class="collapsible-content max-h-[1000px] overflow-hidden opacity-100 transition-all duration-400 ease-[cubic-bezier(0.2,0,0,1)]"
+	>
+		<div class="bg-surface-container mb-2 flex flex-col gap-4 rounded-4xl p-6">
+			<slot />
+		</div>
+	</div>
+
+	<!-- Footer / More Actions -->
+	<div class="mt-1 flex justify-end">
+		<slot name="action" />
+	</div>
+</div>
+
+<script>
+	const sections = document.querySelectorAll('.section-container');
+
+	sections.forEach((section) => {
+		const header = section.querySelector('.section-header');
+		const btn = section.querySelector('.toggle-btn');
+		const content = section.querySelector(
+			'.collapsible-content'
+		) as HTMLElement;
+
+		// Init height
+		if (content) content.style.maxHeight = content.scrollHeight + 'px';
+
+		header?.addEventListener('click', () => {
+			const currentState = section.getAttribute('data-state');
+			const newState = currentState === 'open' ? 'closed' : 'open';
+
+			section.setAttribute('data-state', newState);
+
+			if (newState === 'closed') {
+				content.style.maxHeight = '0px';
+				content.style.opacity = '0';
+				btn?.classList.add('-rotate-90');
+			} else {
+				content.style.maxHeight = content.scrollHeight + 'px';
+				content.style.opacity = '1';
+				btn?.classList.remove('-rotate-90');
+			}
+		});
+	});
+</script>

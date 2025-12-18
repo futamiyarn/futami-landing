@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	title: string;
+	thumbnail: string;
+	href?: string;
+}
+
+const { title, thumbnail, href = '#' } = Astro.props;
+---
+
+<a
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+	class="group relative block aspect-video overflow-hidden rounded-3xl shadow-md"
+>
+	<img
+		src={thumbnail}
+		alt={title}
+		class="h-full w-full object-cover brightness-[0.8] transition-transform duration-500 group-hover:scale-105"
+		onerror="this.src='https://placehold.co/600x400/2f0e13/e88d92?text=No+Thumb'"
+	/>
+
+	<div
+		class="absolute inset-x-0 bottom-0 flex items-center gap-3 bg-gradient-to-t from-black/90 to-transparent p-4 text-white"
+	>
+		<div
+			class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white"
+		>
+			{/* Mengganti icon YouTube Font Awesome dengan Astro Icon */}
+			<Icon name="youtube" class="text-2xl text-red-600" />
+		</div>
+		<span class="line-clamp-2 text-base leading-tight font-bold drop-shadow-md"
+			>{title}</span
+		>
+	</div>
+</a>

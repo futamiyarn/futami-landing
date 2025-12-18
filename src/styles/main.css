@@ -1,0 +1,47 @@
+@import 'tailwindcss';
+
+@theme {
+	/* Material 3 Expressive Shapes */
+	--radius-4xl: 32px;
+
+	/* Color Mapping */
+	--color-surface: var(--md-sys-color-background);
+	--color-surface-container: var(--md-sys-color-surface-container);
+	--color-surface-container-high: var(--md-sys-color-surface-container-high);
+
+	--color-primary: var(--md-sys-color-primary);
+	--color-primary-on: var(--md-sys-color-on-primary);
+	--color-primary-container: var(--md-sys-color-primary-container);
+	--color-primary-on-container: var(--md-sys-color-on-primary-container);
+
+	--color-secondary-container: var(--md-sys-color-secondary-container);
+	--color-secondary-on-container: var(--md-sys-color-on-secondary-container);
+
+	--color-on-surface: var(--md-sys-color-on-background);
+
+	/* Typography */
+	--font-sans: 'Poppins', 'Roboto Flex', 'Roboto', sans-serif;
+}
+
+:root {
+	/* Material 3 Tokens */
+	--md-sys-color-background: #13161c;
+	--md-sys-color-on-background: #e2e2e6;
+	--md-sys-color-surface-container: #3a1d22;
+	--md-sys-color-surface-container-high: #4a252b;
+	--md-sys-color-primary: #ffb3b8;
+	--md-sys-color-on-primary: #561e23;
+	--md-sys-color-primary-container: #e88d92;
+	--md-sys-color-on-primary-container: #2f0e13;
+	--md-sys-color-secondary-container: #72343b;
+	--md-sys-color-on-secondary-container: #ffdadc;
+}
+
+/* Custom Components / Utilities */
+/* PERUBAHAN:
+   - Mengubah `px-6` menjadi `px-5` agar tombol tidak terlalu lebar.
+   - Mengubah `py-2.5` menjadi `py-2` agar tinggi tombol sedikit lebih ringkas.
+*/
+.btn-action {
+	@apply bg-secondary-container text-secondary-on-container inline-flex cursor-pointer items-center rounded-full px-5 py-2 text-sm font-semibold decoration-0 transition-all hover:shadow-md hover:brightness-125;
+}

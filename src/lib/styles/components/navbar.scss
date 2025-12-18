@@ -5,7 +5,7 @@
 		@apply container mx-auto flex h-12 items-center justify-center px-4;
 
 		&-logo {
-			@apply h-10 text-primary-light drop-shadow-md hover:opacity-80 dark:text-primary-dark;
+			@apply text-primary-light dark:text-primary-dark h-10 drop-shadow-md hover:opacity-80;
 			@apply transition duration-200 ease-out;
 
 			&.logo-jp {

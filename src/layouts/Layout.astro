@@ -1,59 +1,55 @@
 ---
+import { Icon } from 'astro-icon/components';
+import '@styles/main.css';
+// Import font internal di sini
+import '@styles/poppins.scss';
+
 interface Props {
-	title?: string;
-	className?: string;
+	title: string;
 }
 
-import '@lib/styles/app.scss';
-
-const { title = 'Futami', className = '' } = Astro.props;
-
-import Favicon from '@components/Favicon.astro';
-import Header from './Header.astro';
+const { title } = Astro.props;
 ---
 
-<html lang="en" class="dark scroll-smooth">
+<!doctype html>
+<html lang="id">
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
+		<meta name="description" content="Futami Linktree Material 3" />
 		<meta name="viewport" content="width=device-width" />
-		<meta
-			name="description"
-			content="This is normal linktree Futami Website, please rate 1-10"
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<!-- Icons -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 		/>
-		<meta name="generator" content={Astro.generator} />
-		<Favicon />
+
 		<title>{title}</title>
-		<!--Scripts-->
-		<script is:inline>
-			const randomChange = Math.random();
-			const startToStar = randomChange < 0.03;
-
-			if (startToStar) {
-				document.documentElement.classList.add('Start→');
-				document.documentElement.classList.add('Star→');
-				console.log('おはようございます！');
-			}
-		</script>
-
-		<script>
-			import '@lib/scripts/theme-selector';
-			import '@lib/scripts/frametrower';
-		</script>
-		<!--End Scripts-->
 	</head>
-	<body>
-		<Header />
-		<main class={'bg-background-light dark:bg-background-dark ' + className}>
+	<body
+		class="bg-surface text-on-surface flex min-h-screen justify-center font-sans antialiased"
+	>
+		<!-- Main Container dipindah ke sini agar Header & Footer konsisten -->
+		<main class="mx-auto flex w-full max-w-[480px] flex-col gap-8 p-6">
+			<header class="mb-2 text-center">
+				<a
+					href="/"
+					class="inline-flex items-center gap-2 text-4xl font-extrabold tracking-tight select-none"
+				>
+					<Icon name="logo/logo-text" class="text-primary" />
+				</a>
+			</header>
+
+			<!-- Slot untuk konten halaman -->
 			<slot />
-		</main>
-		<footer class="footer">
-			{new Date().getFullYear()} &#169;
-			<a
-				href="https://x.com/futamiid"
-				target="_blank"
-				class="footer-link"
-				rel="noopener noreferrer">@Futami</a
+
+			<!-- Footer (Pindah dari index.astro) -->
+			<footer
+				class="text-primary-container py-8 text-center text-sm font-bold opacity-80"
 			>
-		</footer>
+				2025 © @Futami
+			</footer>
+		</main>
 	</body>
 </html>
