@@ -22,7 +22,7 @@ export default defineConfig({
 	// Use await here to resolve the dynamic import
 	adapter: await getAdapter(),
 
-	integrations: [ icon()],
+	integrations: [icon()],
 	redirects: {},
 	vite: {
 		css: {
