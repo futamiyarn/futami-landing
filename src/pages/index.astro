@@ -16,7 +16,7 @@ import { Icon } from 'astro-icon/components';
 	</Navbar>
 
 	<Section title="Latest Videos">
-		<CardYoutube limit_videos={2} client:load />
+		<CardYoutube limit_videos={2} server:defer />
 
 		<a
 			href="/platform/videos"
