@@ -7,10 +7,15 @@ interface Props {
 }
 
 const { title, subtitle, icon = 'fa-solid fa-link', href = '#' } = Astro.props;
+
+// Cek apakah link eksternal (tidak diawali '/' atau '#')
+const isExternal = !href.startsWith('/') && !href.startsWith('#');
 ---
 
 <a
 	href={href}
+    target={isExternal ? "_blank" : undefined}
+    rel={isExternal ? "noopener noreferrer" : undefined}
 	class="group bg-primary-container text-primary-on-container relative flex items-center overflow-hidden rounded-3xl p-4 px-6 transition-transform duration-200 active:scale-95"
 >
 	<!-- Ripple Overlay -->

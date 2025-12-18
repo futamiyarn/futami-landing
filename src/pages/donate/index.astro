@@ -1,37 +1,48 @@
 ---
-import CardContainer from '@components/CardContainer.astro';
-import Card from '@components/Card.astro';
 import Layout from '@layouts/Layout.astro';
+import Section from '@components/Section.astro';
+import Card from '@components/Card.astro';
+import Navbar from '@components/Navbar.astro';
+import NavbarButton from '@components/NavbarButton.astro';
 ---
 
-<Layout title="Donate - Futami" className="totality-container">
+<Layout title="Donate - Futami">
+	<!-- Navbar (Opsional: Tombol Kembali) -->
+	<Navbar>
+		<NavbarButton 
+			label="Back to Home" 
+			icon="fa-solid fa-arrow-left" 
+			href="/" 
+		/>
+	</Navbar>
+
 	<!-- In Indonesia (IDR) -->
-	<CardContainer nameGroup="In Indonesia (IDR)">
+	<Section title="In Indonesia (IDR)">
 		<!-- Trakteer -->
 		<Card
-			name="Trakteer"
-			url="https://trakteer.id/futami"
-			description="Rp. 5.000 each (Indonesia Only)"
-			iconName="trakteer"
+			title="Trakteer"
+			subtitle="Rp. 5.000 each (Indonesia Only)"
+			href="https://trakteer.id/futami"
+			icon="fa-solid fa-ice-cream" 
 		/>
 
 		<!-- Saweria -->
 		<Card
-			name="Saweria"
-			url="https://saweria.co/futami"
-			description="Min Rp. 5.000 (Indonesia Only)"
-			iconName="saweria"
+			title="Saweria"
+			subtitle="Min Rp. 5.000 (Indonesia Only)"
+			href="https://saweria.co/futami"
+			icon="fa-solid fa-wallet" 
 		/>
-	</CardContainer>
+	</Section>
 
 	<!-- Overseas (US Dollar) -->
-	<CardContainer nameGroup="Overseas (US Dollar)">
+	<Section title="Overseas (US Dollar)">
 		<!-- Ko-fi -->
 		<Card
-			name="Ko-fi"
-			url="https://ko-fi.com/futami"
-			description="$3 each"
-			iconName="kofi"
+			title="Ko-fi"
+			subtitle="$3 each"
+			href="https://ko-fi.com/futami"
+			icon="fa-solid fa-mug-hot"
 		/>
-	</CardContainer>
+	</Section>
 </Layout>

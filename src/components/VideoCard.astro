@@ -9,7 +9,8 @@ const { title, thumbnail, href = '#' } = Astro.props;
 ---
 
 <a
-	href={href}
+		href={href}
+		target="_blank" rel="noopener noreferrer"
 	class="group relative block aspect-video overflow-hidden rounded-3xl shadow-md"
 >
 	<img

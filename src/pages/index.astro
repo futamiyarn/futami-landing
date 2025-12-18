@@ -1,60 +1,54 @@
 ---
-export const prerender = false;
-
 import Layout from '@layouts/Layout.astro';
 import Section from '@components/Section.astro';
 import Navbar from '@components/Navbar.astro';
 import NavbarButton from '@components/NavbarButton.astro';
 import Card from '@components/Card.astro';
-import VideoCard from '@components/VideoCard.astro';
+import CardYoutube from '@components/CardYoutube.astro';
 ---
 
-<Layout title="Futami Linktree">
+<Layout title="Futami - talk about anything">
 
 	<!-- Navbar / Social Link -->
 	<Navbar>
 		<NavbarButton 
-			label="YouTube Channel" 
+			label="Video Content" 
 			icon="fa-solid fa-video" 
 			href="#" 
 		/>
+		
+		<!-- 
 		<NavbarButton 
 			label="TikTok Account" 
 			icon="fa-solid fa-newspaper" 
 			href="#" 
-		/>
+		/> 
+		-->
+		
 		<NavbarButton 
 			label="Community Group" 
 			icon="fa-solid fa-user-group" 
 			href="#" 
 		/>
 		<NavbarButton 
-			label="Support / Saweria" 
+			label="Finantial Support" 
 			icon="fa-solid fa-wallet" 
-			href="#" 
+			href="/donate" 
 		/>
 	</Navbar>
 
 	<!-- Latest Videos -->
 	<Section title="Latest Videos">
-		<VideoCard 
-			title="KABAR BURUK! Squad Busters..." 
-			thumbnail="https://i.ytimg.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
-			href="#"
-		/>
-		<VideoCard 
-			title="Review Setup Minimalis 2025" 
-			thumbnail="https://i.ytimg.com/vi/jNQXAC9IVRw/mqdefault.jpg"
-			href="#"
-		/>
+		<!-- Menggunakan CardYoutube untuk fetch otomatis -->
+		<CardYoutube limit_videos={2} client:load />
 		
-		<!-- Class panjang diganti jadi btn-action -->
 		<a href="#" slot="action" class="btn-action">
 			More Videos <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
 		</a>
 	</Section>
 
-	<!-- Latest Articles -->
+	<!-- Latest Articles (COMMENTED OUT) -->
+	<!--
 	<Section title="Latest Articles">
 		<Card 
 			title="Cara Konsisten Ngonten" 
@@ -75,34 +69,37 @@ import VideoCard from '@components/VideoCard.astro';
 			href="#" 
 		/>
 
-		<!-- Class panjang diganti jadi btn-action -->
 		<a href="#" slot="action" class="btn-action">
 			Read Blog <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
 		</a>
 	</Section>
+	-->
 
 	<!-- Platform -->
 	<Section title="Platform">
 		<Card 
 			title="YouTube" 
-			subtitle="Futami Channel" 
+			subtitle="Main Channel" 
 			icon="fa-brands fa-youtube" 
 			href="#" 
 		/>
 		<Card 
 			title="TikTok" 
-			subtitle="@Futami" 
+			subtitle="Other Official Shorts" 
 			icon="fa-brands fa-tiktok" 
 			href="#" 
 		/>
+		
+		<!-- Blog Card (COMMENTED OUT) -->
+		<!--
 		<Card 
 			title="Blog" 
 			subtitle="Baca Artikel Terbaru" 
 			icon="fa-solid fa-newspaper" 
 			href="#" 
 		/>
+		-->
 		
-		<!-- Class panjang diganti jadi btn-action -->
 		<a href="#" slot="action" class="btn-action">
 			Other Platform <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
 		</a>
@@ -112,15 +109,15 @@ import VideoCard from '@components/VideoCard.astro';
 	<Section title="Support Me">
 		<Card 
 			title="Affiliate" 
-			subtitle="Rekomendasi Gear & Gadget" 
+			subtitle="Buy gear and app stuff" 
 			icon="fa-solid fa-cart-shopping" 
 			href="#" 
 		/>
 		<Card 
 			title="Donasi" 
-			subtitle="Dukung via Saweria / Trakteer" 
+			subtitle='Direct "free" money' 
 			icon="fa-solid fa-coins" 
-			href="#" 
+			href="/donate" 
 		/>
 	</Section>
 
