@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-// REMOVE the static import for cloudflare
-// import cloudflare from '@astrojs/cloudflare';
+import cloudflare from '@astrojs/cloudflare';
 
 import svelte from '@astrojs/svelte';
 import icon from 'astro-icon';
