@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import cloudflare from '@astrojs/cloudflare';
 import icon from 'astro-icon';
 
 import tailwindcss from '@tailwindcss/vite';
