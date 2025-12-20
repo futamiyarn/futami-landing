@@ -8,6 +8,12 @@ import NavbarButton from '@components/NavbarButton.astro';
 import Card from '@components/Card.astro';
 import CardYoutube from '@components/CardYoutube.astro';
 import { Icon } from 'astro-icon/components';
+
+// Mengambil data dari API Blog
+const response = await fetch('https://blog.futami.my.id/api/latest.json');
+const data = await response.json();
+// Mengambil hanya 3 data pertama
+const latestPosts = data.slice(0, 3);
 ---
 
 <Layout title="Futami - talk about anything">
@@ -35,24 +41,16 @@ import { Icon } from 'astro-icon/components';
 	</Section>
 
 	<Section title="From the Blog">
-		<Card
-			title="Memulai Perjalanan VTuber"
-			subtitle="Tips untuk pemula yang ingin debut"
-			icon="article"
-			href="https://blog.futami.my.id/post/memulai-vtuber"
-		/>
-		<Card
-			title="Setup Streaming Budget Pelajar"
-			subtitle="Rakit PC hemat tapi performa oke"
-			icon="article"
-			href="https://blog.futami.my.id/post/setup-budget"
-		/>
-		<Card
-			title="Review Game Gacha Terbaru"
-			subtitle="Apakah worth it untuk di-gacha?"
-			icon="article"
-			href="https://blog.futami.my.id/post/review-gacha"
-		/>
+		{
+			latestPosts.map((post: any) => (
+				<Card
+					title={post.title}
+					subtitle={post.description}
+					icon="article"
+					href={post.link}
+				/>
+			))
+		}
 
 		<a
 			href="https://blog.futami.my.id"
@@ -103,3 +101,4 @@ import { Icon } from 'astro-icon/components';
 		/>
 	</Section>
 </Layout>
+
