@@ -30,25 +30,31 @@ const { title } = Astro.props;
 	<body
 		class="bg-surface text-on-surface flex min-h-screen justify-center font-sans antialiased"
 	>
-		<!-- Main Container dipindah ke sini agar Header & Footer konsisten -->
-		<main class="mx-auto flex w-full max-w-[480px] flex-col gap-8 p-6">
-			<header class="mb-2 text-center">
+		<!-- 
+            PERUBAHAN:
+            - Mengubah max-w-[480px] menjadi max-w-[420px] agar layout lebih ramping.
+        -->
+		<main class="mx-auto flex w-full max-w-[420px] flex-col gap-8 p-6">
+			<header class="flex flex-col items-center gap-4 text-center">
 				<a
 					href="/"
-					class="inline-flex items-center gap-2 text-4xl font-extrabold tracking-tight select-none"
+					class="inline-flex items-center gap-2 text-4xl font-extrabold tracking-tight transition-transform select-none active:scale-95"
 				>
 					<Icon name="logo/logo-text" class="text-primary" />
 				</a>
+
+				<!-- Garis Pemisah (Divider) -->
+				<div class="bg-surface-container-high h-[1px] w-full opacity-50"></div>
 			</header>
 
 			<!-- Slot untuk konten halaman -->
 			<slot />
 
-			<!-- Footer (Pindah dari index.astro) -->
+			<!-- Footer -->
 			<footer
-				class="text-primary-container py-8 text-center text-sm font-bold opacity-80"
+				class="text-primary pt-4 pb-8 text-center text-sm font-bold opacity-80"
 			>
-				2025 © @Futami
+				2026 © @Futami
 			</footer>
 		</main>
 	</body>

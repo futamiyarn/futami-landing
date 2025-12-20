@@ -24,24 +24,26 @@
 }
 
 :root {
-	/* Material 3 Tokens */
-	--md-sys-color-background: #13161c;
-	--md-sys-color-on-background: #e2e2e6;
-	--md-sys-color-surface-container: #3a1d22;
-	--md-sys-color-surface-container-high: #4a252b;
-	--md-sys-color-primary: #ffb3b8;
-	--md-sys-color-on-primary: #561e23;
-	--md-sys-color-primary-container: #e88d92;
-	--md-sys-color-on-primary-container: #2f0e13;
-	--md-sys-color-secondary-container: #72343b;
+	/* Material 3 Tokens - Derived from #fe466c (Expressive Palette) */
+	--md-sys-color-background: #1a1112;
+	--md-sys-color-on-background: #f0dee0;
+
+	/* Surface variants for depth */
+	--md-sys-color-surface-container: #2b1d1f;
+	--md-sys-color-surface-container-high: #372729;
+
+	/* Primary: Vibrant Pink-Red */
+	--md-sys-color-primary: #ffb2bc;
+	--md-sys-color-on-primary: #670022;
+	--md-sys-color-primary-container: #910034;
+	--md-sys-color-on-primary-container: #ffd9dd;
+
+	/* Secondary: Subtle Muted Tones */
+	--md-sys-color-secondary-container: #5d3f42;
 	--md-sys-color-on-secondary-container: #ffdadc;
 }
 
 /* Custom Components / Utilities */
-/* PERUBAHAN:
-   - Mengubah `px-6` menjadi `px-5` agar tombol tidak terlalu lebar.
-   - Mengubah `py-2.5` menjadi `py-2` agar tinggi tombol sedikit lebih ringkas.
-*/
 .btn-action {
-	@apply bg-secondary-container text-secondary-on-container inline-flex cursor-pointer items-center rounded-full px-5 py-2 text-sm font-semibold decoration-0 transition-all hover:shadow-md hover:brightness-125;
+	@apply bg-secondary-container text-secondary-on-container inline-flex cursor-pointer items-center rounded-full px-5 py-2 text-sm font-semibold decoration-0 transition-all hover:shadow-md hover:brightness-125 active:scale-95;
 }
