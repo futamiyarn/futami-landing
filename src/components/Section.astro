@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+
 interface Props {
 	title: string;
 	id?: string;
@@ -22,7 +23,7 @@ const { title, id } = Astro.props;
 			class="toggle-btn bg-surface-container-high text-primary flex h-8 w-8 items-center justify-center rounded-full transition-transform duration-300 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-[color-mix(in_srgb,var(--md-sys-color-primary)_10%,var(--md-sys-color-surface-container-high))]"
 			aria-label="Toggle section"
 		>
-		<Icon name="chevron-down" class="h-4 w-4" /></button
+			<Icon name="chevron-down" class="h-4 w-4" /></button
 		>
 	</div>
 
