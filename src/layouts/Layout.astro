@@ -17,23 +17,21 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Futami Linktree Material 3" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-		<!-- Icons -->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-		/>
+<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+
+<link rel="shortcut icon" href="/favicon/favicon.ico">
+
+<link rel="manifest" href="/favicon/site.webmanifest">
 
 		<title>{title}</title>
 	</head>
 	<body
 		class="bg-surface text-on-surface flex min-h-screen justify-center font-sans antialiased"
 	>
-		<!-- 
-            PERUBAHAN:
-            - Mengubah max-w-[480px] menjadi max-w-[420px] agar layout lebih ramping.
-        -->
 		<main class="mx-auto flex w-full max-w-[420px] flex-col gap-8 p-6">
 			<header class="flex flex-col items-center gap-4 text-center">
 				<a
