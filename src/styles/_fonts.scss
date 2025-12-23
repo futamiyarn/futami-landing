@@ -1,0 +1,36 @@
+@use "sass:list";
+
+// =========================================
+// FONT FACE MIXIN (Modern SCSS)
+// =========================================
+@mixin font-face($family, $path, $filename, $weight: 400, $style: normal) {
+  @font-face {
+    font-family: $family;
+    src: url('#{$path}/#{$filename}') format('woff2');
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+// =========================================
+// CONFIGURATION
+// =========================================
+$font-family: 'Poppins';
+$font-path: '/fonts'; // Langsung ke folder public/fonts
+
+// =========================================
+// POPPINS LOADERS
+// =========================================
+
+// Regular (400) - Body Text
+@include font-face($font-family, $font-path, 'poppins-v24-latin_latin-ext-regular.woff2', 400);
+
+// Medium (500) - Subtitles
+@include font-face($font-family, $font-path, 'poppins-v24-latin_latin-ext-500.woff2', 500);
+
+// SemiBold (600) - Buttons / Highlights
+@include font-face($font-family, $font-path, 'poppins-v24-latin_latin-ext-600.woff2', 600);
+
+// Bold (700) - Headings
+@include font-face($font-family, $font-path, 'poppins-v24-latin_latin-ext-700.woff2', 700);
