@@ -72,4 +72,3 @@ export const single = async (channelId: string, limit?: number | null) => {
 
 // Export alias tipe data agar kompatibel dengan kode lain
 export type { YouTubeVideo as YouTube };
-
