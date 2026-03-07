@@ -11,8 +11,11 @@ interface Props {
 
 const { channel_id, limit_videos, hide_next } = Astro.props;
 
-// Fetch data menggunakan script yang kamu sediakan
-const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos);
+// Ambil KV dari Cloudflare runtime jika tersedia
+const kv = (Astro.locals as any).runtime?.env?.KV;
+
+// Fetch data menggunakan script yang kamu sediakan, sertakan KV untuk caching
+const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos, kv);
 ---
 
 {

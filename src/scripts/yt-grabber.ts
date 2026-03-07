@@ -47,12 +47,31 @@ function parseYoutubeXML(xml: string) {
 }
 
 /**
- * Fetch data video terbaru dari Channel ID tertentu
+ * Fetch data video terbaru dari Channel ID tertentu dengan caching KV
  */
-export const single = async (channelId: string, limit?: number | null) => {
+export const single = async (channelId: string, limit?: number | null, kv?: any) => {
+	const cacheKey = `yt_feed_${channelId}`;
+	let cachedData: YouTubeVideo[] | null = null;
+
+	// Coba ambil dari cache KV jika tersedia
+	if (kv) {
+		try {
+			const cached = await kv.get(cacheKey, { type: 'json' });
+			if (cached) {
+				cachedData = cached as YouTubeVideo[];
+			}
+		} catch (error) {
+			console.error('Error reading from KV:', error);
+		}
+	}
+
 	try {
 		const response = await fetch(
-			`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
+			`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`,
+			{
+				// Timeout singkat agar tidak menggantung jika RSS lambat
+				signal: AbortSignal.timeout(5000)
+			}
 		);
 
 		if (!response.ok) throw new Error('Failed to fetch YouTube feed');
@@ -60,12 +79,31 @@ export const single = async (channelId: string, limit?: number | null) => {
 		const textData = await response.text();
 		const allItems = parseYoutubeXML(textData);
 
+		// Update cache jika data berubah atau tidak ada cache
+		if (kv) {
+			const isDifferent =
+				!cachedData || JSON.stringify(allItems) !== JSON.stringify(cachedData);
+
+			if (isDifferent) {
+				await kv.put(cacheKey, JSON.stringify(allItems), {
+					// Cache selama seminggu (604800 detik)
+					expirationTtl: 604800
+				});
+			}
+		}
+
 		// Ambil sesuai limit jika ada
 		const items = limit ? allItems.slice(0, limit) : allItems;
-
 		return { items };
 	} catch (error) {
-		console.error('Error fetching YouTube data:', error);
+		console.error('Error fetching YouTube data, falling back to cache:', error);
+
+		// Gunakan cache jika feed RSS error
+		if (cachedData) {
+			const items = limit ? cachedData.slice(0, limit) : cachedData;
+			return { items: items || [] };
+		}
+
 		return { items: [] };
 	}
 };
