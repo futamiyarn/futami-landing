@@ -11,10 +11,10 @@
 		"prettier": "prettier --write ."
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.6",
-		"@astrojs/cloudflare": "^12.6.12",
+		"@astrojs/check": "^0.9.7",
+		"@astrojs/cloudflare": "^13.1.1",
 		"@tailwindcss/vite": "^4.1.18",
-		"astro": "^5.16.6",
+		"astro": "^6.0.4",
 		"astro-icon": "^1.1.5",
 		"tailwindcss": "^4.1.18",
 		"typescript": "^5.9.3",
@@ -24,6 +24,7 @@
 		"@babel/parser": "^7.28.5",
 		"@types/node": "^22.19.3",
 		"axios": "^1.13.2",
+		"eslint-plugin-astro": "^1.6.0",
 		"form-data": "^4.0.5",
 		"glob": "^11.1.0",
 		"prettier": "^3.7.4",
@@ -31,6 +32,6 @@
 		"prettier-plugin-tailwindcss": "^0.6.14",
 		"sass": "^1.97.1",
 		"sharp": "^0.33.5",
-		"wrangler": "^4.56.0"
+		"wrangler": "^4.72.0"
 	}
 }

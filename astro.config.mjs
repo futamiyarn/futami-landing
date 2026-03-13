@@ -1,10 +1,12 @@
 import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
 import icon from 'astro-icon';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-	// No adapter here - runs on default Node.js dev server
+	// Only use cloudflare adapter in production (build) to avoid dev environment network interface restrictions
+	adapter: process.env.NODE_ENV === 'production' ? cloudflare() : undefined,
 	integrations: [icon()],
 	redirects: {},
 	vite: {
@@ -30,6 +32,8 @@ export default defineConfig({
 		]
 	},
 	build: {
-		inlineStylesheets: 'never'
+		inlineStylesheets: 'never',
+		client: './',
+		server: './_worker.js'
 	}
 });

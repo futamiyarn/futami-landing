@@ -21,6 +21,8 @@ export default defineConfig({
 		]
 	},
 	build: {
-		inlineStylesheets: 'never'
+		inlineStylesheets: 'never',
+		client: './',
+		server: './_worker.js'
 	}
 });
