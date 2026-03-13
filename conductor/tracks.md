@@ -5,12 +5,11 @@ This file tracks all major tracks for the project. Each track has its own detail
 ---
 
 - [x] **Track: Foundation: Astro check and ESLint setup**
-  *Link: [./tracks/foundation_20260313/](./tracks/foundation_20260313/)*
+      _Link: [./tracks/foundation_20260313/](./tracks/foundation_20260313/)_
 
 ---
-
 
 ---
 
 - [ ] **Track: Fix Astro Check Diagnostics**
-  *Link: [./tracks/fix_check_20260313/](./tracks/fix_check_20260313/)*
+      _Link: [./tracks/fix_check_20260313/](./tracks/fix_check_20260313/)_

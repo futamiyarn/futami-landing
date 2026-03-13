@@ -49,14 +49,20 @@ function parseYoutubeXML(xml: string) {
 /**
  * Fetch data video terbaru dari Channel ID tertentu dengan caching KV
  */
-export const single = async (channelId: string, limit?: number | null, kv?: any) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const single = async (
+	channelId: string,
+	limit?: number | null,
+	kv?: any
+) => {
 	const cacheKey = `yt_feed_${channelId}`;
 	let cachedData: YouTubeVideo[] | null = null;
 
 	// Coba ambil dari cache KV jika tersedia
 	if (kv) {
 		try {
-			const cached = await kv.get(cacheKey, { type: 'json' });
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			const cached = await (kv as any).get(cacheKey, { type: 'json' });
 			if (cached) {
 				cachedData = cached as YouTubeVideo[];
 			}
@@ -70,6 +76,7 @@ export const single = async (channelId: string, limit?: number | null, kv?: any)
 			`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`,
 			{
 				// Timeout singkat agar tidak menggantung jika RSS lambat
+				// @ts-expect-error signal.timeout is newer
 				signal: AbortSignal.timeout(5000)
 			}
 		);
@@ -85,7 +92,8 @@ export const single = async (channelId: string, limit?: number | null, kv?: any)
 				!cachedData || JSON.stringify(allItems) !== JSON.stringify(cachedData);
 
 			if (isDifferent) {
-				await kv.put(cacheKey, JSON.stringify(allItems), {
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				await (kv as any).put(cacheKey, JSON.stringify(allItems), {
 					// Cache selama seminggu (604800 detik)
 					expirationTtl: 604800
 				});

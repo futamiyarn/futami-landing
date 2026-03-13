@@ -2,7 +2,8 @@ import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async ({ url }) => {
 	const API_KEY = import.meta.env.YOUTUBE_API_KEY;
-	const channelId = url.searchParams.get('channelId') || 'UCY_76_kibnLb0hgOdZXI-aQ'; // Default to futami
+	const channelId =
+		url.searchParams.get('channelId') || 'UCY_76_kibnLb0hgOdZXI-aQ'; // Default to futami
 	const maxResults = url.searchParams.get('maxResults') || '15';
 
 	if (!API_KEY) {
@@ -33,10 +34,13 @@ export const GET: APIRoute = async ({ url }) => {
 				'CDN-Cache-Control': 'max-age=43200'
 			}
 		});
-	} catch (error) {
-		return new Response(JSON.stringify({ error: 'Failed to fetch YouTube data' }), {
-			status: 500,
-			headers: { 'Content-Type': 'application/json' }
-		});
+	} catch {
+		return new Response(
+			JSON.stringify({ error: 'Failed to fetch YouTube data' }),
+			{
+				status: 500,
+				headers: { 'Content-Type': 'application/json' }
+			}
+		);
 	}
 };

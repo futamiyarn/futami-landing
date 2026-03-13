@@ -7,6 +7,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
 	// Only use cloudflare adapter in production (build) to avoid dev environment network interface restrictions
 	adapter: process.env.NODE_ENV === 'production' ? cloudflare() : undefined,
+
+	output: 'hybrid',
+
 	integrations: [icon()],
 	redirects: {},
 	vite: {
@@ -32,8 +35,6 @@ export default defineConfig({
 		]
 	},
 	build: {
-		inlineStylesheets: 'never',
-		client: './',
-		server: './_worker.js'
+		inlineStylesheets: 'never'
 	}
 });

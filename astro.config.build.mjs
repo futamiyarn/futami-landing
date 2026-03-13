@@ -8,6 +8,8 @@ export default defineConfig({
 	// Dedicated Cloudflare adapter
 	adapter: cloudflare(),
 
+	output: 'hybrid',
+
 	integrations: [icon()],
 	redirects: {},
 	vite: {
@@ -21,8 +23,6 @@ export default defineConfig({
 		]
 	},
 	build: {
-		inlineStylesheets: 'never',
-		client: './',
-		server: './_worker.js'
+		inlineStylesheets: 'never'
 	}
 });

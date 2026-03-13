@@ -8,7 +8,9 @@
 		"build": "astro check && astro build --config astro.config.build.mjs",
 		"preview": "astro preview",
 		"astro": "astro",
-		"prettier": "prettier --write ."
+		"prettier": "prettier --write .",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.7",
@@ -23,7 +25,11 @@
 	"devDependencies": {
 		"@babel/parser": "^7.28.5",
 		"@types/node": "^22.19.3",
+		"@typescript-eslint/eslint-plugin": "^8.57.0",
+		"@typescript-eslint/parser": "^8.57.0",
 		"axios": "^1.13.2",
+		"eslint": "^10.0.3",
+		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-astro": "^1.6.0",
 		"form-data": "^4.0.5",
 		"glob": "^11.1.0",

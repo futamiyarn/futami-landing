@@ -1,8 +1,0 @@
-{
-  "track_id": "cf_config_20260313",
-  "type": "chore",
-  "status": "in_progress",
-  "created_at": "2026-03-13T14:48:00Z",
-  "updated_at": "2026-03-13T14:48:00Z",
-  "description": "Configure Cloudflare Pages Build Output"
-}
