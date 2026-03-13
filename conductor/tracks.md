@@ -9,8 +9,6 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Configure Cloudflare Pages Build Output**
-  *Link: [./tracks/cf_config_20260313/](./tracks/cf_config_20260313/)*
 
 ---
 
