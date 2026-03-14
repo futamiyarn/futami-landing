@@ -8,7 +8,7 @@ export default defineConfig({
 	// Dedicated Cloudflare adapter
 	adapter: cloudflare(),
 
-	output: 'hybrid',
+	output: 'server',
 
 	integrations: [icon()],
 	redirects: {},

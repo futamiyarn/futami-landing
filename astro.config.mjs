@@ -8,7 +8,7 @@ export default defineConfig({
 	// Only use cloudflare adapter in production (build) to avoid dev environment network interface restrictions
 	adapter: process.env.NODE_ENV === 'production' ? cloudflare() : undefined,
 
-	output: 'hybrid',
+	output: 'server',
 
 	integrations: [icon()],
 	redirects: {},
