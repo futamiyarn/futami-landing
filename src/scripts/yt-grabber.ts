@@ -49,11 +49,11 @@ function parseYoutubeXML(xml: string) {
 /**
  * Fetch data video terbaru dari Channel ID tertentu dengan caching KV
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 export const single = async (
 	channelId: string,
 	limit?: number | null,
-	kv?: any
+	kv?: unknown
 ) => {
 	const cacheKey = `yt_feed_${channelId}`;
 	let cachedData: YouTubeVideo[] | null = null;
@@ -76,7 +76,6 @@ export const single = async (
 			`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`,
 			{
 				// Timeout singkat agar tidak menggantung jika RSS lambat
-				// @ts-expect-error signal.timeout is newer
 				signal: AbortSignal.timeout(5000)
 			}
 		);
