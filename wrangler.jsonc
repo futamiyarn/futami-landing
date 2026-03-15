@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/cloudflare/wrangler2/sys-types/schema.json",
-	"name": "futa-landing",
+	"name": "futami-link",
 	"compatibility_date": "2025-04-08",
 	"compatibility_flags": ["nodejs_compat", "disable_nodejs_process_v2"],
 	"assets": {
