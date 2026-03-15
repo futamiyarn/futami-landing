@@ -49,20 +49,29 @@ function parseYoutubeXML(xml: string) {
 /**
  * Fetch data video terbaru dari Channel ID tertentu dengan caching KV
  */
- 
-export const single = async (
-	channelId: string,
-	limit?: number | null,
-	kv?: unknown
-) => {
+
+export const single = async (channelId: string, limit?: number | null) => {
 	const cacheKey = `yt_feed_${channelId}`;
 	let cachedData: YouTubeVideo[] | null = null;
+	
+	// Disable cache in development
+	const isDev = import.meta.env.DEV || import.meta.env.IS_DEV === 'true';
+	let kv: any = undefined;
+
+	if (!isDev) {
+		try {
+			// @ts-ignore
+			const { env } = await import('cloudflare:workers');
+			kv = env.FTM_KV;
+		} catch (e) {
+			console.error('Failed to import cloudflare:workers', e);
+		}
+	}
 
 	// Coba ambil dari cache KV jika tersedia
 	if (kv) {
 		try {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			const cached = await (kv as any).get(cacheKey, { type: 'json' });
+			const cached = await kv.get(cacheKey, { type: 'json' });
 			if (cached) {
 				cachedData = cached as YouTubeVideo[];
 			}
@@ -90,12 +99,9 @@ export const single = async (
 			const isDifferent =
 				!cachedData || JSON.stringify(allItems) !== JSON.stringify(cachedData);
 
-			if (isDifferent) {
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				await (kv as any).put(cacheKey, JSON.stringify(allItems), {
-					// Cache selama seminggu (604800 detik)
-					expirationTtl: 604800
-				});
+			// Hanya update jika data berbeda dan tidak kosong (menghindari cache "not found" kosong)
+			if (isDifferent && allItems.length > 0) {
+				await kv.put(cacheKey, JSON.stringify(allItems));
 			}
 		}
 

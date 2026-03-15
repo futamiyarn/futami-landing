@@ -4,6 +4,7 @@ import Section from '@components/Section.astro';
 import Card from '@components/Card.astro';
 import Navbar from '@components/Navbar.astro';
 import NavbarButton from '@components/NavbarButton.astro';
+import donates from '@data/donates.json';
 ---
 
 <Layout title="Donate - Futami">
@@ -11,31 +12,17 @@ import NavbarButton from '@components/NavbarButton.astro';
 		<NavbarButton label="Direct Support" icon="coins" href="#" />
 		<NavbarButton label="Affiliate" icon="cart" href="/donate/affiliate" />
 	</Navbar>
-	<!-- In Indonesia (IDR) -->
+
 	<Section title="Direct Donate">
-		<!-- Trakteer -->
-		<Card
-			title="Trakteer"
-			subtitle="(ID Only) Rp. 5.000 each"
-			href="https://trakteer.id/futami"
-			icon="trakteer"
-		/>
-
-		<!-- Saweria -->
-		<Card
-			title="Saweria"
-			subtitle="(ID Only) Min Rp. 5.000"
-			href="https://saweria.co/futami"
-			icon="saweria"
-		/>
-
-		<!-- Overseas (US Dollar) -->
-		<!-- Ko-fi -->
-		<Card
-			title="Ko-fi"
-			subtitle="$3 each"
-			href="https://ko-fi.com/futami"
-			icon="kofi"
-		/>
+		{
+			donates.map((item) => (
+				<Card
+					title={item.nama}
+					subtitle={item.deskripsi}
+					icon={item.icon_name}
+					href={item.url}
+				/>
+			))
+		}
 	</Section>
 </Layout>

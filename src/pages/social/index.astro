@@ -2,62 +2,62 @@
 import Section from '@components/Section.astro';
 import Card from '@components/Card.astro';
 import Layout from '@layouts/Layout.astro';
+import socials from '@data/socials.json';
+import donates from '@data/donates.json';
+import others from '@data/others.json';
+
+const communities = socials.filter((s) => s.kategori === 'Communities');
+const blogLink = others.find((o) => o.nama === 'Futami Blog');
+const baTools = others.find((o) => o.nama === 'Blue Archive Tools');
 ---
 
 <Layout title="Social - Futami">
 	<!-- 1. Platform (Single Button) -->
 	<Section title="Platform">
 		<Card
-			title="Platforms"
+			title="Channels"
 			subtitle="Videos, shorts, and more"
 			icon="video"
 			href="/platform"
 		/>
-		<Card
-			title="Futami Blog"
-			subtitle="Writing & Thoughts"
-			icon="blog"
-			href="https://blog.futami.my.id"
-		/>
+		{
+			blogLink && (
+				<Card
+					title={blogLink.nama}
+					subtitle={blogLink.deskripsi}
+					icon={blogLink.icon_name}
+					href={blogLink.url}
+				/>
+			)
+		}
+		{
+			baTools && (
+				<Card
+					title={baTools.nama}
+					subtitle={baTools.deskripsi}
+					icon={baTools.icon_name}
+					href={baTools.url}
+				/>
+			)
+		}
 	</Section>
 
-	<!-- 2. Communities (Updated Descriptions) -->
+	<!-- 2. Communities -->
 	<Section title="Communities">
-		<Card
-			title="X (Twitter)"
-			subtitle="Cunny moment"
-			icon="twitter_x"
-			href="https://x.com/futamiid"
-		/>
-		<Card
-			title="Facebook"
-			subtitle="The meme archive"
-			icon="facebook"
-			href="https://facebook.com/futamiid"
-		/>
-		<Card
-			title="Instagram"
-			subtitle="Moments & highlights"
-			icon="instagram"
-			href="https://instagram.com/futamiid"
-		/>
-		<Card
-			title="Threads"
-			subtitle="Unfiltered thoughts"
-			icon="threads"
-			href="https://threads.net/@futamiid"
-		/>
-		<Card
-			title="Bluesky"
-			subtitle="Into the blue"
-			icon="bluesky"
-			href="https://bsky.app/profile/futami.my.id"
-		/>
+		{
+			communities.map((item) => (
+				<Card
+					title={item.nama}
+					subtitle={item.deskripsi}
+					icon={item.icon_name}
+					href={item.url}
+				/>
+			))
+		}
 	</Section>
 
-	<!-- 3. Support Me (Gabungan Donate & Affiliate) -->
+	<!-- 3. Support Me -->
 	<Section title="Support Me" id="support">
-		<!-- Affiliate (Sesuai request seperti index home) -->
 		<Card
 			title="Affiliate"
 			subtitle="Buy gear and app stuff"
@@ -65,24 +65,15 @@ import Layout from '@layouts/Layout.astro';
 			href="/donate/affiliate"
 		/>
 
-		<!-- Donation Links -->
-		<Card
-			title="Trakteer"
-			subtitle="(ID Only) Rp. 5.000 each"
-			icon="trakteer"
-			href="https://trakteer.id/futami"
-		/>
-		<Card
-			title="Saweria"
-			subtitle="(ID Only) Min Rp. 5.000"
-			icon="saweria"
-			href="https://saweria.co/futami"
-		/>
-		<Card
-			title="Ko-fi"
-			subtitle="Min $3"
-			icon="kofi"
-			href="https://ko-fi.com/futami"
-		/>
+		{
+			donates.map((item) => (
+				<Card
+					title={item.nama}
+					subtitle={item.deskripsi}
+					icon={item.icon_name}
+					href={item.url}
+				/>
+			))
+		}
 	</Section>
 </Layout>

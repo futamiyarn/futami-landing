@@ -1,0 +1,20 @@
+[
+	{
+		"nama": "Futami Blog",
+		"deskripsi": "Writing & Thoughts",
+		"url": "https://blog.futami.my.id",
+		"kategori": "Others",
+		"icon_name": "blog",
+		"image_url": "",
+		"archive": false
+	},
+	{
+		"nama": "Blue Archive Tools",
+		"deskripsi": "Calculate your pyroxenes and more",
+		"url": "https://ba.futami.my.id",
+		"kategori": "Others",
+		"icon_name": "content",
+		"image_url": "",
+		"archive": false
+	}
+]
