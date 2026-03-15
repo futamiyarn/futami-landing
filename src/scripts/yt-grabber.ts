@@ -4,6 +4,7 @@ export interface YouTubeVideo {
 	url: string;
 	pubDate: string;
 	author: string;
+	isShorts?: boolean;
 }
 
 /**
@@ -18,6 +19,30 @@ function decodeHtml(text: string): string {
 		.replace(/&lt;/g, '<')
 		.replace(/&gt;/g, '>')
 		.replace(/&#39;/g, "'");
+}
+
+/**
+ * Cek apakah video adalah YouTube Shorts menggunakan oEmbed API
+ */
+async function checkIsShort(videoId: string): Promise<boolean> {
+	try {
+		// Menggunakan format /shorts/ untuk memaksa oEmbed memberikan rasio portrait jika video memang portrait
+		const videoUrl = `https://www.youtube.com/shorts/${videoId}`;
+		const oembedUrl = `https://www.youtube.com/oembed?url=${videoUrl}&format=json`;
+
+		const res = await fetch(oembedUrl, {
+			signal: AbortSignal.timeout(3000)
+		});
+
+		if (!res.ok) return false;
+
+		const data = await res.json();
+		// Jika width lebih kecil dari height, maka dianggap Shorts (Portrait)
+		return data.width < data.height;
+	} catch (error) {
+		console.error(`Error checking isShort for ${videoId}:`, error);
+		return false;
+	}
 }
 
 /**
@@ -92,22 +117,39 @@ export const single = async (channelId: string, limit?: number | null) => {
 		if (!response.ok) throw new Error('Failed to fetch YouTube feed');
 
 		const textData = await response.text();
-		const allItems = parseYoutubeXML(textData);
+		let allItems = parseYoutubeXML(textData);
+
+		// Ambil sesuai limit jika ada
+		const itemsToProcess = limit ? allItems.slice(0, limit) : allItems;
+
+		// Cek isShorts untuk setiap video yang akan diproses
+		// Memanfaatkan parallel processing agar lebih cepat
+		const itemsWithShortsStatus = await Promise.all(
+			itemsToProcess.map(async (item) => {
+				// Cek apakah data isShorts sudah ada di cache sebelumnya untuk ID ini
+				const cachedItem = cachedData?.find((c) => c.id === item.id);
+				if (cachedItem && typeof cachedItem.isShorts !== 'undefined') {
+					return { ...item, isShorts: cachedItem.isShorts };
+				}
+				
+				// Jika tidak ada di cache, lakukan fetch ke oEmbed
+				const isShorts = await checkIsShort(item.id);
+				return { ...item, isShorts };
+			})
+		);
 
 		// Update cache jika data berubah atau tidak ada cache
 		if (kv) {
 			const isDifferent =
-				!cachedData || JSON.stringify(allItems) !== JSON.stringify(cachedData);
+				!cachedData || JSON.stringify(itemsWithShortsStatus) !== JSON.stringify(cachedData);
 
 			// Hanya update jika data berbeda dan tidak kosong (menghindari cache "not found" kosong)
-			if (isDifferent && allItems.length > 0) {
-				await kv.put(cacheKey, JSON.stringify(allItems));
+			if (isDifferent && itemsWithShortsStatus.length > 0) {
+				await kv.put(cacheKey, JSON.stringify(itemsWithShortsStatus));
 			}
 		}
 
-		// Ambil sesuai limit jika ada
-		const items = limit ? allItems.slice(0, limit) : allItems;
-		return { items };
+		return { items: itemsWithShortsStatus };
 	} catch (error) {
 		console.error('Error fetching YouTube data, falling back to cache:', error);
 

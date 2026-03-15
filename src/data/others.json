@@ -4,13 +4,13 @@
 		"deskripsi": "Writing & Thoughts",
 		"url": "https://blog.futami.my.id",
 		"kategori": "Others",
-		"icon_name": "blog",
+		"icon_name": "article",
 		"image_url": "",
 		"archive": false
 	},
 	{
 		"nama": "Blue Archive Tools",
-		"deskripsi": "Calculate your pyroxenes and more",
+		"deskripsi": "Calculation level, resources, and more",
 		"url": "https://ba.futami.my.id",
 		"kategori": "Others",
 		"icon_name": "content",

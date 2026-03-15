@@ -1,0 +1,49 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	title: string;
+	subtitle?: string;
+	href?: string;
+	thumbnail?: string;
+}
+
+const { title, subtitle, href = '#', thumbnail } = Astro.props;
+
+// Default thumbnail for blog if not provided
+const defaultThumbnail = 'https://placehold.co/600x400/2f0e13/e88d92?text=Futami+Blog';
+---
+
+<a
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+	class="group relative block aspect-video overflow-hidden rounded-3xl shadow-md"
+>
+	<img
+		src={thumbnail || defaultThumbnail}
+		alt={title}
+		class="h-full w-full object-cover brightness-[0.8] transition-transform duration-500 group-hover:scale-105"
+		onerror={`this.onerror=null;this.src='${defaultThumbnail}'`}
+	/>
+
+	<div
+		class="absolute inset-x-0 bottom-0 flex items-center gap-3 bg-gradient-to-t from-black/90 to-transparent p-4 text-white"
+	>
+		<div
+			class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-primary-container"
+		>
+			<Icon name="article" class="text-2xl" />
+		</div>
+		<div class="flex flex-col min-w-0">
+			<span class="line-clamp-1 text-base leading-tight font-bold drop-shadow-md"
+				>{title}</span
+			>
+			{subtitle && (
+				<span class="line-clamp-1 text-xs opacity-80 drop-shadow-sm font-medium">
+					{subtitle}
+				</span>
+			)}
+		</div>
+	</div>
+</a>

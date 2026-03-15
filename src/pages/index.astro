@@ -6,17 +6,63 @@ import Section from '@components/Section.astro';
 import Navbar from '@components/Navbar.astro';
 import NavbarButton from '@components/NavbarButton.astro';
 import Card from '@components/Card.astro';
+import BlogCard from '@components/BlogCard.astro';
 import CardYoutube from '@components/CardYoutube.astro';
 import { Icon } from 'astro-icon/components';
 import platforms from '@data/platforms.json';
 import others from '@data/others.json';
 import affiliates from '@data/affiliates.json';
 
-// Mengambil data dari API Blog
-const response = await fetch('https://blog.futami.my.id/api/latest.json');
-const data = await response.json();
-// Mengambil hanya 3 data pertama
-const latestPosts = data.slice(0, 3);
+// KV Caching for Blog Posts
+const isDev = import.meta.env.DEV || import.meta.env.IS_DEV === 'true';
+let kv: any = undefined;
+
+if (!isDev) {
+	try {
+		// @ts-ignore
+		const { env } = await import('cloudflare:workers');
+		kv = env.FTM_KV;
+	} catch (e) {
+		console.error('Failed to import cloudflare:workers', e);
+	}
+}
+
+const cacheKey = 'blog_latest_posts';
+let cachedBlogData: any[] | null = null;
+
+if (kv) {
+	try {
+		cachedBlogData = await kv.get(cacheKey, { type: 'json' });
+	} catch (e) {
+		console.error('Error reading blog cache from KV:', e);
+	}
+}
+
+let latestPosts: any[] = [];
+
+try {
+	const response = await fetch('https://blog.futami.my.id/api/latest.json', {
+		signal: AbortSignal.timeout(5000)
+	});
+	
+	if (response.ok) {
+		const rawData = await response.json();
+		const allPosts = rawData.slice(0, 3);
+		
+		if (kv) {
+			const isDifferent = !cachedBlogData || JSON.stringify(allPosts) !== JSON.stringify(cachedBlogData);
+			if (isDifferent && allPosts.length > 0) {
+				await kv.put(cacheKey, JSON.stringify(allPosts));
+			}
+		}
+		latestPosts = allPosts;
+	} else {
+		throw new Error('Failed to fetch blog posts');
+	}
+} catch (e) {
+	console.error('Error fetching blog data, falling back to cache:', e);
+	latestPosts = cachedBlogData || [];
+}
 
 // Data untuk section Platform
 const baTools = others.find((o) => o.nama === 'Blue Archive Tools');
@@ -33,10 +79,10 @@ const randomAffiliates = affiliates.sort(() => 0.5 - Math.random()).slice(0, 2);
 
 <Layout title="Futami - talk about anything">
 	<Navbar>
-		<NavbarButton label="Video Content" icon="video" href="/platform" />
+		<NavbarButton label="Video Content" icon="video" href="/channels" />
 		<NavbarButton
 			label="Read Blog"
-			icon="blog"
+			icon="article"
 			href="https://blog.futami.my.id"
 		/>
 		<NavbarButton label="Community Group" icon="socials" href="/social" />
@@ -47,18 +93,18 @@ const randomAffiliates = affiliates.sort(() => 0.5 - Math.random()).slice(0, 2);
 		<CardYoutube limit_videos={1} />
 		{
 			latestPosts.map((post: any) => (
-				<Card
+				<BlogCard
 					title={post.title}
 					subtitle={post.description}
-					icon="article"
 					href={post.link}
+					thumbnail={post.thumbnail}
 				/>
 			))
 		}
 
 		<div slot="action" class="flex gap-4">
 			<a
-				href="/platform"
+				href="/channels"
 				class="btn-action flex items-center"
 			>
 				Channels <Icon name="arrow-right" class="ml-2 h-4 w-4" />
