@@ -8,12 +8,27 @@ import NavbarButton from '@components/NavbarButton.astro';
 import Card from '@components/Card.astro';
 import CardYoutube from '@components/CardYoutube.astro';
 import { Icon } from 'astro-icon/components';
+import platforms from '@data/platforms.json';
+import others from '@data/others.json';
+import affiliates from '@data/affiliates.json';
 
 // Mengambil data dari API Blog
 const response = await fetch('https://blog.futami.my.id/api/latest.json');
 const data = await response.json();
 // Mengambil hanya 3 data pertama
 const latestPosts = data.slice(0, 3);
+
+// Data untuk section Platform
+const baTools = others.find((o) => o.nama === 'Blue Archive Tools');
+const randomPlaylist = platforms
+	.filter((p) => p.icon_name === 'playlist')
+	.sort(() => 0.5 - Math.random())[0];
+const randomActiveChannel = platforms
+	.filter((p) => p.archive === false && p.icon_name !== 'playlist')
+	.sort(() => 0.5 - Math.random())[0];
+
+// Ambil 2 random affiliates
+const randomAffiliates = affiliates.sort(() => 0.5 - Math.random()).slice(0, 2);
 ---
 
 <Layout title="Futami - talk about anything">
@@ -28,19 +43,8 @@ const latestPosts = data.slice(0, 3);
 		<NavbarButton label="Finantial Support" icon="wallet" href="/donate" />
 	</Navbar>
 
-	<Section title="Latest Videos">
-		<CardYoutube limit_videos={2} />
-
-		<a
-			href="/platform/videos"
-			slot="action"
-			class="btn-action flex items-center"
-		>
-			More Videos <Icon name="arrow-right" class="ml-2 h-4 w-4" />
-		</a>
-	</Section>
-
-	<Section title="From the Blog">
+	<Section title="Latest Updates">
+		<CardYoutube limit_videos={1} />
 		{
 			latestPosts.map((post: any) => (
 				<Card
@@ -52,47 +56,72 @@ const latestPosts = data.slice(0, 3);
 			))
 		}
 
-		<a
-			href="https://blog.futami.my.id"
-			slot="action"
-			class="btn-action flex items-center"
-		>
-			Read More <Icon name="arrow-right" class="ml-2 h-4 w-4" />
-		</a>
+		<div slot="action" class="flex gap-4">
+			<a
+				href="/platform"
+				class="btn-action flex items-center"
+			>
+				Channels <Icon name="arrow-right" class="ml-2 h-4 w-4" />
+			</a>
+			<a
+				href="https://blog.futami.my.id"
+				class="btn-action flex items-center"
+			>
+				Blog <Icon name="arrow-right" class="ml-2 h-4 w-4" />
+			</a>
+		</div>
 	</Section>
 
 	<Section title="Platform">
+		{
+			baTools && (
+				<Card
+					title={baTools.nama}
+					subtitle={baTools.deskripsi}
+					icon={baTools.icon_name}
+					href={baTools.url}
+				/>
+			)
+		}
+		{
+			randomPlaylist && (
+				<Card
+					title={randomPlaylist.nama}
+					subtitle={randomPlaylist.deskripsi}
+					icon={randomPlaylist.icon_name}
+					href={randomPlaylist.url}
+				/>
+			)
+		}
+		{
+			randomActiveChannel && (
+				<Card
+					title={randomActiveChannel.nama}
+					subtitle={randomActiveChannel.deskripsi}
+					icon={randomActiveChannel.icon_name}
+					href={randomActiveChannel.url}
+				/>
+			)
+		}
 		<Card
-			title="YouTube"
-			subtitle="Main Channel"
-			icon="youtube"
-			href="https://youtube.com/@futamiid"
+			title="Community"
+			subtitle="Social and community group"
+			icon="socials"
+			href="/social"
 		/>
-		<Card
-			title="TikTok"
-			subtitle="Other Official Shorts"
-			icon="tiktok"
-			href="https://tiktok.com/@futamiid"
-		/>
-		<Card
-			title="Futami Blog"
-			subtitle="Writing & Thoughts"
-			icon="blog"
-			href="https://blog.futami.my.id"
-		/>
-
-		<a href="/platform" slot="action" class="btn-action flex items-center">
-			Other Platform <Icon name="arrow-right" class="ml-2 h-4 w-4" />
-		</a>
 	</Section>
 
 	<Section title="Support Me">
-		<Card
-			title="Affiliate"
-			subtitle="Buy gear and app stuff"
-			icon="cart"
-			href="/donate/affiliate"
-		/>
+		{
+			randomAffiliates.map((item) => (
+				<Card
+					title={item.nama}
+					subtitle={item.deskripsi}
+					icon={item.icon_name}
+					href={item.url}
+				/>
+			))
+		}
 		<Card
 			title="Donasi"
 			subtitle='Direct "free" money'

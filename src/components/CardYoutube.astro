@@ -11,16 +11,13 @@ interface Props {
 
 const { channel_id, limit_videos, hide_next } = Astro.props;
 
-// Ambil KV dari Cloudflare runtime jika tersedia
-const kv = (Astro.locals as any).runtime?.env?.KV;
-
-// Fetch data menggunakan script yang kamu sediakan, sertakan KV untuk caching
-const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos, kv);
+// Fetch data menggunakan script yang kamu sediakan
+const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos);
 ---
 
 {
 	yt_data.items
-		.filter((item: YouTube, i: number) => (hide_next ? i === 0 : true))
+		.filter((_: YouTube, i: number) => (hide_next ? i === 0 : true))
 		.map((item: YouTube) => (
 			/* Menggunakan VideoCard agar style sesuai dengan 
                tampilan "Latest Videos" di index.astro saat ini 

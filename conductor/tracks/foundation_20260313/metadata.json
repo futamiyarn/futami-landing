@@ -1,0 +1,8 @@
+{
+	"track_id": "foundation_20260313",
+	"type": "chore",
+	"status": "completed",
+	"created_at": "2026-03-13T14:45:00Z",
+	"updated_at": "2026-03-13T14:45:00Z",
+	"description": "Foundation: Astro check and ESLint setup"
+}

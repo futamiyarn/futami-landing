@@ -1,0 +1,29 @@
+[
+	{
+		"nama": "Trakteer",
+		"deskripsi": "(ID Only) Rp. 5.000 each",
+		"url": "https://trakteer.id/futami",
+		"kategori": "Direct Donate",
+		"icon_name": "trakteer",
+		"image_url": "",
+		"archive": false
+	},
+	{
+		"nama": "Saweria",
+		"deskripsi": "(ID Only) Min Rp. 5.000",
+		"url": "https://saweria.co/futami",
+		"kategori": "Direct Donate",
+		"icon_name": "saweria",
+		"image_url": "",
+		"archive": false
+	},
+	{
+		"nama": "Ko-fi",
+		"deskripsi": "$3 each",
+		"url": "https://ko-fi.com/futami",
+		"kategori": "Direct Donate",
+		"icon_name": "kofi",
+		"image_url": "",
+		"archive": false
+	}
+]

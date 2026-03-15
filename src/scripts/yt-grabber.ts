@@ -49,9 +49,24 @@ function parseYoutubeXML(xml: string) {
 /**
  * Fetch data video terbaru dari Channel ID tertentu dengan caching KV
  */
-export const single = async (channelId: string, limit?: number | null, kv?: any) => {
+
+export const single = async (channelId: string, limit?: number | null) => {
 	const cacheKey = `yt_feed_${channelId}`;
 	let cachedData: YouTubeVideo[] | null = null;
+	
+	// Disable cache in development
+	const isDev = import.meta.env.DEV || import.meta.env.IS_DEV === 'true';
+	let kv: any = undefined;
+
+	if (!isDev) {
+		try {
+			// @ts-ignore
+			const { env } = await import('cloudflare:workers');
+			kv = env.FTM_KV;
+		} catch (e) {
+			console.error('Failed to import cloudflare:workers', e);
+		}
+	}
 
 	// Coba ambil dari cache KV jika tersedia
 	if (kv) {
@@ -84,11 +99,9 @@ export const single = async (channelId: string, limit?: number | null, kv?: any)
 			const isDifferent =
 				!cachedData || JSON.stringify(allItems) !== JSON.stringify(cachedData);
 
-			if (isDifferent) {
-				await kv.put(cacheKey, JSON.stringify(allItems), {
-					// Cache selama seminggu (604800 detik)
-					expirationTtl: 604800
-				});
+			// Hanya update jika data berbeda dan tidak kosong (menghindari cache "not found" kosong)
+			if (isDifferent && allItems.length > 0) {
+				await kv.put(cacheKey, JSON.stringify(allItems));
 			}
 		}
 

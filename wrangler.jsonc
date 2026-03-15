@@ -1,0 +1,16 @@
+{
+	"$schema": "https://raw.githubusercontent.com/cloudflare/wrangler2/sys-types/schema.json",
+	"name": "futa-landing",
+	"compatibility_date": "2025-04-08",
+	"compatibility_flags": ["nodejs_compat", "disable_nodejs_process_v2"],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": "./dist"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "FTM_KV",
+			"id": "02d875955965498c853be907d62dbc8c"
+		}
+	]
+}

@@ -1,11 +1,9 @@
-// @ts-nocheck
 let focus_status = 'active',
 	themeFav = '';
 const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-const theme = 0;
 
 const changeFavicon = () => {
-	const visibility = document.visibilityState == 'visible';
+	const visibility = document.visibilityState === 'visible';
 	const change_fav = visibility ? 'active' : `inactive-${themeFav}`;
 	const favicon_selector = Array.from(
 		document.getElementsByClassName('favicon')
@@ -22,7 +20,11 @@ const changeFavicon = () => {
 //
 
 function changeTheme() {
-	darkScheme.matches ? (themeFav = 'dark') : (themeFav = 'light');
+	if (darkScheme.matches) {
+		themeFav = 'dark';
+	} else {
+		themeFav = 'light';
+	}
 	document.documentElement.classList.toggle('dark', darkScheme.matches);
 }
 

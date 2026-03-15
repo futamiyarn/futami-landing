@@ -20,7 +20,7 @@ const { title, thumbnail, href = '#' } = Astro.props;
 		src={thumbnail}
 		alt={title}
 		class="h-full w-full object-cover brightness-[0.8] transition-transform duration-500 group-hover:scale-105"
-		onerror="this.src='https://placehold.co/600x400/2f0e13/e88d92?text=No+Thumb'"
+		onerror="this.onerror=null;this.src='https://placehold.co/600x400/2f0e13/e88d92?text=No+Thumb'"
 	/>
 
 	<div

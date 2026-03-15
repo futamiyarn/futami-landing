@@ -8,6 +8,8 @@ export default defineConfig({
 	// Dedicated Cloudflare adapter
 	adapter: cloudflare(),
 
+	output: 'server',
+
 	integrations: [icon()],
 	redirects: {},
 	vite: {

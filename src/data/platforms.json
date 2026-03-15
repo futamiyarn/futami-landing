@@ -1,0 +1,110 @@
+[
+	{
+		"nama": "Futami",
+		"deskripsi": "Main YouTube (formerly)",
+		"url": "https://youtube.com/@futamiid",
+		"kategori": "Main Platform",
+		"icon_name": "youtube",
+		"image_url": "",
+		"archive": false
+	},
+	{
+		"nama": "TikTok",
+		"deskripsi": "You like genep tujuh?",
+		"url": "https://tiktok.com/@futamiid",
+		"kategori": "Main Platform",
+		"icon_name": "tiktok",
+		"image_url": "",
+		"archive": false
+	},
+	{
+		"nama": "Instagram",
+		"deskripsi": "More personal on story",
+		"url": "https://instagram.com/futamiid",
+		"kategori": "Main Platform",
+		"icon_name": "instagram",
+		"image_url": "",
+		"archive": false
+	},
+	{
+		"nama": "Facebook",
+		"deskripsi": "Boomer and shimp fest",
+		"url": "https://facebook.com/futamiid",
+		"kategori": "Main Platform",
+		"icon_name": "facebook",
+		"image_url": "",
+		"archive": false
+	},
+	{
+		"nama": "Foetami",
+		"deskripsi": "Secondary Random Stuff",
+		"url": "https://youtube.com/@footami",
+		"kategori": "Hiatus Channels",
+		"icon_name": "youtube",
+		"image_url": "",
+		"archive": true
+	},
+	{
+		"nama": "Amedia TV",
+		"deskripsi": "All About Televisions and Cartoons",
+		"url": "https://youtube.com/@amediativi",
+		"kategori": "Hiatus Channels",
+		"icon_name": "youtube",
+		"image_url": "",
+		"archive": true
+	},
+	{
+		"nama": "Rednotes",
+		"deskripsi": "Greenland is a country",
+		"url": "https://xhslink.com/m/5DxVmS6YDM3",
+		"kategori": "Hiatus Channels",
+		"icon_name": "rednotes",
+		"image_url": "",
+		"archive": true
+	},
+	{
+		"nama": "Clash Story",
+		"deskripsi": "All about Clash and Supercell (dev)",
+		"url": "https://youtube.com/playlist?list=PLQX-jAZdOlz78A6rWK_9lnxoF1QOT2FOd",
+		"kategori": "Main Content",
+		"icon_name": "playlist",
+		"image_url": "",
+		"archive": false
+	},
+	{
+		"nama": "Start->Spark->",
+		"deskripsi": "Fact about game waifu gacha",
+		"url": "https://youtube.com/playlist?list=PLQX-jAZdOlz4wuC_IMy1H8aTHH5WO8HMd",
+		"kategori": "Main Content",
+		"icon_name": "playlist",
+		"image_url": "",
+		"archive": false
+	},
+	{
+		"nama": "Futami Latest",
+		"deskripsi": "Latest news and update stuff",
+		"url": "https://youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE",
+		"kategori": "Rarely Uploads",
+		"icon_name": "playlist",
+		"image_url": "",
+		"archive": false
+	},
+	{
+		"nama": "Futami Tips",
+		"deskripsi": "Tips and Trick about anything",
+		"url": "https://youtube.com/playlist?list=PLQX-jAZdOlz5EKlSdgDmh3PjqEcDzZizz",
+		"kategori": "Rarely Uploads",
+		"icon_name": "playlist",
+		"image_url": "",
+		"archive": false
+	},
+	{
+		"nama": "Numpang Chacha",
+		"deskripsi": "Random gacha video",
+		"url": "https://youtube.com/playlist?list=PLQX-jAZdOlz5WY4QBC7cgBihNQx0gP0Iu&si=po_jFY5EwkjuH-LW",
+		"kategori": "Rarely Uploads",
+		"icon_name": "playlist",
+		"image_url": "",
+		"archive": false
+	}
+]

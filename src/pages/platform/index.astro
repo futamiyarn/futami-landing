@@ -4,6 +4,9 @@ import Section from '@components/Section.astro';
 import Navbar from '@components/Navbar.astro';
 import NavbarButton from '@components/NavbarButton.astro';
 import Card from '@components/Card.astro';
+import platforms from '@data/platforms.json';
+
+const categories = [...new Set(platforms.map((item) => item.kategori))];
 ---
 
 <Layout title="Platform - Futami">
@@ -12,87 +15,20 @@ import Card from '@components/Card.astro';
 		<NavbarButton label="Videos" icon="video" href="/platform/videos" />
 	</Navbar>
 
-	<Section title="Main Platform">
-		<Card
-			title="Futami"
-			subtitle="Main YouTube (fomerly)"
-			icon="youtube"
-			href="https://youtube.com/@futamiid"
-		/>
-		<Card
-			title="TikTok"
-			subtitle="You like genep tujuh?"
-			icon="tiktok"
-			href="https://tiktok.com/@futamiid"
-		/>
-		<Card
-			title="Instagram"
-			subtitle="More personal on story"
-			icon="instagram"
-			href="https://instagram.com/futamiid"
-		/>
-		<Card
-			title="Facebook"
-			subtitle="Boomer and shimp fest"
-			icon="facebook"
-			href="https://facebook.com/futamiid"
-		/>
-	</Section>
-
-	<Section title="Hiatus Channels">
-		<Card
-			title="Foetami"
-			subtitle="Secondary Random Stuff"
-			icon="youtube"
-			href="https://youtube.com/@footami"
-		/>
-		<Card
-			title="Amedia TV"
-			subtitle="All About Televisions and Cartoons"
-			icon="youtube"
-			href="https://youtube.com/@amediativi"
-		/>
-		<Card
-			title="Rednotes"
-			subtitle="Greenland is a country"
-			icon="rednotes"
-			href="https://xhslink.com/m/5DxVmS6YDM3"
-		/>
-	</Section>
-
-	<Section title="Main Content">
-		<Card
-			title="Clash Story"
-			subtitle="All about Clash and Supercell (dev)"
-			icon="playlist"
-			href="https://youtube.com/playlist?list=PLQX-jAZdOlz78A6rWK_9lnxoF1QOT2FOd"
-		/>
-		<Card
-			title="Start->Spark->"
-			subtitle="Fact about game waifu gacha"
-			icon="playlist"
-			href="https://youtube.com/playlist?list=PLQX-jAZdOlz4wuC_IMy1H8aTHH5WO8HMd"
-		/>
-	</Section>
-
-	<Section title="Rarely Uploads">
-		<Card
-			title="Futami Latest"
-			subtitle="Latest news and update stuff"
-			icon="playlist"
-			href="https://youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE"
-		/>
-		<Card
-			title="Futami Tips"
-			subtitle="Tips and Trick about anything"
-			icon="playlist"
-			href="https://youtube.com/playlist?list=PLQX-jAZdOlz5EKlSdgDmh3PjqEcDzZizz"
-		/>
-		<Card
-			title="Numpang Chacha"
-			subtitle="Random gacha video"
-			icon="playlist"
-			href="https://youtube.com/playlist?list=PLQX-jAZdOlz5WY4QBC7cgBihNQx0gP0Iu&si=po_jFY5EwkjuH-LW"
-		/>
-	</Section>
+	{
+		categories.map((category) => (
+			<Section title={category}>
+				{platforms
+					.filter((item) => item.kategori === category)
+					.map((item) => (
+						<Card
+							title={item.nama}
+							subtitle={item.deskripsi}
+							icon={item.icon_name}
+							href={item.url}
+						/>
+					))}
+			</Section>
+		))
+	}
 </Layout>
