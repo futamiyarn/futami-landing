@@ -1,7 +1,7 @@
 [
 	{
 		"nama": "Futami",
-		"deskripsi": "Main YouTube (formerly)",
+		"deskripsi": "Pulling and clashing",
 		"url": "https://youtube.com/@futamiid",
 		"kategori": "Main Channels",
 		"icon_name": "youtube",
@@ -10,7 +10,7 @@
 	},
 	{
 		"nama": "TikTok",
-		"deskripsi": "You like genep tujuh?",
+		"deskripsi": "",
 		"url": "https://tiktok.com/@futamiid",
 		"kategori": "Main Channels",
 		"icon_name": "tiktok",
@@ -19,8 +19,8 @@
 	},
 	{
 		"nama": "Instagram",
-		"deskripsi": "More personal on story",
-		"url": "https://instagram.com/futamiid",
+		"deskripsi": "",
+		"url": "https://instagram.com/@futamiid",
 		"kategori": "Main Channels",
 		"icon_name": "instagram",
 		"image_url": "",
@@ -28,7 +28,7 @@
 	},
 	{
 		"nama": "Facebook",
-		"deskripsi": "Boomer and shimp fest",
+		"deskripsi": "",
 		"url": "https://facebook.com/futamiid",
 		"kategori": "Main Channels",
 		"icon_name": "facebook",
@@ -37,18 +37,18 @@
 	},
 	{
 		"nama": "Foetami",
-		"deskripsi": "Secondary Random Stuff",
+		"deskripsi": "Secondary random stuff",
 		"url": "https://youtube.com/@footami",
-		"kategori": "Hiatus Channels",
+		"kategori": "Secondary Channels",
 		"icon_name": "youtube",
 		"image_url": "",
 		"archive": true
 	},
 	{
 		"nama": "Amedia TV",
-		"deskripsi": "All About Televisions and Cartoons",
+		"deskripsi": "All about televisions and cartoons",
 		"url": "https://youtube.com/@amediativi",
-		"kategori": "Hiatus Channels",
+		"kategori": "Secondary Channels",
 		"icon_name": "youtube",
 		"image_url": "",
 		"archive": true
@@ -57,43 +57,43 @@
 		"nama": "Clash Story",
 		"deskripsi": "All about Clash and Supercell (dev)",
 		"url": "https://youtube.com/playlist?list=PLQX-jAZdOlz78A6rWK_9lnxoF1QOT2FOd",
-		"kategori": "Main Content",
+		"kategori": "Featured Playlists",
 		"icon_name": "playlist",
 		"image_url": "",
 		"archive": false
 	},
 	{
 		"nama": "Start->Spark->",
-		"deskripsi": "Fact about game waifu gacha",
+		"deskripsi": "Facts about gacha waifus",
 		"url": "https://youtube.com/playlist?list=PLQX-jAZdOlz4wuC_IMy1H8aTHH5WO8HMd",
-		"kategori": "Main Content",
+		"kategori": "Featured Playlists",
 		"icon_name": "playlist",
 		"image_url": "",
 		"archive": false
 	},
 	{
 		"nama": "Futami Latest",
-		"deskripsi": "Latest news and update stuff",
+		"deskripsi": "Latest news and updates",
 		"url": "https://youtube.com/playlist?list=PLQX-jAZdOlz6t8ODAhKbW1D85Es6l5msE",
-		"kategori": "Rarely Uploads",
+		"kategori": "Other Playlists",
 		"icon_name": "playlist",
 		"image_url": "",
 		"archive": false
 	},
 	{
 		"nama": "Futami Tips",
-		"deskripsi": "Tips and Trick about anything",
+		"deskripsi": "Tips and tricks about anything",
 		"url": "https://youtube.com/playlist?list=PLQX-jAZdOlz5EKlSdgDmh3PjqEcDzZizz",
-		"kategori": "Rarely Uploads",
+		"kategori": "Other Playlists",
 		"icon_name": "playlist",
 		"image_url": "",
 		"archive": false
 	},
 	{
 		"nama": "Numpang Chacha",
-		"deskripsi": "Random gacha video",
+		"deskripsi": "Random gacha videos",
 		"url": "https://youtube.com/playlist?list=PLQX-jAZdOlz5WY4QBC7cgBihNQx0gP0Iu&si=po_jFY5EwkjuH-LW",
-		"kategori": "Rarely Uploads",
+		"kategori": "Other Playlists",
 		"icon_name": "playlist",
 		"image_url": "",
 		"archive": false

@@ -6,27 +6,23 @@ import youtube from '@data/youtube.json';
 interface Props {
 	channel_id?: string;
 	limit_videos?: number;
-	hide_next?: boolean;
+	hide_second_on_mobile?: boolean;
 }
 
-const { channel_id, limit_videos, hide_next } = Astro.props;
+const { channel_id, limit_videos, hide_second_on_mobile } = Astro.props;
 
 // Fetch data menggunakan script yang kamu sediakan
 const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos);
 ---
 
 {
-	yt_data.items
-		.filter((_: YouTube, i: number) => (hide_next ? i === 0 : true))
-		.map((item: YouTube) => (
-			/* Menggunakan VideoCard agar style sesuai dengan 
-               tampilan "Latest Videos" di index.astro saat ini 
-            */
-			<VideoCard
-				title={item.title}
-				thumbnail={`https://img.youtube.com/vi/${item.id}/mqdefault.jpg`}
-				href={item.isShorts ? `https://www.youtube.com/shorts/${item.id}` : `https://www.youtube.com/watch?v=${item.id}`}
-				isShorts={item.isShorts}
-			/>
-		))
+	yt_data.items.map((item: YouTube, index: number) => (
+		<VideoCard
+			title={item.title}
+			thumbnail={`https://img.youtube.com/vi/${item.id}/mqdefault.jpg`}
+			href={item.isShorts ? `https://www.youtube.com/shorts/${item.id}` : `https://www.youtube.com/watch?v=${item.id}`}
+			isShorts={item.isShorts}
+			class={hide_second_on_mobile && index === 1 ? "hidden md:block" : ""}
+		/>
+	))
 }

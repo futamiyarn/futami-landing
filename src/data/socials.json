@@ -1,7 +1,7 @@
 [
 	{
 		"nama": "X (Twitter)",
-		"deskripsi": "Cunny moment",
+		"deskripsi": "",
 		"url": "https://x.com/futamiid",
 		"kategori": "Communities",
 		"icon_name": "twitter_x",
@@ -10,7 +10,7 @@
 	},
 	{
 		"nama": "Facebook",
-		"deskripsi": "The meme archive",
+		"deskripsi": "",
 		"url": "https://facebook.com/futamiid",
 		"kategori": "Communities",
 		"icon_name": "facebook",
@@ -19,7 +19,7 @@
 	},
 	{
 		"nama": "Instagram",
-		"deskripsi": "Moments & highlights",
+		"deskripsi": "",
 		"url": "https://instagram.com/futamiid",
 		"kategori": "Communities",
 		"icon_name": "instagram",
@@ -28,7 +28,7 @@
 	},
 	{
 		"nama": "Threads",
-		"deskripsi": "Unfiltered thoughts",
+		"deskripsi": "",
 		"url": "https://threads.net/@futamiid",
 		"kategori": "Communities",
 		"icon_name": "threads",
@@ -37,7 +37,7 @@
 	},
 	{
 		"nama": "Bluesky",
-		"deskripsi": "Into the blue",
+		"deskripsi": "",
 		"url": "https://bsky.app/profile/futami.my.id",
 		"kategori": "Communities",
 		"icon_name": "bluesky",

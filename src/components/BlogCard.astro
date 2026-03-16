@@ -6,9 +6,10 @@ interface Props {
 	subtitle?: string;
 	href?: string;
 	thumbnail?: string;
+	class?: string;
 }
 
-const { title, subtitle, href = '#', thumbnail } = Astro.props;
+const { title, subtitle, href = '#', thumbnail, class: className } = Astro.props;
 
 // Default thumbnail for blog if not provided
 const defaultThumbnail = 'https://placehold.co/600x400/2f0e13/e88d92?text=Futami+Blog';
@@ -18,7 +19,10 @@ const defaultThumbnail = 'https://placehold.co/600x400/2f0e13/e88d92?text=Futami
 	href={href}
 	target="_blank"
 	rel="noopener noreferrer"
-	class="group relative block aspect-video overflow-hidden rounded-3xl shadow-md"
+	class:list={[
+		"group relative block aspect-video overflow-hidden rounded-3xl shadow-md",
+		className
+	]}
 >
 	<img
 		src={thumbnail || defaultThumbnail}
@@ -36,7 +40,7 @@ const defaultThumbnail = 'https://placehold.co/600x400/2f0e13/e88d92?text=Futami
 			<Icon name="article" class="text-2xl" />
 		</div>
 		<div class="flex flex-col min-w-0">
-			<span class="line-clamp-1 text-base leading-tight font-bold drop-shadow-md"
+			<span class="line-clamp-2 text-base leading-tight font-bold drop-shadow-md"
 				>{title}</span
 			>
 			{subtitle && (

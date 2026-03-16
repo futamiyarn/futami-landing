@@ -13,7 +13,7 @@ const baTools = others.find((o) => o.nama === 'Blue Archive Tools');
 
 <Layout title="Social - Futami">
 	<!-- 1. Platform (Single Button) -->
-	<Section title="Platform">
+	<Section title="Platform" id="platforms">
 		<Card
 			title="Channels"
 			subtitle="Videos, shorts, and more"
@@ -43,7 +43,7 @@ const baTools = others.find((o) => o.nama === 'Blue Archive Tools');
 	</Section>
 
 	<!-- 2. Communities -->
-	<Section title="Communities">
+	<Section title="Communities" id="communities">
 		{
 			communities.map((item) => (
 				<Card
@@ -56,7 +56,17 @@ const baTools = others.find((o) => o.nama === 'Blue Archive Tools');
 		}
 	</Section>
 
-	<!-- 3. Support Me -->
+	<!-- 3. Business -->
+	<Section title="Business" id="business">
+		<Card
+			title="Business Email"
+			subtitle="ami@futami.my.id"
+			icon="content"
+			href="mailto:ami@futami.my.id"
+		/>
+	</Section>
+
+	<!-- 4. Support Me -->
 	<Section title="Support Me" id="support">
 		<Card
 			title="Affiliate"

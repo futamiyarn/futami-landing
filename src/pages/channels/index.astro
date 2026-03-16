@@ -1,8 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Section from '@components/Section.astro';
-import Navbar from '@components/Navbar.astro';
-import NavbarButton from '@components/NavbarButton.astro';
 import Card from '@components/Card.astro';
 import platforms from '@data/platforms.json';
 
@@ -10,14 +8,9 @@ const categories = [...new Set(platforms.map((item) => item.kategori))];
 ---
 
 <Layout title="Channels - Futami">
-	<Navbar>
-		<NavbarButton label="Platform" icon="video" href="#" />
-		<NavbarButton label="Videos" icon="video-list" href="/channels/videos" />
-	</Navbar>
-
 	{
 		categories.map((category) => (
-			<Section title={category}>
+			<Section title={category} id={category.toLowerCase().replace(/\s+/g, '-')}>
 				{platforms
 					.filter((item) => item.kategori === category)
 					.map((item) => (
