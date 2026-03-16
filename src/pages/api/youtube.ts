@@ -1,5 +1,12 @@
 import type { APIRoute } from 'astro';
 
+interface CloudflareEnv {
+	FTM_KV: {
+		get: (key: string, options?: { type: string }) => Promise<unknown>;
+		put: (key: string, value: string) => Promise<void>;
+	};
+}
+
 export const GET: APIRoute = async ({ url }) => {
 	const API_KEY = import.meta.env.YOUTUBE_API_KEY;
 	const channelId =
@@ -7,22 +14,22 @@ export const GET: APIRoute = async ({ url }) => {
 	const maxResults = url.searchParams.get('maxResults') || '15';
 
 	const cacheKey = `yt_api_${channelId}_${maxResults}`;
-	
+
 	// Disable cache in development
 	const isDev = import.meta.env.DEV || import.meta.env.IS_DEV === 'true';
-	let kv: any = undefined;
+	let kv: CloudflareEnv['FTM_KV'] | undefined = undefined;
 
 	if (!isDev) {
 		try {
-			// @ts-ignore
+			// @ts-expect-error: cloudflare:workers is only available in production
 			const { env } = await import('cloudflare:workers');
-			kv = env.FTM_KV;
+			kv = (env as CloudflareEnv).FTM_KV;
 		} catch (e) {
 			console.error('Failed to import cloudflare:workers', e);
 		}
 	}
 
-	if (kv) {
+	if (kv && typeof kv.get === 'function') {
 		try {
 			const cached = await kv.get(cacheKey, { type: 'json' });
 			if (cached) {
@@ -60,7 +67,12 @@ export const GET: APIRoute = async ({ url }) => {
 		}
 
 		// Update KV cache if available
-		if (kv && data.items && data.items.length > 0) {
+		if (
+			kv &&
+			typeof kv.put === 'function' &&
+			data.items &&
+			data.items.length > 0
+		) {
 			try {
 				await kv.put(cacheKey, JSON.stringify(data));
 			} catch (error) {

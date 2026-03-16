@@ -7,6 +7,13 @@ export interface YouTubeVideo {
 	isShorts?: boolean;
 }
 
+interface CloudflareEnv {
+	FTM_KV: {
+		get: (key: string, options?: { type: string }) => Promise<unknown>;
+		put: (key: string, value: string) => Promise<void>;
+	};
+}
+
 /**
  * Helper untuk mengubah HTML Entities kembali ke karakter asli
  * Mengatasi masalah &quot; menjadi "
@@ -64,7 +71,7 @@ function parseYoutubeXML(xml: string) {
 			title: decodeHtml(rawTitle),
 			url: entry.match(/<link\s+rel="alternate"\s+href="([^"]*)"/)?.[1] || '',
 			pubDate: entry.match(/<published>(.*?)<\/published>/)?.[1] || '',
-			// Terapkan juga pada author jaga-jaga ada karakter khusus di nama channel
+			// Terapkan juga pada author jaga-jaga ada karakter khusus di mana channel
 			author: decodeHtml(rawAuthor),
 			id: entry.match(/<yt:videoId>(.*?)<\/yt:videoId>/)?.[1] || ''
 		};
@@ -78,23 +85,23 @@ function parseYoutubeXML(xml: string) {
 export const single = async (channelId: string, limit?: number | null) => {
 	const cacheKey = `yt_feed_${channelId}`;
 	let cachedData: YouTubeVideo[] | null = null;
-	
+
 	// Disable cache in development
 	const isDev = import.meta.env.DEV || import.meta.env.IS_DEV === 'true';
-	let kv: any = undefined;
+	let kv: CloudflareEnv['FTM_KV'] | undefined = undefined;
 
 	if (!isDev) {
 		try {
-			// @ts-ignore
+			// @ts-expect-error: cloudflare:workers is only available in production
 			const { env } = await import('cloudflare:workers');
-			kv = env.FTM_KV;
+			kv = (env as CloudflareEnv).FTM_KV;
 		} catch (e) {
 			console.error('Failed to import cloudflare:workers', e);
 		}
 	}
 
 	// Coba ambil dari cache KV jika tersedia
-	if (kv) {
+	if (kv && typeof kv.get === 'function') {
 		try {
 			const cached = await kv.get(cacheKey, { type: 'json' });
 			if (cached) {
@@ -131,7 +138,7 @@ export const single = async (channelId: string, limit?: number | null) => {
 				if (cachedItem && typeof cachedItem.isShorts !== 'undefined') {
 					return { ...item, isShorts: cachedItem.isShorts };
 				}
-				
+
 				// Jika tidak ada di cache, lakukan fetch ke oEmbed
 				const isShorts = await checkIsShort(item.id);
 				return { ...item, isShorts };
@@ -139,9 +146,10 @@ export const single = async (channelId: string, limit?: number | null) => {
 		);
 
 		// Update cache jika data berubah atau tidak ada cache
-		if (kv) {
+		if (kv && typeof kv.put === 'function') {
 			const isDifferent =
-				!cachedData || JSON.stringify(itemsWithShortsStatus) !== JSON.stringify(cachedData);
+				!cachedData ||
+				JSON.stringify(itemsWithShortsStatus) !== JSON.stringify(cachedData);
 
 			// Hanya update jika data berbeda dan tidak kosong (menghindari cache "not found" kosong)
 			if (isDifferent && itemsWithShortsStatus.length > 0) {

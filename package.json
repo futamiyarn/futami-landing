@@ -8,12 +8,11 @@
 		"build": "astro check && astro build --config astro.config.build.mjs",
 		"preview": "astro preview",
 		"astro": "astro",
-		"prettier": "prettier --write .",
-		"lint": "eslint .",
-		"lint:fix": "eslint . --fix"
+		"format": "prettier --write .",
+		"lint": "eslint ."
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.7",
+		"@astrojs/check": "^0.9.8",
 		"@astrojs/cloudflare": "^13.1.1",
 		"@tailwindcss/vite": "^4.2.1",
 		"astro": "^6.0.4",
@@ -38,6 +37,11 @@
 		"prettier-plugin-tailwindcss": "^0.6.14",
 		"sass": "^1.98.0",
 		"sharp": "^0.33.5",
-		"wrangler": "^4.73.0"
+		"wrangler": "^4.74.0"
+	},
+	"pnpm": {
+		"overrides": {
+			"undici": "^7.24.0"
+		}
 	}
 }

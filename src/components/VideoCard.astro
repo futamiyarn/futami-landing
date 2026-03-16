@@ -9,7 +9,13 @@ interface Props {
 	class?: string;
 }
 
-const { title, thumbnail, href = '#', isShorts, class: className } = Astro.props;
+const {
+	title,
+	thumbnail,
+	href = '#',
+	isShorts,
+	class: className
+} = Astro.props;
 ---
 
 <a
@@ -17,7 +23,7 @@ const { title, thumbnail, href = '#', isShorts, class: className } = Astro.props
 	target="_blank"
 	rel="noopener noreferrer"
 	class:list={[
-		"group relative block aspect-video overflow-hidden rounded-3xl shadow-md",
+		'group relative block aspect-video overflow-hidden rounded-3xl shadow-md',
 		className
 	]}
 >
@@ -35,7 +41,10 @@ const { title, thumbnail, href = '#', isShorts, class: className } = Astro.props
 			class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white"
 		>
 			{/* Mengganti icon YouTube Font Awesome dengan Astro Icon */}
-			<Icon name={isShorts ? 'yt_shorts' : 'youtube'} class:list={['text-2xl', 'text-red-600']} />
+			<Icon
+				name={isShorts ? 'yt_shorts' : 'youtube'}
+				class:list={['text-2xl', 'text-red-600']}
+			/>
 		</div>
 		<span class="line-clamp-2 text-base leading-tight font-bold drop-shadow-md"
 			>{title}</span

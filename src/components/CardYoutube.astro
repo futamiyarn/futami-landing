@@ -20,9 +20,13 @@ const yt_data = await single(channel_id ?? youtube.futami.id, limit_videos);
 		<VideoCard
 			title={item.title}
 			thumbnail={`https://img.youtube.com/vi/${item.id}/mqdefault.jpg`}
-			href={item.isShorts ? `https://www.youtube.com/shorts/${item.id}` : `https://www.youtube.com/watch?v=${item.id}`}
+			href={
+				item.isShorts
+					? `https://www.youtube.com/shorts/${item.id}`
+					: `https://www.youtube.com/watch?v=${item.id}`
+			}
 			isShorts={item.isShorts}
-			class={hide_second_on_mobile && index === 1 ? "hidden md:block" : ""}
+			class={hide_second_on_mobile && index === 1 ? 'hidden md:block' : ''}
 		/>
 	))
 }

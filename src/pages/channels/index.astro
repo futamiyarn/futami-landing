@@ -10,7 +10,10 @@ const categories = [...new Set(platforms.map((item) => item.kategori))];
 <Layout title="Channels - Futami">
 	{
 		categories.map((category) => (
-			<Section title={category} id={category.toLowerCase().replace(/\s+/g, '-')}>
+			<Section
+				title={category}
+				id={category.toLowerCase().replace(/\s+/g, '-')}
+			>
 				{platforms
 					.filter((item) => item.kategori === category)
 					.map((item) => (
