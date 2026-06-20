@@ -58,6 +58,16 @@ const randomAffiliates = affiliates.sort(() => 0.5 - Math.random()).slice(0, 2);
 				/>
 			)
 		}
+		{
+			bangLink && (
+				<Card
+					title={bangLink.nama}
+					subtitle={bangLink.deskripsi}
+					icon={bangLink.icon_name}
+					href={bangLink.url}
+				/>
+			)
+		}
 		<Card
 			title="Channels"
 			subtitle="Videos, shorts, and more"
@@ -71,16 +81,6 @@ const randomAffiliates = affiliates.sort(() => 0.5 - Math.random()).slice(0, 2);
 					subtitle={blogLink.deskripsi}
 					icon={blogLink.icon_name}
 					href={blogLink.url}
-				/>
-			)
-		}
-		{
-			bangLink && (
-				<Card
-					title={bangLink.nama}
-					subtitle={bangLink.deskripsi}
-					icon={bangLink.icon_name}
-					href={bangLink.url}
 				/>
 			)
 		}
