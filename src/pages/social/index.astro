@@ -9,6 +9,7 @@ import others from '@data/others.json';
 const communities = socials.filter((s) => s.kategori === 'Communities');
 const blogLink = others.find((o) => o.nama === 'Futami Blog');
 const baTools = others.find((o) => o.nama === 'Blue Archive Tools');
+const bangLink = others.find((o) => o.nama === 'b@ng');
 ---
 
 <Layout title="Social - Futami">
@@ -37,6 +38,16 @@ const baTools = others.find((o) => o.nama === 'Blue Archive Tools');
 					subtitle={baTools.deskripsi}
 					icon={baTools.icon_name}
 					href={baTools.url}
+				/>
+			)
+		}
+		{
+			bangLink && (
+				<Card
+					title={bangLink.nama}
+					subtitle={bangLink.deskripsi}
+					icon={bangLink.icon_name}
+					href={bangLink.url}
 				/>
 			)
 		}

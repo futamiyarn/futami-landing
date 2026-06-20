@@ -42,9 +42,6 @@ pnpm-debug.log*
 # and uncomment the following lines
 .pnp.*
 
-# End of https://www.toptal.com/developers/gitignore/api/yarn
-
-src/pages/en/
-*.*~
-
 glibc-*/
+.wrangler/
+.wrangler

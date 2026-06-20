@@ -14,6 +14,7 @@ const { id } = Astro.params;
 // Data untuk section Platform
 const baTools = others.find((o) => o.nama === 'Blue Archive Tools');
 const blogLink = others.find((o) => o.nama === 'Futami Blog');
+const bangLink = others.find((o) => o.nama === 'b@ng');
 
 // Ambil 2 random affiliates
 const randomAffiliates = affiliates.sort(() => 0.5 - Math.random()).slice(0, 2);
@@ -70,6 +71,16 @@ const randomAffiliates = affiliates.sort(() => 0.5 - Math.random()).slice(0, 2);
 					subtitle={blogLink.deskripsi}
 					icon={blogLink.icon_name}
 					href={blogLink.url}
+				/>
+			)
+		}
+		{
+			bangLink && (
+				<Card
+					title={bangLink.nama}
+					subtitle={bangLink.deskripsi}
+					icon={bangLink.icon_name}
+					href={bangLink.url}
 				/>
 			)
 		}

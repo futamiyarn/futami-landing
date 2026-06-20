@@ -16,5 +16,14 @@
 		"icon_name": "content",
 		"image_url": "",
 		"archive": false
+	},
+	{
+		"nama": "b@ng",
+		"deskripsi": "Search shortcut",
+		"url": "https://bang.futami.my.id",
+		"kategori": "Others",
+		"icon_name": "search",
+		"image_url": "",
+		"archive": false
 	}
 ]
