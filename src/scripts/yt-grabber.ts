@@ -31,6 +31,9 @@ function decodeHtml(text: string): string {
 /**
  * Cek apakah video adalah YouTube Shorts menggunakan oEmbed API
  */
+const YT_USER_AGENT =
+	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+
 async function checkIsShort(videoId: string): Promise<boolean> {
 	try {
 		// Menggunakan format /shorts/ untuk memaksa oEmbed memberikan rasio portrait jika video memang portrait
@@ -38,6 +41,7 @@ async function checkIsShort(videoId: string): Promise<boolean> {
 		const oembedUrl = `https://www.youtube.com/oembed?url=${videoUrl}&format=json`;
 
 		const res = await fetch(oembedUrl, {
+			headers: { 'User-Agent': YT_USER_AGENT },
 			signal: AbortSignal.timeout(3000)
 		});
 
@@ -113,15 +117,25 @@ export const single = async (channelId: string, limit?: number | null) => {
 	}
 
 	try {
-		const response = await fetch(
+		let response!: Response;
+	for (let attempt = 0; attempt < 3; attempt++) {
+		response = await fetch(
 			`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`,
 			{
+				// YouTube kadang memblokir/menolak request tanpa User-Agent browser
+				headers: {
+					'User-Agent': YT_USER_AGENT,
+					Accept: 'application/atom+xml, application/xml, text/xml, */*'
+				},
 				// Timeout singkat agar tidak menggantung jika RSS lambat
 				signal: AbortSignal.timeout(5000)
 			}
 		);
+		if (response.ok) break;
+		await new Promise((r) => setTimeout(r, 400 * (attempt + 1)));
+	}
 
-		if (!response.ok) throw new Error('Failed to fetch YouTube feed');
+	if (!response.ok) throw new Error('Failed to fetch YouTube feed');
 
 		const textData = await response.text();
 		let allItems = parseYoutubeXML(textData);
