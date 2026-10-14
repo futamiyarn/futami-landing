@@ -20,15 +20,15 @@ const isActive = href === '#' || (targetHref !== '' && pathname === targetHref);
 	href={href}
 	aria-label={label}
 	class:list={[
-		'flex h-12 w-12 items-center justify-center rounded-xl shadow-xs transition-all duration-200 active:scale-95',
+		'border flex h-10 w-10 items-center justify-center rounded-full shadow-sm transition-all duration-200 hover:shadow-md active:scale-95',
 		{
 			// Gaya saat AKTIF (Selected) - Menggunakan warna Primary yang lebih menonjol
-			'bg-primary text-primary-on shadow-md brightness-110': isActive,
-			// Gaya saat TIDAK AKTIF - Menggunakan warna Container yang lebih tenang
-			'bg-primary-container text-primary-on-container hover:-translate-y-1 hover:shadow-md hover:brightness-110':
+			'border-primary bg-primary text-on-primary': isActive,
+			// Gaya saat TIDAK AKTIF - Tonal chip seperti referensi
+			'border-outline-variant bg-surface-container-low text-on-surface hover:bg-surface-container-high hover:text-primary':
 				!isActive
 		}
 	]}
 >
-	<Icon name={icon} class="h-8 w-8" />
+	<Icon name={icon} class="h-5 w-5" />
 </a>

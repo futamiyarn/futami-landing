@@ -14,12 +14,13 @@ const bangLink = others.find((o) => o.nama === 'b@ng');
 
 <Layout title="Social - Futami">
 	<!-- 1. Platform (Single Button) -->
-	<Section title="Platform" id="platforms">
+	<Section title="Platform" id="platforms" icon="video">
 		<Card
 			title="Channels"
 			subtitle="Videos, shorts, and more"
 			icon="video"
 			href="/channels"
+			featured
 		/>
 		{
 			blogLink && (
@@ -54,7 +55,7 @@ const bangLink = others.find((o) => o.nama === 'b@ng');
 	</Section>
 
 	<!-- 2. Communities -->
-	<Section title="Communities" id="communities">
+	<Section title="Communities" id="communities" icon="socials">
 		{
 			communities.map((item) => (
 				<Card
@@ -68,7 +69,7 @@ const bangLink = others.find((o) => o.nama === 'b@ng');
 	</Section>
 
 	<!-- 3. Business -->
-	<Section title="Business" id="business">
+	<Section title="Business" id="business" icon="content">
 		<Card
 			title="Business Email"
 			subtitle="ami@futami.my.id"
@@ -78,7 +79,7 @@ const bangLink = others.find((o) => o.nama === 'b@ng');
 	</Section>
 
 	<!-- 4. Support Me -->
-	<Section title="Support Me" id="support">
+	<Section title="Support Me" id="support" icon="coins">
 		<Card
 			title="Affiliate"
 			subtitle="Buy gear and app stuff"

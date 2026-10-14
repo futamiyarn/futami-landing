@@ -2,8 +2,9 @@
 import Layout from '@layouts/Layout.astro';
 import Section from '@components/Section.astro';
 import Card from '@components/Card.astro';
-import platforms from '@data/platforms.json';
+import platformsRaw from '@data/platforms.json';
 
+const platforms = platformsRaw.filter((item) => !item.archive);
 const categories = [...new Set(platforms.map((item) => item.kategori))];
 ---
 
@@ -13,15 +14,17 @@ const categories = [...new Set(platforms.map((item) => item.kategori))];
 			<Section
 				title={category}
 				id={category.toLowerCase().replace(/\s+/g, '-')}
+				icon={category.includes('Playlist') ? 'playlist' : 'video'}
 			>
 				{platforms
 					.filter((item) => item.kategori === category)
-					.map((item) => (
+					.map((item, index) => (
 						<Card
 							title={item.nama}
 							subtitle={item.deskripsi}
 							icon={item.icon_name}
 							href={item.url}
+							featured={category === categories[0] && index === 0}
 						/>
 					))}
 			</Section>

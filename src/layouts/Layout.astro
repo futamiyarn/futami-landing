@@ -18,6 +18,20 @@ const { title } = Astro.props;
 		<meta name="description" content="Futami Linktree Material 3" />
 		<meta name="viewport" content="width=device-width" />
 
+		<!-- Anti-FOUC: apply theme before paint -->
+		<script is:inline>
+			(function () {
+				try {
+					var mode = localStorage.getItem('theme') || 'system';
+					var dark =
+						mode === 'dark' ||
+						(mode === 'system' &&
+							window.matchMedia('(prefers-color-scheme: dark)').matches);
+					document.documentElement.classList.toggle('dark', dark);
+				} catch (e) {}
+			})();
+		</script>
+
 		<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
 
 		<link
@@ -40,32 +54,77 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body
-		class="bg-surface text-on-surface flex min-h-screen justify-center font-sans antialiased"
+		class="bg-surface text-on-surface flex min-h-screen flex-col antialiased"
 	>
-		<main
-			class="mx-auto flex w-full max-w-[480px] flex-col gap-8 p-6 md:max-w-2xl lg:max-w-4xl"
+		<!-- Ambient brand glow: fixed to the viewport, behind all content -->
+		<div
+			class="bg-primary-deep/20 pointer-events-none fixed inset-x-0 top-0 -z-10 mx-auto h-96 w-full max-w-2xl rounded-full blur-3xl"
+			aria-hidden="true"
 		>
-			<header class="flex flex-col items-center gap-4 text-center">
+		</div>
+
+		<!-- Fixed Centered Header -->
+		<header
+			class="bg-surface/90 border-outline-variant shadow-crimson fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl"
+		>
+			<div
+				class="mx-auto flex h-16 w-full max-w-[42rem] items-center justify-center px-4 sm:px-6"
+			>
 				<a
 					href="/"
-					class="inline-flex items-center gap-2 text-4xl font-extrabold tracking-tight transition-transform select-none active:scale-95"
+					aria-label="Futami Home"
+					class="text-primary flex items-center justify-center transition-transform select-none active:scale-95"
 				>
-					<Icon name="logo/logo-text" class="text-primary" />
+					<Icon name="logo/logo-text" class="h-8 w-auto" />
 				</a>
+			</div>
+		</header>
 
-				<!-- Garis Pemisah (Divider) -->
-				<div class="bg-surface-container-high h-[1px] w-full opacity-50"></div>
-			</header>
-
-			<!-- Slot untuk konten halaman -->
-			<slot />
-
-			<!-- Footer -->
-			<footer
-				class="text-primary pt-4 pb-8 text-center text-sm font-bold opacity-80"
-			>
-				2026 © @Futami
-			</footer>
+		<!-- Main 42rem Column -->
+		<main class="w-full flex-1 pt-16">
+			<div class="mx-auto w-full max-w-[42rem] px-4 py-6 sm:px-6">
+				<!-- Slot untuk konten halaman, dengan jarak antar blok -->
+				<div class="flex w-full flex-col gap-8">
+					<slot />
+				</div>
+			</div>
 		</main>
+
+		<!-- Minimalist Footer -->
+		<footer
+			class="bg-surface-container-lowest border-outline-variant shadow-crimson-up py-4 border-t"
+		>
+			<div
+				class="mx-auto flex w-full max-w-[42rem] items-center justify-between px-4 sm:px-6"
+			>
+				<!-- Spacer to keep the copyright visually centered -->
+				<span class="h-10 w-10" aria-hidden="true"></span>
+
+				<p class="text-outline text-sm text-center tracking-wide">
+					2026 © @Futami
+				</p>
+
+				<!-- Theme toggle (system → light → dark) -->
+				<button
+					id="theme-toggle"
+					type="button"
+					aria-label="Theme: system — click for light"
+					class="bg-surface-container text-on-surface-variant border-outline-variant hover:bg-surface-container-high hover:text-primary flex h-10 w-10 items-center justify-center rounded-full border shadow-sm transition-colors focus:ring-primary/30 focus:ring-2 focus:outline-none"
+				>
+					<Icon name="theme-system" class="h-5 w-5 transition-transform" />
+				</button>
+			</div>
+		</footer>
+
+		<!-- Preload all theme icon symbols so the toggle can swap <use> href -->
+		<div class="hidden" aria-hidden="true">
+			<Icon name="theme-system" />
+			<Icon name="theme-light" />
+			<Icon name="theme-dark" />
+		</div>
 	</body>
 </html>
+
+<script>
+	import '@scripts/theme-selector';
+</script>

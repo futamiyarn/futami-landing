@@ -5,63 +5,93 @@ import { Image } from 'astro:assets';
 interface Props {
 	title: string;
 	subtitle?: string;
-	// Hapus default 'mdi:link' agar tidak error jika lupa set icon
 	icon?: string;
 	image?: ImageMetadata | string;
 	href?: string;
+	featured?: boolean;
 }
 
-// Default icon kita ubah ke 'link' (pastikan file link.svg ada) atau kosongkan
-const { title, subtitle, icon = 'link', image, href = '#' } = Astro.props;
+const { title, subtitle, icon = 'link', image, href = '#', featured = false } = Astro.props;
 
-const isExternal = !href.startsWith('/') && !href.startsWith('#');
+// "External" = leaves the current site's exact host. Internal relative links
+// (`/…`, `#…`) and same-host absolute URLs keep the arrow; everything else
+// (other domains, and other futami.my.id subdomains) gets an open-in-new icon.
+function isExternalHref(value: string): boolean {
+	if (value.startsWith('/') || value.startsWith('#')) return false;
+	try {
+		const url = new URL(value);
+		return url.host !== Astro.url.host;
+	} catch {
+		return false;
+	}
+}
+
+const isExternal = isExternalHref(href);
+const trailingIcon = isExternal ? 'open-in-new' : 'arrow-right';
 ---
 
 <a
 	href={href}
 	target={isExternal ? '_blank' : undefined}
 	rel={isExternal ? 'noopener noreferrer' : undefined}
-	class="group bg-primary-container text-primary-on-container relative flex items-center overflow-hidden rounded-3xl p-4 ring-1 ring-white/5 transition-transform duration-200 hover:shadow-lg active:scale-95"
+	class:list={[
+		'group flex items-center justify-between rounded-full p-3 pl-4 pr-4 shadow-sm transition-all duration-200 hover:shadow-md active:scale-95',
+		featured
+			? 'border-primary-container bg-primary-container text-on-primary-container hover:brightness-110'
+			: 'border-outline-variant bg-surface-container-low text-on-surface hover:bg-surface-container-high'
+	]}
 >
-	<div
-		class="pointer-events-none absolute inset-0 bg-transparent transition-colors duration-200 group-active:bg-white/20"
-	>
-	</div>
-
-	<div class="z-10 mr-4 flex w-10 shrink-0 items-center justify-center">
-		{
-			image ? (
-				<div class="h-10 w-10 overflow-hidden rounded-full border-2 border-white/20 bg-white">
-					{typeof image === 'string' ? (
+	<div class="flex min-w-0 items-center gap-3">
+		<div
+			class:list={[
+				'flex w-10 h-10 shrink-0 items-center justify-center overflow-hidden transition-transform duration-200 group-hover:scale-105',
+				image
+					? 'border-outline-variant rounded-full border bg-surface shadow-sm'
+					: featured
+						? 'bg-on-primary-container text-primary-container rounded-full'
+						: 'bg-surface-variant text-primary rounded-full'
+			]}
+		>
+			{
+				image ? (
+					typeof image === 'string' ? (
 						<img src={image} alt={title} class="h-full w-full object-cover" />
 					) : (
 						<Image src={image} alt={title} class="h-full w-full object-cover" />
-					)}
-				</div>
-			) : (
-				// Menggunakan class w-8 h-8
-				<Icon name={icon} class="h-8 w-8 opacity-90" />
-			)
-		}
-	</div>
+					)
+				) : (
+					<Icon name={icon} class="h-5 w-5" />
+				)
+			}
+		</div>
 
-	<div class="z-10 flex min-w-0 flex-col">
-		<span class="truncate pr-2 text-base leading-tight font-extrabold"
-			>{title}</span
-		>
-		{
-			subtitle && (
-				<span class="mt-0.5 truncate pr-2 text-xs font-medium opacity-80">
-					{subtitle}
-				</span>
-			)
-		}
+		<div class="flex min-w-0 flex-col text-left">
+			<span class="truncate text-base leading-tight font-bold">{title}</span>
+			{
+				subtitle && (
+					<span
+						class:list={[
+							'mt-0.5 truncate text-[11px] leading-tight font-medium',
+							featured
+								? 'text-on-primary-container/80'
+								: 'text-on-surface-variant'
+						]}
+					>
+						{subtitle}
+					</span>
+				)
+			}
+		</div>
 	</div>
 
 	<div
-		class="absolute right-4 -translate-x-2 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+		class:list={[
+			'ml-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors duration-200',
+			featured
+				? 'text-on-primary-container group-hover:bg-on-primary-container/10'
+				: 'text-on-surface-variant group-hover:text-primary'
+		]}
 	>
-		<!-- Pastikan kamu punya arrow-right.svg atau chevron-right.svg -->
-		<Icon name="arrow-right" class="text-xl opacity-50" />
+		<Icon name={trailingIcon} class="h-5 w-5 -translate-x-1 opacity-70 transition-transform duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
 	</div>
 </a>

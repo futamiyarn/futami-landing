@@ -15,12 +15,13 @@ import affiliates from '@data/affiliates.json';
 
 	<Section title="Shopee">
 		{
-			affiliates.map((item) => (
+			affiliates.filter((item) => !item.archive).map((item, index) => (
 				<Card
 					title={item.nama}
 					subtitle={item.deskripsi}
 					icon={item.icon_name}
 					href={item.url}
+					featured={index === 0}
 				/>
 			))
 		}

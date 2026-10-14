@@ -13,14 +13,15 @@ import donates from '@data/donates.json';
 		<NavbarButton label="Affiliate" icon="cart" href="/donate/affiliate" />
 	</Navbar>
 
-	<Section title="Direct Donate">
+	<Section title="Direct Donate" icon="coins">
 		{
-			donates.map((item) => (
+			donates.map((item, index) => (
 				<Card
 					title={item.nama}
 					subtitle={item.deskripsi}
 					icon={item.icon_name}
 					href={item.url}
+					featured={index === 0}
 				/>
 			))
 		}

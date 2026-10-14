@@ -27,37 +27,40 @@ const defaultThumbnail =
 	target="_blank"
 	rel="noopener noreferrer"
 	class:list={[
-		'group relative block aspect-video overflow-hidden rounded-3xl shadow-md',
+		'group border-outline-variant bg-surface-container-low text-on-surface hover:bg-surface-container flex items-center justify-between rounded-full border p-3 pl-4 pr-4 shadow-sm transition-all duration-200 hover:shadow-md',
 		className
 	]}
 >
-	<img
-		src={thumbnail || defaultThumbnail}
-		alt={title}
-		class="h-full w-full object-cover brightness-[0.8] transition-transform duration-500 group-hover:scale-105"
-		onerror={`this.onerror=null;this.src='${defaultThumbnail}'`}
-	/>
-
-	<div
-		class="absolute inset-x-0 bottom-0 flex items-center gap-3 bg-gradient-to-t from-black/90 to-transparent p-4 text-white"
-	>
+	<div class="flex min-w-0 items-center gap-3">
 		<div
-			class="text-primary-container flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white"
+			class="border-outline-variant flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border bg-surface shadow-sm transition-transform duration-200 group-hover:scale-105"
 		>
-			<Icon name="article" class="text-2xl" />
+			<img
+				src={thumbnail || defaultThumbnail}
+				alt={title}
+				class="h-full w-full object-cover"
+				onerror={`this.onerror=null;this.src='${defaultThumbnail}'`}
+			/>
 		</div>
-		<div class="flex min-w-0 flex-col">
-			<span
-				class="line-clamp-2 text-base leading-tight font-bold drop-shadow-md"
-				>{title}</span
-			>
+
+		<div class="flex min-w-0 flex-col text-left">
+			<span class="truncate text-base leading-tight font-semibold">{title}</span>
 			{
 				subtitle && (
-					<span class="line-clamp-1 text-xs font-medium opacity-80 drop-shadow-sm">
+					<span class="text-on-surface-variant mt-0.5 truncate text-sm leading-tight font-medium">
 						{subtitle}
 					</span>
 				)
 			}
 		</div>
+	</div>
+
+	<div
+		class="text-on-surface-variant group-hover:text-primary ml-2 flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors duration-200"
+	>
+		<Icon
+			name="arrow-right"
+			class="h-5 w-5 -translate-x-1 opacity-70 transition-transform duration-200 group-hover:translate-x-0 group-hover:opacity-100"
+		/>
 	</div>
 </a>

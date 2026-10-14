@@ -72,45 +72,59 @@ const blogLink = others.find((o) => o.nama === 'Futami Blog');
 const bangLink = others.find((o) => o.nama === 'b@ng');
 
 // Ambil 2 random affiliates
-const randomAffiliates = affiliates.sort(() => 0.5 - Math.random()).slice(0, 2);
+const randomAffiliates = affiliates.filter((item) => !item.archive).sort(() => 0.5 - Math.random()).slice(0, 2);
 ---
 
 <Layout title="Futami - talk about anything">
-	<Navbar>
-		<NavbarButton
-			label="Read Blog"
-			icon="article"
-			href="https://blog.futami.my.id"
-		/>
-		<NavbarButton
-			label="Main YouTube"
-			icon="youtube"
-			href="https://youtube.com/@futamiid"
-		/>
-		<NavbarButton
-			label="TikTok"
-			icon="tiktok"
-			href="https://tiktok.com/@futamiid"
-		/>
-	</Navbar>
+	<!-- Hero: Bio Tagline + Social Chips -->
+	<div class="relative z-10 flex flex-col items-center gap-4 text-center">
+		<p class="text-on-surface-variant max-w-md px-4 text-sm leading-relaxed">
+			Games, tech, and talk about anything — live on YouTube and TikTok.
+		</p>
+		<Navbar>
+			<NavbarButton
+				label="Read Blog"
+				icon="article"
+				href="https://blog.futami.my.id"
+			/>
+			<NavbarButton
+				label="Main YouTube"
+				icon="youtube"
+				href="https://youtube.com/@futamiid"
+			/>
+			<NavbarButton
+				label="TikTok"
+				icon="tiktok"
+				href="https://tiktok.com/@futamiid"
+			/>
+		</Navbar>
+	</div>
 
-	<Section title="Latest Updates" id="updates">
+	<Section title="Latest Updates" id="updates" icon="video" media>
+		<a
+			slot="action"
+			href="/channels"
+			class="border-outline-variant bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-primary inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-bold tracking-wide shadow-sm transition-colors"
+		>
+			<Icon name="playlist" class="h-3.5 w-3.5" />
+			Channels
+		</a>
 		<CardYoutube limit_videos={2} hide_second_on_mobile={true} />
+	</Section>
+
+	<Section title="Latest Blog" id="blog" icon="article">
 		{
-			latestPosts
-				.slice(0, 2)
-				.map((post: any, index: number) => (
-					<BlogCard
-						title={post.title}
-						href={post.link}
-						thumbnail={post.thumbnail}
-						class={index === 1 ? 'hidden md:block' : ''}
-					/>
-				))
+			latestPosts.slice(0, 2).map((post: any) => (
+				<BlogCard
+					title={post.title}
+					href={post.link}
+					thumbnail={post.thumbnail}
+				/>
+			))
 		}
 	</Section>
 
-	<Section title="Pages" id="pages">
+	<Section title="Pages" id="pages" icon="content">
 		{
 			baTools && (
 				<Card
@@ -161,12 +175,13 @@ const randomAffiliates = affiliates.sort(() => 0.5 - Math.random()).slice(0, 2);
 		/>
 	</Section>
 
-	<Section title="Support Me" id="support">
+	<Section title="Support Me" id="support" icon="coins">
 		<Card
 			title="Donasi"
 			subtitle='Direct "free" money'
 			icon="coins"
 			href="/donate"
+			featured
 		/>
 		{
 			randomAffiliates.map((item) => (

@@ -33,6 +33,15 @@
 		"kategori": "Shopee",
 		"icon_name": "shopee",
 		"image_url": "",
+		"archive": true
+	},
+	{
+		"nama": "Secondwave 1e",
+		"deskripsi": "USB Dynamic Microphone",
+		"url": "https://s.shopee.co.id/dummy-secondwave",
+		"kategori": "Shopee",
+		"icon_name": "shopee",
+		"image_url": "",
 		"archive": false
 	}
 ]
